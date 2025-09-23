@@ -1,0 +1,351 @@
+@page "{id:int}"
+@model OnePlanPetJourney.Pages.Leads.PageThreeModel
+
+@functions {
+    // 1 -> 1st, 2 -> 2nd, 3 -> 3rd, ...
+    private static string GetOrdinal(int number)
+    {
+        if (number <= 0) return number.ToString();
+        var rem100 = number % 100;
+        if (rem100 >= 11 && rem100 <= 13) return number + "th";
+        switch (number % 10)
+        {
+            case 1: return number + "st";
+            case 2: return number + "nd";
+            case 3: return number + "rd";
+            default: return number + "th";
+        }
+    }
+}
+
+@{
+    ViewData["Title"] = "Page Three - Pet Details";
+    ViewData["CurrentStep"] = 3;
+}
+<!--current step sets the wizard bar step-->
+<h1>Pet Details</h1>
+
+@if (TempData["Message"] is string msg)
+{
+    <div class="alert alert-success">@msg</div>
+}
+
+<div class="row">
+    <div class="col-md-8 offset-md-2 mb-3">
+        <h1>Tails are waggin. Tell us more about your furry best friend(s).</h1>
+    </div>
+</div>
+<!--to do - info tool tips-->
+<div class="row">
+    <div class="col-md-8 offset-md-2">
+
+        <div class="row">
+            <form id="page3Form" method="post">
+                <div asp-validation-summary="ModelOnly" class="alert alert-danger"></div>
+
+                <input asp-for="Input.LeadId" type="hidden" />
+
+                <div class="accordion" id="petsAccordion">
+                    @for (int i = 0; i < Model.Input.Pets.Count; i++)
+                    {
+                        var p = Model.Input.Pets[i];
+                        var ordinal   = GetOrdinal(i + 1);
+                        var collapseId = $"petCollapse_{i}";
+                        var headingId  = $"petHeading_{i}";
+                        var showClass  = i == 0 ? "show" : "";
+                        var collapsed  = i == 0 ? "" : "collapsed";
+
+                        <div class="accordion-item mb-3">
+                            <h2 class="accordion-header d-flex flex-column align-items-start gap-2" id="@headingId">
+
+                                @* This button is OUTSIDE the toggle; show it only when the linked panel is expanded *@
+                                @if (i > 0)
+                                {
+                                    
+                                    <button
+                                        type="button"
+                                        class="btn btn-nav-properties  prev-btn d-none"
+                                        data-collapse="#@collapseId"
+                                        onclick="prevPet(@i)">
+                                          <span><img src="~/images/icon-chev-left.png" alt=""></span>Previous Pet’s Details
+                                    </button>
+                                    
+                                }
+
+                                @* The ONLY accordion toggle button *@
+                                <button class="accordion-button @collapsed flex-grow-1"
+                                        type="button"
+                                        data-bs-toggle="collapse"
+                                        data-bs-target="#@collapseId"
+                                        aria-expanded="@(i == 0 ? "true" : "false")"
+                                        aria-controls="@collapseId">
+                                    @ordinal @(p.IsDog ? "Dog" : "Cat") Details
+                                </button>
+                            </h2>
+
+                            <div id="@collapseId"
+                                 class="accordion-collapse collapse @showClass"
+                                 aria-labelledby="@headingId"
+                                 data-bs-parent="#petsAccordion">
+                                <div class="accordion-body">
+                                    <!-- Persist Pet Id -->
+                                    <input asp-for="Input.Pets[i].Id" type="hidden" />
+
+                                    <div class="row g-3">
+                                        <div class="col-md-4 mb-3">
+                                            <label asp-for="Input.Pets[i].Name" class="form-label">What is your pet's name?</label>
+                                            <input asp-for="Input.Pets[i].Name" class="form-control" placeholder="Name" />
+                                            <span asp-validation-for="Input.Pets[i].Name" class="text-danger"></span>
+                                        </div>
+
+                                        <div class="col-md-4 mb-4">
+                                            <label asp-for="Input.Pets[i].DOB" class="form-label">When was <span class="petname">[Pet Name]</span> born?</label>
+                                            <input asp-for="Input.Pets[i].DOB" class="form-control" type="date" placeholder="DOB" />
+                                            <span asp-validation-for="Input.Pets[i].DOB" class="text-danger"></span>
+                                        </div>
+
+                                        <div class="col-md-4 mb-3">
+                                            <div class="form-group">
+                                                <label asp-for="Input.Pets[i].DOB" class="form-label">Is <span class="petname">[Pet Name]</span> Male or Female?</label>
+                                                @Html.DropDownListFor(
+                                                    m => m.Input.Pets[i].IsMale,
+                                                    new List<SelectListItem>
+                                                    {
+                                                        new SelectListItem { Text = "Male",   Value = "true" },
+                                                        new SelectListItem { Text = "Female", Value = "false" }
+                                                    },
+                                                    "-- Select Gender --",
+                                                    new { @class = "form-control" }
+                                                )
+                                                <span asp-validation-for="Input.Pets[i].IsMale" class="text-danger"></span>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-12 mb-3">
+                                            <label class="form-label d-block">Is <span class="petname">[Pet Name]</span> a dog or cat?</label>
+
+                                            <div class="form-check">
+                                                <input asp-for="Input.Pets[i].IsDog"
+                                                       class="form-check-input"
+                                                       type="radio"
+                                                       value="true"
+                                                       id="IsDogYes_@i" />
+                                                <label class="form-check-label" for="IsDogYes_@i">Dog</label>
+                                            </div>
+
+                                            <div class="form-check">
+                                                <input asp-for="Input.Pets[i].IsDog"
+                                                       class="form-check-input"
+                                                       type="radio"
+                                                       value="false"
+                                                       id="IsDogNo_@i" />
+                                                <label class="form-check-label" for="IsDogNo_@i">Cat</label>
+                                            </div>
+
+                                            <span asp-validation-for="Input.Pets[i].IsDog" class="text-danger"></span>
+                                        </div>
+
+                                        <div class="col-md-4 mb-3">
+                                            <label asp-for="Input.Pets[i].BreedSize" class="form-label">What breed size is <span class="petname">[Pet Name]</span>?</label>
+                                            <input asp-for="Input.Pets[i].BreedSize" class="form-control" placeholder="Breed" />
+                                            <span asp-validation-for="Input.Pets[i].BreedSize" class="text-danger"></span>
+                                        </div>
+
+                                        <div class="col-md-4 mb-4">
+                                            <label asp-for="Input.Pets[i].Breed" class="form-label">What breed is <span class="petname">[Pet Name]</span>?</label>
+                                            <input asp-for="Input.Pets[i].Breed" class="form-control" placeholder="Breed" />
+                                            <span asp-validation-for="Input.Pets[i].Breed" class="text-danger"></span>
+                                        </div>
+
+                                        <div class="col-md-4 mb-3">
+                                            <label asp-for="Input.Pets[i].Colour" class="form-label">What colour is <span class="petname">[Pet Name]</span>?</label>
+                                            <input asp-for="Input.Pets[i].Colour" class="form-control" placeholder="Colour" />
+                                            <span asp-validation-for="Input.Pets[i].Colour" class="text-danger"></span>
+                                        </div>
+
+                                        <div class="col-md-6 mb-3">
+                                            <label asp-for="Input.Pets[i].ChipNumber" class="form-label">What is <span class="petname">[Pet Name]</span>’s chip number? (Optional)</label>
+                                            <input asp-for="Input.Pets[i].ChipNumber" class="form-control" placeholder="******" />
+                                            <span asp-validation-for="Input.Pets[i].ChipNumber" class="text-danger"></span>
+                                        </div>
+
+                                        <div class="col-md-6 mb-3">
+                                            <label asp-for="Input.Pets[i].PreferredVet" class="form-label">Do you have a preferred vet?</label>
+                                            <select asp-for="Input.Pets[i].PreferredVet"
+                                                    asp-items="Model.VetOptions"
+                                                    class="form-select">
+                                            </select>
+                                            <span asp-validation-for="Input.Pets[i].PreferredVet" class="text-danger"></span>
+                                        </div>
+
+                                        <div class="col-md-12 mb-3">
+                                            <label class="form-label d-block">Is <span class="petname">[Pet Name]</span> Spayed or Neutered?</label>
+
+                                            <div class="form-check">
+                                                <input asp-for="Input.Pets[i].IsNeutered"
+                                                       class="form-check-input"
+                                                       type="radio"
+                                                       value="true"
+                                                       id="IsNeuteredYes_@i" />
+                                                <label class="form-check-label" for="IsNeuteredYes_@i">Yes</label>
+                                            </div>
+
+                                            <div class="form-check mb-3">
+                                                <input asp-for="Input.Pets[i].IsNeutered"
+                                                       class="form-check-input"
+                                                       type="radio"
+                                                       value="false"
+                                                       id="IsNeuteredNo_@i" />
+                                                <label class="form-check-label" for="IsNeuteredNo_@i">No</label>
+                                            </div>
+
+                                            <span asp-validation-for="Input.Pets[i].IsNeutered" class="text-danger"></span>
+                                        </div>
+
+                                        <div class="col-md-12 mb-3">
+                                            <label asp-for="Input.Pets[i].Injuries" class="form-label">Please select any injuries that <span class="petname">[Pet Name]</span> may have had or currently has:</label>
+                                            <select asp-for="Input.Pets[i].Injuries"
+                                                    asp-items="Model.InjuryOptions"
+                                                    class="form-select">
+                                            </select>
+                                            <span asp-validation-for="Input.Pets[i].Injuries" class="text-danger"></span>
+                                        </div>
+
+                                        <div class="col-md-12 mb-3">
+                                            <label asp-for="Input.Pets[i].MedicalCondition" class="form-label">Please select any medical condition/s that <span class="petname">[Pet Name]</span> may have had or currently has:</label>
+                                            <select asp-for="Input.Pets[i].MedicalCondition"
+                                                    asp-items="Model.MedicalConditionOptions"
+                                                    class="form-select">
+                                            </select>
+                                            <span asp-validation-for="Input.Pets[i].MedicalCondition" class="text-danger"></span>
+                                        </div>
+                                    </div>
+
+                                    <div class="d-flex justify-content-between mt-3 mb-3">
+                                       
+
+                                        <div class="flex-grow-1"></div>
+
+                                        @* Next for all but the last *@
+                                        @if (i < Model.Input.Pets.Count - 1)
+                                        {
+                                            <div id="divContinue" class="col-sm-12 col-md-3 mb-4">
+                                                <button id="nextPetBtn" type="button" class="btn btn-block btn-nav-continue btn-nav btn-nav-properties" onclick="nextPet(@i)">
+                                                    <span><img src="~/images/icon-chev-right.png" alt=""></span>
+                                                    &nbsp;&nbsp;Continue&nbsp;&nbsp;
+                                                </button>
+                                            </div>
+                                        }
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                </div>
+
+                <!-- Hidden submit so nav button can submit form -->
+                <button type="submit" class="visually-hidden">Save</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+<!-- Navigation bar (Call me / Previous / Continue) -->
+<div class="row">
+    <div class="col-md-8 offset-md-2">
+        <div class="navigation-container">
+            <div class="row">
+                <div id="divCallMe" class="col-sm-12 col-md-6 mb-4">
+                    <button id="btnCallMePopUp"
+                            type="button"
+                            class="btn btn-block btn-nav-call-me btn-nav btn-nav-properties"
+                            data-bs-toggle="modal"
+                            data-bs-target="#CallMePopUp">
+                        <span><img src="~/images/icon-call-me.png" alt=""></span>&nbsp;&nbsp;Call me rather&nbsp;&nbsp;
+                    </button>
+                </div>
+
+                <div id="divPrevious" class="col-sm-12 col-md-3 mb-4">
+                    <button id="btnPrevious"
+                            type="button"
+                            class="btn btn-block btn-nav-previous btn-nav btn-nav-properties"
+                            onclick="PrevStepThree()">
+                        <span><img src="~/images/icon-chev-left.png" alt=""></span>&nbsp;&nbsp;Previous&nbsp;&nbsp;
+                    </button>
+                </div>
+
+                <div id="divContinue" class="col-sm-12 col-md-3 mb-4">
+                    <button id="btnContinue"
+                            type="submit"
+                            form="page3Form"
+                            class="btn btn-block btn-nav-continue btn-nav btn-nav-properties">
+                        <span><img src="~/images/icon-chev-right.png" alt=""></span>&nbsp;&nbsp;Continue&nbsp;&nbsp;
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script>
+        // Previous = back to Page Two with the same id
+        function PrevStepThree() {
+            const id = '@Model.Input.LeadId';
+            window.location.href = '@Url.Page("/Leads/PageTwo")' + '/' + id;
+        }
+    </script>
+
+    <script>
+        // Helper to get Bootstrap Collapse instance
+        function getCollapse(id) {
+            const el = document.getElementById(id);
+            return el ? bootstrap.Collapse.getOrCreateInstance(el, { toggle: false }) : null;
+        }
+
+        function nextPet(i) {
+            const currentId = `petCollapse_${i}`;
+            const nextId    = `petCollapse_${i + 1}`;
+            const cur = getCollapse(currentId);
+            const nxt = getCollapse(nextId);
+            if (!cur || !nxt) return;
+
+            cur.hide();
+            nxt.show();
+
+            const nextHeading = document.getElementById(`petHeading_${i + 1}`);
+            if (nextHeading) nextHeading.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+
+        function prevPet(i) {
+            const currentId = `petCollapse_${i}`;
+            const prevId    = `petCollapse_${i - 1}`;
+            const cur = getCollapse(currentId);
+            const prv = getCollapse(prevId);
+            if (!cur || !prv) return;
+
+            cur.hide();
+            prv.show();
+
+            const prevHeading = document.getElementById(`petHeading_${i - 1}`);
+            if (prevHeading) prevHeading.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+
+        // --- Show the header "Previous" button only when its panel is expanded ---
+        function togglePrevFor(collapseEl, open) {
+            const btn = document.querySelector(`button.prev-btn[data-collapse="#${collapseEl.id}"]`);
+            if (btn) btn.classList.toggle('d-none', !open);
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            document.querySelectorAll('#petsAccordion .accordion-collapse').forEach(el => {
+                el.addEventListener('show.bs.collapse', () => togglePrevFor(el, true));
+                el.addEventListener('hide.bs.collapse', () => togglePrevFor(el, false));
+                // initial state (first one likely open)
+                togglePrevFor(el, el.classList.contains('show'));
+            });
+        });
+    </script>
+
+    <partial name="_ValidationScriptsPartial" />
+}

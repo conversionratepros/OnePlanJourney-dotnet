@@ -1,0 +1,117 @@
+/************************************************/
+/***************** CALL ME POP-UP ***************/
+/************************************************/
+
+.modal {
+    --bs-modal-header-border-color: none !important;
+    --bs-modal-header-border-width: none !important;
+    --bs-modal-footer-border-color: none !important;
+    --bs-modal-footer-border-width: none !important;
+    margin-top: 5% !important;
+}
+
+.modal-header {
+    background-color: #292c67 !important;
+    border-top-left-radius: 15px !important;
+    border-top-right-radius: 15px !important;
+    padding-bottom:60px!important;
+}
+
+.modal-title {
+    font-weight: bold;
+}
+
+.close {
+  margin-left: auto !important;
+  background-color: #f05657 !important;
+  width: 20px !important;
+  height: 20px !important;
+  border-radius: 50% !important;  /* true circle */
+  border: none !important;
+  opacity: 1 !important;
+  cursor: pointer;
+
+  /* Your original SVG */
+    background-image: url("data:image/svg+xml,%3C%3Fxml version='1.0' encoding='utf-8'%3F%3E%3C!-- Generator: Adobe Illustrator 25.4.1, SVG Export Plug-In . SVG Version: 6.00 Build 0) --%3E%3Csvg version='1.1' id='Layer_1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' x='0px' y='0px' viewBox='0 0 16 16' style='enable-background:new 0 0 16 16;' xml:space='preserve'%3E%3Cstyle type='text/css'%3E .st0%7Bfill:%23FFFFFF;%7D%0A%3C/style%3E%3Cpath class='st0' d='M0.3,0.3c0.4-0.4,1-0.4,1.4,0L8,6.6l6.3-6.3c0.4-0.4,1-0.4,1.4,0c0.4,0.4,0.4,1,0,1.4c0,0,0,0,0,0L9.4,8 l6.3,6.3c0.4,0.4,0.4,1,0,1.4c-0.4,0.4-1,0.4-1.4,0L8,9.4l-6.3,6.3c-0.4,0.4-1,0.4-1.4,0c-0.4-0.4-0.4-1,0-1.4L6.6,8L0.3,1.7 C-0.1,1.3-0.1,0.7,0.3,0.3'/%3E%3C/svg%3E%0A") !important;
+  background-repeat: no-repeat;
+  background-position: center;   /* keep icon centered */
+  background-size: 50%;          /* shrink icon to give padding inside circle */
+}
+
+
+
+.modal-content {
+    background-color: #e6e6e6 !important;
+    border-radius: 15px;
+    border: none !important;
+     background: white;
+    box-shadow: 0 5px 0 #BDBDBD; /* bottom “border” */
+
+}
+.modal-body {
+    background-color: #e6e6e6 !important;
+    border-radius: 15px !important;
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25) inset;
+    margin-top: -40px;
+}
+
+.modal-footer {
+    background-color: #e6e6e6 !important;
+}
+.call-me-lbl
+{
+    font-family:'Open Sans'!important;
+    font-weight:400!important;
+    font-size:16px!important;
+    line-height:30px!important;
+    vertical-align:middle!important;
+    color:#333333!important;
+    height:30px!important;
+
+}
+.consent-lbl {
+    font-family: 'Open Sans' !important;
+    font-weight: 400 !important;
+    font-size: 14px !important;
+    margin-top:-5px!important;
+    height:33px!important;
+    color:#332F6E!important;
+  
+}
+.call-me-p {
+    font-family: 'Open Sans' !important;
+    font-weight: 400 !important;
+    font-size: 12px !important;
+    height: 100% !important;
+    color: #332F6E !important;
+    display: block;
+}
+
+.marketing-consent {
+    vertical-align: top !important;
+}
+
+.modal-input {
+    background-color: #fff !important;
+    border-radius: 5px !important;
+    border: 1px solid #B7B7B7 !important;
+    height:40px
+}
+.space-top{
+    margin-top:10px!important;
+}
+.space-top-20 {
+    margin-top:20px !important;
+}
+
+.btn-call-me-back
+{
+    border-radius:29px!important;
+    border-top:3px solid #2b8f8e!important;
+    background-color:#63c6c1!important;
+    padding: 13px 60px 13px 60px!important;
+    font-size:16px!important;
+    color:#292c67!important;
+    font-weight:700!important;
+    
+}

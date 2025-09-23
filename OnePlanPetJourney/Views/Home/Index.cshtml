@@ -1,0 +1,38 @@
+﻿@model IEnumerable<OnePlanPetJourney.Models.Lead>
+@{
+    ViewData["Title"] = "Home";
+}
+
+<div class="d-flex justify-content-between align-items-center">
+    <h1>Leads</h1>
+    <a class="btn btn-success" asp-action="CreateLead">+ Add Lead</a>
+</div>
+
+@if (TempData["Message"] is string msg)
+{
+    <div class="alert alert-success mt-3">@msg</div>
+}
+
+<table class="table table-striped mt-3">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>First</th>
+            <th>Last</th>
+            <th>Cats</th>
+            <th>Dogs</th>
+        </tr>
+    </thead>
+    <tbody>
+    @foreach (var l in Model ?? Enumerable.Empty<OnePlanPetJourney.Models.Lead>())
+    {
+        <tr>
+            <td>@l.Id</td>
+            <td>@l.FirstName</td>
+            <td>@l.LastName</td>
+            <td>@l.CatCount</td>
+            <td>@l.DogCount</td>
+        </tr>
+    }
+    </tbody>
+</table>

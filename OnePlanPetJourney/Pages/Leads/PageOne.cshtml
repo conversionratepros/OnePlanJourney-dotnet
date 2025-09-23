@@ -1,0 +1,220 @@
+@page
+@model OnePlanPetJourney.Pages.Leads.PageOneModel
+
+@{
+    ViewData["Title"] = "Create Lead (Pet Counts Only)";
+    ViewData["CurrentStep"] = 1;  
+}
+
+<!--current step sets the wizard bar step-->
+<h1>Create Lead – Pet Counts Only</h1>
+
+@if (TempData["Message"] is string msg)
+{
+    <div class="alert alert-success">@msg</div>
+}
+
+<form id="leadForm" method="post">
+    @Html.AntiForgeryToken()
+    <div asp-validation-summary="ModelOnly" class="alert alert-danger"></div>
+
+    <div class="row">
+        <div class=" col-md-8 offset-md-2 mb-3">
+            <h1>
+                Ready to get your Pet Insurance quote with Oneplan ?
+                <br />
+                Let's go for a walk...
+            </h1>
+
+            <div class="card frame">
+                <div class="card-body">
+                    <div class="row">
+
+                        <!-- DOGS -->
+                        <div class="col-md-6 mb-4">
+                            <div class="card inside-frame">
+                                <div class="card-body text-center">
+                                    <h5 class="card-title">How many <b>Dogs</b> would you like to ensure?</h5>
+                                    <img src="~/images/dog.png" class="pet-img" />
+                                    <div class="quantity-select">
+                                        <button type="button" id="btn-sub-dog" class="btn-add-remove btn-sub-pet">
+                                            <div class="btn-add-remove-txt">-</div>
+                                        </button>
+
+                                        <!-- Bind to Input.DogCount so it posts -->
+                                        <input asp-for="Input.DogCount"
+                                               id="txt-select-pet-dog"
+                                               class="form-control input-add-pet text-center"
+                                               type="number" min="0" max="8" readonly />
+
+                                        <button type="button" id="btn-add-dog" class="btn-add-remove btn-add-pet">
+                                            <div class="btn-add-remove-txt">+</div>
+                                        </button>
+                                    </div>
+                                    <span asp-validation-for="Input.DogCount" class="text-danger d-block mt-1"></span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- CATS -->
+                        <div class="col-md-6 mb-4">
+                            <div class="card inside-frame">
+                                <div class="card-body text-center">
+                                    <h5 class="card-title">How many <b>Cats</b> would you like to ensure?</h5>
+                                    <img src="~/images/cat.png" class="pet-img" />
+                                    <div class="quantity-select">
+                                        <button type="button" id="btn-sub-cat" class="btn-add-remove btn-sub-pet">
+                                            <div class="btn-add-remove-txt">-</div>
+                                        </button>
+
+                                        <!-- Bind to Input.CatCount so it posts -->
+                                        <input asp-for="Input.CatCount"
+                                               id="txt-select-pet-cat"
+                                               class="form-control input-add-pet text-center"
+                                               type="number" min="0" max="8" readonly />
+
+                                        <button type="button" id="btn-add-cat" class="btn-add-remove btn-add-pet">
+                                            <div class="btn-add-remove-txt">+</div>
+                                        </button>
+                                    </div>
+                                    <span asp-validation-for="Input.CatCount" class="text-danger d-block mt-1"></span>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div> <!-- /row -->
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-8 offset-md-2">
+            <div class="navigation-container">
+                <div class="row">
+                    <div id="divCallMe" class="col-sm-12 col-md-6 mb-4">
+                        <button id="btnCallMePopUp" type="button"
+                                class="btn btn-block btn-nav-call-me btn-nav btn-nav-properties"
+                                data-bs-toggle="modal" data-bs-target="#CallMePopUp">
+                            <span><img src="~/images/icon-call-me.png" alt=""></span>&nbsp;&nbsp;Call me rather&nbsp;&nbsp;
+                        </button>
+                    </div>
+                    <div id="divContinue" class="col-sm-12 col-md-6 mb-4">
+                        <!-- Submit the same form -->
+                        <button id="btnContinue" type="submit"
+                                class="btn btn-block btn-nav-continue-step1 btn-nav btn-nav-properties btn-next">
+                            &nbsp;&nbsp;Continue&nbsp;&nbsp;<span><img src="~/images/icon-chev-right.png" alt=""></span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="row bg-light-grey">
+        <div class="container col-md-8 offset-md-2 ">
+            <div class="usp-frame">
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="card card-height">
+                            <img src="~/Images/Usp-icon-1.png" class="card-img-top mx-auto" alt="Routine Care" />
+                            <div class="card-body card-body-width">
+                                <h6 class="card-title text-uppercase">
+                                    Routine Care &amp; Vet Visits
+                                    <br />Paid in 1 minute
+                                </h6>
+                                <p class="card-text mt-4">
+                                    Pre-load your claims onto your unique Oneplan Claim Card with the Oneplan App and pay
+                                    your vet straight after your consultatiion. No hassles and having to wait to be paid back.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="card card-height">
+                            <img src="~/Images/Usp-icon-2.png" class="card-img-top mx-auto" alt="Manage Paw-licy" />
+                            <div class="card-body card-body-width">
+                                <h6 class="card-title text-uppercase">
+                                    Manage your paw-licy on
+                                    <br />
+                                    the Oneplan App
+                                </h6>
+                                <p class="card-text mt-4">
+                                    Get access to your claims history process refunds in one minute and upload clain documentation in app.
+                                    It's insurance paw-licies made accesible and easy.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="card card-height">
+                            <img src="~/Images/Usp-icon-3.png" class="card-img-top mx-auto" alt="Pet Food" />
+                            <div class="card-body card-body-width">
+                                <h6 class="card-title text-uppercase">
+                                    Save on pet food and
+                                    <br />
+                                    supplies for the lifetime of
+
+                                    your policy
+                                </h6>
+                                <p class="card-text mt-4">
+                                    Get up to 25% discount on all pet products in the Onepet Premium Pet Store.
+                                    Exclusive to Oneplan Pet Parents. Making Pet insurance even more affordable with Oneplan.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div> <!-- /USP row -->
+            </div>
+        </div>
+    </div>
+</form>
+
+@section Scripts {
+<script>
+    // helpers to clamp and set values
+    function clamp(val, min, max) {
+        val = parseInt(val || 0, 10);
+        if (isNaN(val)) val = 0;
+        return Math.max(min, Math.min(max, val));
+    }
+    function setVal(input, val) {
+        const min = parseInt(input.min || 0, 10);
+        const max = parseInt(input.max || 8, 10);
+        input.value = clamp(val, min, max);
+        input.dispatchEvent(new Event('change', { bubbles: true }));
+    }
+
+    $(document).ready(function () {
+        const $dog = $('#txt-select-pet-dog');
+        const $cat = $('#txt-select-pet-cat');
+
+        $('#btn-add-dog').on('click', function () {
+            setVal($dog[0], (parseInt($dog.val() || 0, 10) + 1));
+        });
+        $('#btn-sub-dog').on('click', function () {
+            setVal($dog[0], (parseInt($dog.val() || 0, 10) - 1));
+        });
+
+        $('#btn-add-cat').on('click', function () {
+            setVal($cat[0], (parseInt($cat.val() || 0, 10) + 1));
+        });
+        $('#btn-sub-cat').on('click', function () {
+            setVal($cat[0], (parseInt($cat.val() || 0, 10) - 1));
+        });
+
+        // If you previously had hidden fields (hdnDogCount/hdnCatCount) to seed values,
+        // you can still read them here and push into the bound inputs if needed.
+        // const dogSeed = parseInt($('#hdnDogCount').val() || '0', 10);
+        // const catSeed = parseInt($('#hdnCatCount').val() || '0', 10);
+        // setVal($dog[0], dogSeed);
+        // setVal($cat[0], catSeed);
+    });
+
+    // Old NextStepOne was doing a window.location; now we submit the form
+    function NextStepOne() {
+        document.getElementById('leadForm').requestSubmit(); // posts to OnPost
+    }
+</script>
+
+<partial name="_ValidationScriptsPartial" />
+}

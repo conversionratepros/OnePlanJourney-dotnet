@@ -1,0 +1,200 @@
+@model OnePlanPetJourney.Models.SetPetPlansViewModel
+@{
+    ViewData["Title"] = "Set Pet Plans";
+}
+
+<h1>Set Pet Plans</h1>
+
+@if (TempData["Message"] is string msg)
+{
+    <div class="alert alert-success">@msg</div>
+}
+
+@using (Html.BeginForm("SetPetPlans", "Pet", FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+    @Html.HiddenFor(m => m.LeadId)
+
+    @Html.ValidationSummary(false, "", new { @class = "alert alert-danger" })
+
+    @for (int i = 0; i < Model.Items.Count; i++)
+    {
+        var pet = Model.Items[i];
+        var petKey = $"pet_{pet.PetId}";
+        var expandedId = $"{petKey}_expanded";
+
+        <div class="card mb-4">
+            <div class="card-header d-flex justify-content-between align-items-center">
+                <div>
+                    <strong>@pet.Name</strong>
+                    <div class="text-muted small">@(pet.IsDog ? "Dog" : "Cat")</div>
+                </div>
+                <div>
+                    @if (pet.IsDog)
+                    {
+                        <img src="~/images/icon-dog.png" alt="Dog" style="width:140px;" />
+                    }
+                    else
+                    {
+                        <img src="~/images/icon-cat.png" alt="Cat" style="width:140px;" />
+                    }
+                </div>
+            </div>
+
+            <div class="card-body">
+                @Html.HiddenFor(m => m.Items[i].PetId)
+
+                <!-- Row of plan cards -->
+                <div class="row g-3">
+                    @foreach (var plan in Model.Plans)
+                    {
+                        var inputId = $"{petKey}_plan_{plan.Value}";
+                        var templateId = $"plan_template_{plan.Value}";
+
+                        // Tooltip text
+                        string tooltip = plan.Text switch
+                        {
+                            "Super"    => "Best coverage with all features included",
+                            "Classic"  => "Balanced option for most owners",
+                            "Hospital" => "Basic hospital-only cover",
+                            _ => "Plan details"
+                        };
+
+                        <div class="col">
+                            <div class="border rounded p-3 h-100 plan-card"
+                                 role="button"
+                                 onclick="selectPlan('@inputId', '@expandedId', '@templateId')">
+
+                                <div class="d-flex justify-content-between">
+                                    <div>
+                                        <input type="radio"
+                                               id="@inputId"
+                                               name="Items[@i].PlanType"
+                                               value="@plan.Value"
+                                               class="form-check-input me-2"
+                                               @(pet.PlanType?.ToString() == plan.Value ? "checked" : null) />
+                                        <label for="@inputId" class="form-check-label fw-semibold">
+                                            @plan.Text
+                                        </label>
+                                        <div class="text-muted">Price: R123</div>
+                                    </div>
+
+                                    <button type="button"
+                                            class="btn btn-sm btn-outline-secondary"
+                                            data-bs-toggle="tooltip"
+                                            data-bs-title="@tooltip">
+                                        ?
+                                    </button>
+                                </div>
+
+                                <div class="mt-2">
+                                    <button class="btn btn-link p-0 toggle-read"
+                                        type="button"
+                                        onclick="togglePlan(this,'@inputId','@expandedId','@templateId')">
+                                    Read more
+                                </button>
+                                </div>
+                            </div>
+                        </div>
+
+                      <div id="@templateId" class="d-none">
+                                @if (plan.Text == "Super")
+                                {
+                                    @Html.Partial("Plans/_Super")
+                                }
+                                else if (plan.Text == "Classic")
+                                {
+                                    @Html.Partial("Plans/_Classic")
+                                }
+                                else if (plan.Text == "Hospital")
+                                {
+                                    @Html.Partial("Plans/_Hospital")
+                                }
+                                else
+                                {
+                                    <div>No details available.</div>
+                                }
+                            </div>
+                    }
+                </div>
+
+                <!-- Row for expanded section (full width) -->
+                <div class="row mt-3">
+                    <div class="col-12">
+                        <div id="@expandedId"
+                             class="p-3 border rounded bg-light d-none pet-expanded"
+                             data-pet="@petKey">
+                            <em>Select a plan and click “Read more” to view details here…</em>
+                        </div>
+                    </div>
+                </div>
+
+                @Html.ValidationMessageFor(m => m.Items[i].PlanType, "", new { @class = "text-danger d-block mt-2" })
+            </div>
+        </div>
+    }
+
+    <button type="submit" class="btn btn-primary">Save Plans</button>
+}
+
+@section Scripts {
+<script>
+  function togglePlan(btn, inputId, containerId, templateId) {
+    var radio     = document.getElementById(inputId);
+    var container = document.getElementById(containerId);
+    var template  = document.getElementById(templateId);
+    if (!container || !template) return;
+
+    // If this template is already open, collapse it
+    var current = container.getAttribute('data-current-template');
+    var isOpen  = !container.classList.contains('d-none');
+    if (current === templateId && isOpen) {
+      container.classList.add('d-none');
+      container.setAttribute('aria-hidden', 'true');
+      container.removeAttribute('data-current-template');
+
+      // Reset the clicked button label
+      btn.textContent = 'Read more';
+      return;
+    }
+
+    // Otherwise open the requested template
+    if (radio) radio.checked = true;
+
+    // Close all other expanded sections across the page
+    document.querySelectorAll('.pet-expanded').forEach(function (el) {
+      if (el.id !== containerId) {
+        el.classList.add('d-none');
+        el.setAttribute('aria-hidden', 'true');
+        el.removeAttribute('data-current-template');
+      }
+    });
+
+    // Swap content & open
+    container.innerHTML = template.innerHTML;
+    container.classList.remove('d-none');
+    container.setAttribute('aria-hidden', 'false');
+    container.setAttribute('data-current-template', templateId);
+
+    // In this pet's card, reset all plan buttons to "Read more"
+    var cardBody = btn.closest('.card-body');
+    if (cardBody) {
+      cardBody.querySelectorAll('.toggle-read').forEach(function (b) {
+        b.textContent = 'Read more';
+      });
+    }
+
+    // Set the clicked one to "Read less"
+    btn.textContent = 'Read less';
+
+    container.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+  }
+
+  document.addEventListener('DOMContentLoaded', function () {
+    var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'));
+    tooltipTriggerList.forEach(function (el) { new bootstrap.Tooltip(el); });
+  });
+</script>
+<partial name="_ValidationScriptsPartial" />
+}
+

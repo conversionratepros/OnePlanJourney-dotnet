@@ -1,0 +1,34 @@
+﻿@model OnePlanPetJourney.Models.Lead
+@{
+    ViewData["Title"] = "Create Lead (Pet Counts Only)";
+}
+
+<h1>Create Lead – Pet Counts Only</h1>
+
+@if (TempData["Message"] is string msg)
+{
+    <div class="alert alert-success">@msg</div>
+}
+
+@using (Html.BeginForm("PageOne", "Home", FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+
+    <div class="mb-3">
+        @Html.LabelFor(m => m.CatCount, new { @class = "form-label" })
+        @Html.TextBoxFor(m => m.CatCount, new { @class = "form-control", type = "number", min = "0" })
+        @Html.ValidationMessageFor(m => m.CatCount, "", new { @class = "text-danger" })
+    </div>
+
+    <div class="mb-3">
+        @Html.LabelFor(m => m.DogCount, new { @class = "form-label" })
+        @Html.TextBoxFor(m => m.DogCount, new { @class = "form-control", type = "number", min = "0" })
+        @Html.ValidationMessageFor(m => m.DogCount, "", new { @class = "text-danger" })
+    </div>
+
+    <button type="submit" class="btn btn-primary">Save Lead</button>
+}
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

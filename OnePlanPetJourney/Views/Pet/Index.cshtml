@@ -1,0 +1,49 @@
+@model IEnumerable<OnePlanPetJourney.Models.Pet>
+
+@{
+    ViewData["Title"] = "Pets";
+}
+
+<h1>Pets</h1>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Lead</th>
+            <th>Name</th>
+            <th>DOB</th>
+            <th>Is Male</th>
+            <th>Is Dog</th>
+            <th>Breed</th>
+            <th>Colour</th>
+            <th>Chip #</th>
+            <th>Preferred Vet</th>
+            <th>Is Neutered</th>
+            <th>Injuries</th>
+            <th>Medical Condition</th>
+        </tr>
+    </thead>
+    <tbody>
+    @foreach (var pet in Model)
+    {
+        <tr>
+            <td>@pet.Id</td>
+            <td>@pet.LeadId</td>
+            <td>@pet.Name</td>
+          <td>@($"{pet.DOB:yyyy-MM-dd}")</td>
+
+            <td>@(pet.IsMale ? "Yes" : "No")</td>
+            <td>@(pet.IsDog ? "Dog" : "Cat")</td>
+            <td>@pet.Breed</td>
+            <td>@pet.Colour</td>
+            <td>@pet.ChipNumber</td>
+            <td>@pet.PreferredVet</td>
+            <td>@(pet.IsNeutered ? "Dog" : "Cat")</td>
+      
+            <td>@pet.Injuries</td>
+            <td>@pet.MedicalCondition</td>
+        </tr>
+    }
+    </tbody>
+</table>

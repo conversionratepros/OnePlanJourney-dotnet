@@ -1,0 +1,135 @@
+/************** Wizard (per-step connectors, no bar before 1 or after 9) **************/
+.opl-steps { padding: 13px 0 28px; }
+
+.opl-steps-list{
+  display: grid;
+  grid-template-columns: repeat(9, 1fr);
+  align-items: center;
+  gap: 0;
+  list-style: none;
+  margin: 0;
+  padding: 0 4px;
+  position: relative;
+}
+
+/* step item */
+.opl-step{
+  position: relative;
+  text-align: center;
+  z-index: 0; /* connectors sit under markers */
+}
+
+/* connector from this dot’s center to the next dot’s center (DESKTOP)
+   marker is 44px with a 4px white border (total 52px). 52/2 - 4/2 = 24px */
+.opl-step::before{
+  content: "";
+  position: absolute;
+  left: 50%;
+  width: 100%;
+  top: 24px;           /* perfectly centered for 44px marker + 4px border */
+  height: 4px;
+  background: #ccc;    /* inactive connector */
+  z-index: 0;
+}
+/* do not draw beyond the last dot */
+.opl-step:last-child::before{ content: none; }
+
+/* click area + label */
+.opl-step-link{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  text-decoration: none;
+}
+.opl-step-label{
+  font-size: .8rem;
+  color: #6b7280;
+  white-space: nowrap;
+}
+
+/* marker (44×44) */
+.opl-step-marker{
+  position: relative;
+  z-index: 1;
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: #cfcfcf;             /* default (overridden by states) */
+  border: 4px solid #fff;           /* halo */
+  box-sizing: content-box;
+
+  /* Adjustable centering nudges for the icon */
+  --icon-nudge-x: 0px; /* +right / -left */
+  --icon-nudge-y: 3px; /* +down  / -up   */
+}
+
+/* center number/check perfectly inside the circle */
+.opl-step-num,
+.opl-step-check{
+  position: absolute;
+  inset: 0;                 /* fill the circle */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 0;           /* kill baseline offset */
+}
+
+.opl-step-num{ font-weight: 800; color: #fff; }
+
+/* make the SVG icon bigger, keep it centered; apply nudges */
+.opl-step-check{ display: none; }
+.opl-step-check svg{
+  width: 30px;
+  height: 30px;
+  display: block; /* remove baseline gap */
+  transform: translate(var(--icon-nudge-x), var(--icon-nudge-y));
+}
+.opl-step-check path{ fill: #fff; }
+
+/* states */
+.opl-step.is-inactive .opl-step-marker{ background: #ccc; }
+
+.opl-step.is-active .opl-step-marker{ background: #2f2c6f; }
+.opl-step[aria-current="step"] .opl-step-label{ color: #111827; font-weight: 700; }
+
+.opl-step.is-complete .opl-step-marker{ background: #2f2c6f; }
+.opl-step.is-complete .opl-step-num{ display: none; }
+.opl-step.is-complete .opl-step-check{ display: flex; } /* show the check */
+
+/* color the connector to the RIGHT of completed steps */
+.opl-step.is-complete::before{ background: #2f2c6f; }
+
+/* keep connector after current (active) step grey */
+.opl-step.is-active::before{ background: #ccc; }
+
+/* === Small screens (≤ 767.98px) === */
+@media (max-width: 767.98px){
+  /* smaller dots: 31×31; connectors hidden on mobile */
+  .opl-step-marker{
+    width: 31px;
+    height: 31px;
+
+    /* optionally tweak mobile centering here */
+    --icon-nudge-x: 0px;
+    --icon-nudge-y: 0px;
+  }
+
+  .opl-step::before{ display: none !important; }  /* hide connectors */
+
+  /* optional: hide labels if space is tight */
+  .opl-step-label{ display: none; }
+
+  /* smaller check icon on mobile */
+  .opl-step-check svg{
+    width: 16px;
+    height: 16px;
+  }
+}
+
+/* ultra-small screens: hide markers entirely (your rule) */
+@media (max-width: 367px){
+  .opl-step-marker { display: none !important; }
+}

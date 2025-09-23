@@ -1,0 +1,239 @@
+@page "{id:int}"
+@model OnePlanPetJourney.Pages.Leads.PageFourModel
+
+@{
+    ViewData["Title"] = "Set Pet Plans";
+    ViewData["CurrentStep"] = 4;
+}
+
+<h1>Set Pet Plans</h1>
+
+@if (TempData["Message"] is string msg)
+{
+    <div class="alert alert-success">@msg</div>
+}
+<div class="row">
+    <div class="col-md-8 offset-md-2">
+<form method="post" id="plan-selection">
+    <input asp-for="Input.LeadId" type="hidden" />
+    <div asp-validation-summary="ModelOnly" class="alert alert-danger"></div>
+
+    @for (int i = 0; i < Model.Input.Items.Count; i++)
+    {
+        var pet = Model.Input.Items[i];
+        var petKey = $"pet_{pet.PetId}";
+        var expandedId = $"{petKey}_expanded";
+
+        <div class="card mb-4">
+            <div class="card-header d-flex justify-content-between align-items-center">
+                <div>
+                    <strong>@pet.Name</strong>
+                    <div class="text-muted small">@(pet.IsDog ? "Dog" : "Cat")</div>
+                </div>
+                <div>
+                    @if (pet.IsDog)
+                    {
+                        <img src="~/images/icon-dog.png" alt="Dog" style="width:140px;" />
+                    }
+                    else
+                    {
+                        <img src="~/images/icon-cat.png" alt="Cat" style="width:140px;" />
+                    }
+                </div>
+            </div>
+
+            <div class="card-body price-plan-card" >
+                <input asp-for="Input.Items[i].PetId" type="hidden" />
+
+                <div class="row g-3">
+                    @foreach (var plan in Model.Plans)   @* Already ordered in PageModel if desired *@
+                    {
+                        var inputId    = $"{petKey}_plan_{plan.Value}";
+                        var templateId = $"plan_template_{plan.Value}";
+                        var planId     = int.Parse(plan.Value);
+                        var price      = Model.PlanPrices.TryGetValue(planId, out var p) ? p : 0;
+
+                        string tooltip = plan.Text switch
+                        {
+                            "Super"    => "Best coverage with all features included",
+                            "Classic"  => "Balanced option for most owners",
+                            "Hospital" => "Basic hospital-only cover",
+                            "Accident" => "Accident-only cover",
+                            "Primary"  => "Entry-level cover",
+                            _ => "Plan details"
+                        };
+
+                        <div class="col">
+                            <div class="border rounded p-3 h-100 plan-card"
+                                 role="button"
+                                 tabindex="0"
+                                 onclick="selectPlan('@inputId')"
+                                 onkeydown="if (event.key === 'Enter' || event.key === ' ') { selectPlan('@inputId'); event.preventDefault(); }">
+
+                                <div class="d-flex justify-content-between">
+                                    <div>
+                                        <input type="radio"
+                                               id="@inputId"
+                                               name="Input.Items[@i].PlanType"
+                                               value="@plan.Value"
+                                               class="form-check-input me-2"
+                                               @(pet.PlanType?.ToString() == plan.Value ? "checked" : null) />
+                                        <label for="@inputId" class="form-check-label fw-semibold">
+                                            @plan.Text
+                                        </label>
+                                        <div class="text-muted">Price: R @price</div>
+                                    </div>
+
+                                    <button type="button"
+                                            class="btn btn-sm btn-outline-secondary"
+                                            data-bs-toggle="tooltip"
+                                            data-bs-title="@tooltip"
+                                            onclick="event.stopPropagation()">
+                                        ?
+                                    </button>
+                                </div>
+
+                                <div class="mt-2">
+                                    <button class="btn btn-link p-0 toggle-read"
+                                            type="button"
+                                            onclick="togglePlan(this,'@inputId','@expandedId','@templateId'); event.stopPropagation();">
+                                        Read more
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div id="@templateId" class="d-none">
+                            @* Swap these to your real partials later *@
+                            @if (plan.Text == "Super")
+                            {
+                                <partial name="_Super" />
+                            }
+                            else if (plan.Text == "Classic")
+                            {
+                                <partial name="_Classic" />
+                            }
+                            else if (plan.Text == "Hospital")
+                            {
+                                <partial name="_Hospital" />
+                            }
+                            else if (plan.Text == "Accident")
+                            {
+                                <partial name="_Accident" />
+                            }
+                            else if (plan.Text == "Primary")
+                            {
+                                <partial name="_Primary" />
+                            }
+                            else
+                            {
+                                <div>No details available.</div>
+                            }
+                        </div>
+                    }
+                </div>
+
+                <div class="row mt-3">
+                    <div class="col-12">
+                        <div id="@expandedId"
+                             class="p-3 border rounded bg-light d-none pet-expanded"
+                             data-pet="@petKey">
+                            <em>Select a plan and click “Read more” to view details here…</em>
+                        </div>
+                    </div>
+                </div>
+
+                <span asp-validation-for="Input.Items[i].PlanType" class="text-danger d-block mt-2"></span>
+            </div>
+        </div>
+    }
+
+    <button type="submit" class="btn btn-primary">Save Plans</button>
+</form>
+</div>
+</div>
+
+@section Scripts {
+<script>
+  // Select radio when clicking anywhere on the card
+  function selectPlan(inputId) {
+    var radio = document.getElementById(inputId);
+    if (!radio || radio.disabled) return;
+    radio.checked = true;
+
+    // Optional: visual selected state
+    document.querySelectorAll('.plan-card.is-selected').forEach(function (el) {
+      el.classList.remove('is-selected');
+    });
+    var card = radio.closest('.plan-card');
+    if (card) card.classList.add('is-selected');
+
+    try { radio.dispatchEvent(new Event('change', { bubbles: true })); } catch {}
+  }
+
+  // Expand/collapse the plan details into the pet's expanded panel
+  function togglePlan(btn, inputId, containerId, templateId) {
+    var radio     = document.getElementById(inputId);
+    var container = document.getElementById(containerId);
+    var template  = document.getElementById(templateId);
+    if (!container || !template) return;
+
+    var current = container.getAttribute('data-current-template');
+    var isOpen  = !container.classList.contains('d-none');
+    if (current === templateId && isOpen) {
+      container.classList.add('d-none');
+      container.setAttribute('aria-hidden', 'true');
+      container.removeAttribute('data-current-template');
+      btn.textContent = 'Read more';
+      return;
+    }
+
+    if (radio) {
+      radio.checked = true;
+      try { radio.dispatchEvent(new Event('change', { bubbles: true })); } catch {}
+    }
+
+    // Close other expanded sections
+    document.querySelectorAll('.pet-expanded').forEach(function (el) {
+      if (el.id !== containerId) {
+        el.classList.add('d-none');
+        el.setAttribute('aria-hidden', 'true');
+        el.removeAttribute('data-current-template');
+      }
+    });
+
+    // Swap content & open
+    container.innerHTML = template.innerHTML;
+    container.classList.remove('d-none');
+    container.setAttribute('aria-hidden', 'false');
+    container.setAttribute('data-current-template', templateId);
+
+    // Reset all "Read more" labels in this card
+    var cardBody = btn.closest('.card-body');
+    if (cardBody) {
+      cardBody.querySelectorAll('.toggle-read').forEach(function (b) {
+        b.textContent = 'Read more';
+      });
+    }
+    btn.textContent = 'Read less';
+
+    container.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+  }
+
+  // Bootstrap tooltips
+  document.addEventListener('DOMContentLoaded', function () {
+    var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'));
+    tooltipTriggerList.forEach(function (el) { new bootstrap.Tooltip(el); });
+  });
+</script>
+
+<style>
+  /* Optional visual cue when a card is selected */
+  .plan-card.is-selected {
+    outline: 2px solid rgba(13,110,253,.65);
+    box-shadow: 0 0 0 .2rem rgba(13,110,253,.15);
+  }
+</style>
+
+<partial name="_ValidationScriptsPartial" />
+}

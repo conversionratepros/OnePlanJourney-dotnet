@@ -1,0 +1,104 @@
+@model OnePlanPetJourney.Models.PetListViewModel
+
+<h1>Add Pet Details</h1>
+
+@using (Html.BeginForm("AddPetDetails", "Pet", FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+
+    @if (TempData["Message"] is string msg)
+    {
+        <div class="alert alert-success">@msg</div>
+    }
+
+    @Html.ValidationSummary(true, "", new { @class = "alert alert-danger" })
+
+    <!-- LeadId posted once (read-only so you can see it) -->
+    <div class="mb-3">
+        @Html.LabelFor(m => m.LeadId, new { @class = "form-label" })
+        @Html.TextBoxFor(m => m.LeadId, new { @class = "form-control", @readonly = "readonly" })
+    </div>
+
+    @for (int i = 0; i < Model.Pets.Count; i++)
+    {
+        <div class="card mb-4">
+            <div class="card-header"><h5 class="mb-0">Pet @(@i + 1)</h5></div>
+            <div class="card-body">
+                @* Persist Pet Id *@
+                @Html.HiddenFor(m => m.Pets[i].Id)
+
+                <div class="mb-3">
+                    @Html.LabelFor(m => m.Pets[i].Name, new { @class = "form-label" })
+                    @Html.TextBoxFor(m => m.Pets[i].Name, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(m => m.Pets[i].Name, "", new { @class = "text-danger" })
+                </div>
+
+                <div class="mb-3">
+                    @Html.LabelFor(m => m.Pets[i].DOB, "Date of Birth", new { @class = "form-label" })
+                    @Html.TextBoxFor(m => m.Pets[i].DOB, "{0:yyyy-MM-dd}", new { @class = "form-control", type = "date" })
+                    @Html.ValidationMessageFor(m => m.Pets[i].DOB, "", new { @class = "text-danger" })
+                </div>
+
+                <div class="form-check mb-3">
+                    @Html.CheckBoxFor(m => m.Pets[i].IsMale, new { @class = "form-check-input", id = $"Pets_{i}__IsMale" })
+                    <label class="form-check-label" for="@($"Pets_{i}__IsMale")">Is Male</label>
+                    @Html.ValidationMessageFor(m => m.Pets[i].IsMale, "", new { @class = "text-danger d-block" })
+                </div>
+
+                <div class="form-check mb-3">
+                    @Html.CheckBoxFor(m => m.Pets[i].IsDog, new { @class = "form-check-input", id = $"Pets_{i}__IsDog" })
+                    <label class="form-check-label" for="@($"Pets_{i}__IsDog")">Is Dog</label>
+                    @Html.ValidationMessageFor(m => m.Pets[i].IsDog, "", new { @class = "text-danger d-block" })
+                </div>
+
+                <div class="mb-3">
+                    @Html.LabelFor(m => m.Pets[i].Breed, new { @class = "form-label" })
+                    @Html.TextBoxFor(m => m.Pets[i].Breed, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(m => m.Pets[i].Breed, "", new { @class = "text-danger" })
+                </div>
+
+                <div class="mb-3">
+                    @Html.LabelFor(m => m.Pets[i].Colour, new { @class = "form-label" })
+                    @Html.TextBoxFor(m => m.Pets[i].Colour, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(m => m.Pets[i].Colour, "", new { @class = "text-danger" })
+                </div>
+
+                <div class="mb-3">
+                    @Html.LabelFor(m => m.Pets[i].ChipNumber, new { @class = "form-label" })
+                    @Html.TextBoxFor(m => m.Pets[i].ChipNumber, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(m => m.Pets[i].ChipNumber, "", new { @class = "text-danger" })
+                </div>
+
+                <div class="mb-3">
+                    @Html.LabelFor(m => m.Pets[i].PreferredVet, new { @class = "form-label" })
+                    @Html.TextBoxFor(m => m.Pets[i].PreferredVet, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(m => m.Pets[i].PreferredVet, "", new { @class = "text-danger" })
+                </div>
+
+                <div class="form-check mb-3">
+                    @Html.CheckBoxFor(m => m.Pets[i].IsNeutered, new { @class = "form-check-input", id = $"Pets_{i}__IsNeutered" })
+                    <label class="form-check-label" for="@($"Pets_{i}__IsNeutered")">Is Neutered</label>
+                    @Html.ValidationMessageFor(m => m.Pets[i].IsNeutered, "", new { @class = "text-danger d-block" })
+                </div>
+
+                <div class="mb-3">
+                    @Html.LabelFor(m => m.Pets[i].Injuries, new { @class = "form-label" })
+                    @Html.TextBoxFor(m => m.Pets[i].Injuries, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(m => m.Pets[i].Injuries, "", new { @class = "text-danger" })
+                </div>
+
+                <div class="mb-3">
+                    @Html.LabelFor(m => m.Pets[i].MedicalCondition, new { @class = "form-label" })
+                    @Html.TextBoxFor(m => m.Pets[i].MedicalCondition, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(m => m.Pets[i].MedicalCondition, "", new { @class = "text-danger" })
+                </div>
+            </div>
+        </div>
+    }
+
+    <button type="submit" class="btn btn-primary">Save All</button>
+}
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

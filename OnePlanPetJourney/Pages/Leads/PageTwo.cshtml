@@ -1,0 +1,141 @@
+@page "{id:int}"
+@model OnePlanPetJourney.Pages.Leads.PageTwoModel
+
+@{
+    ViewData["Title"] = "Page Two - Update Lead Details";
+    ViewData["CurrentStep"] = 2;  
+}
+
+<!--current step sets the wizard bar step-->
+
+@if (TempData["Message"] is string msg)
+{
+    <div class="alert alert-success">@msg</div>
+}
+
+<div class="row">
+<div class="col-md-8 offset-md-2 mb-3">
+    <h1>Tails are waggin. We have 5 questions for you. the pet parent and the rest is all about your furry best friend(s). </h1>
+</div>
+</div>
+
+<div class="row">
+    <div class="col-md-8 offset-md-2">
+<div class="card frame">
+    <div class="card-body">
+        <div class="row row-cols-1 row-cols-md-2">
+            <h2>Fill in your personal details</h2>
+        </div>
+
+        <div class="row">
+            <form id="step2" method="post">
+                <div asp-validation-summary="ModelOnly" class="alert alert-danger"></div>
+
+                <!-- Hidden Id -->
+                <input asp-for="Input.Id" type="hidden" />
+
+                <div class="row g-3 space-top">
+                    <div class="col-sm-4 mb-3">
+                        <label for="FirstName" class="form-label">First name:</label>
+                        <input asp-for="Input.FirstName" type="text" id="FirstName" class="form-control" placeholder="Name" />
+                        <span asp-validation-for="Input.FirstName" class="text-danger"></span>
+                    </div>
+                     <div class="col-sm-4 mb-3">
+                        <label for="LastName" class="form-label">Last Name:</label>
+                        <input asp-for="Input.LastName" id="LastName" class="form-control" placeholder="Last Name" />            
+                        <span asp-validation-for="Input.LastName" class="text-danger"></span>
+                    </div>
+                    <div class="col-sm-4 mb-3">
+                         <label for="MobileNumber" class="form-label">Mobile number:</label>
+                        <input asp-for="Input.MobileNumber" type="text" id="MobileNumber" class="form-control mobile" placeholder="Mobile Number e.g. 0837945452" inputmode="numeric" />
+                        <span asp-validation-for="Input.MobileNumber" class="text-danger"></span>
+                    </div>                
+                    <div class="col-sm-4  mb-3">
+                         <label for="DateOfBirth" class="form-label">Your date of birth:</label>
+                        <input asp-for="Input.DOB"
+                               type="date"
+                               id="DateOfBirth"
+                               class="form-control"
+                               placeholder="Date of Birth" />
+                        <span asp-validation-for="Input.DOB" class="text-danger"></span>
+                    </div>
+
+                  <div class="col-sm-4  mb-3">
+                    <label for="Province" class="form-label">Which province do you stay in?:</label>
+                    <select asp-for="Input.Province" class="form-select" id="Province">
+                        <option value="">-- Select Province --</option>
+                        <option>Eastern Cape</option>
+                        <option>Free State</option>
+                        <option>Gauteng</option>
+                        <option>KwaZulu-Natal</option>
+                        <option>Limpopo</option>
+                        <option>Mpumalanga</option>
+                        <option>North West</option>
+                        <option>Northern Cape</option>
+                        <option>Western Cape</option>
+                    </select>
+                    
+                    <span asp-validation-for="Input.Province" class="text-danger"></span>
+                </div>
+                  <div class="col-sm-4  mb-3">
+                        <label for="EmailAddress" class="form-label">Email:</label>
+                        <input asp-for="Input.Email" type="email" id="EmailAddress" class="form-control" placeholder="Email" />
+                        <span asp-validation-for="Input.Email" class="text-danger"></span>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+</div>
+</div>
+
+<!-- Navigation bar (Call me / Previous / Continue) -->
+ <div class="row">
+    <div class="col-md-8 offset-md-2">
+<div class="navigation-container">
+    <div class="row">
+        <div id="divCallMe" class="col-sm-12 col-md-6 mb-4">
+            <button id="btnCallMePopUp"
+                    type="button"
+                    class="btn btn-block btn-nav-call-me btn-nav btn-nav-properties"
+                    data-bs-toggle="modal"
+                    data-bs-target="#CallMePopUp">
+                <span><img src="~/images/icon-call-me.png" alt=""></span>&nbsp;&nbsp;Call me rather&nbsp;&nbsp;
+            </button>
+        </div>
+
+        <div id="divPrevious" class="col-sm-12 col-md-3 mb-4">
+            <button id="btnPrevious"
+                    type="button"
+                    class="btn btn-block btn-nav-previous btn-nav btn-nav-properties"
+                    onclick="PrevStepTwo()">
+                <span><img src="~/images/icon-chev-left.png" alt=""></span>&nbsp;&nbsp;Previous&nbsp;&nbsp;
+            </button>
+        </div>
+
+        <div id="divContinue" class="col-sm-12 col-md-3 mb-4">
+            <!-- Submit the form -->
+            <button id="btnContinue"
+                    type="submit"
+                    form="step2"
+                    class="btn btn-block btn-nav-continue btn-nav btn-nav-properties">
+                &nbsp;&nbsp;Continue&nbsp;&nbsp;<span><img src="~/images/icon-chev-right.png" alt=""></span>
+            </button>
+        </div>
+    </div>
+</div>
+</div>
+</div>
+
+@section Scripts {
+    <script>
+        // Previous = back to Page One (no id)
+        function PrevStepTwo() {
+            window.location.href = '@Url.Page("/Leads/PageOne")';
+        }
+        // Continue button uses form="step2" and submits the POST to this page
+    </script>
+
+    <partial name="_ValidationScriptsPartial" />
+}

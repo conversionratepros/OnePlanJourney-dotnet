@@ -1,0 +1,46 @@
+﻿<link href="~/css/modal.css" rel="stylesheet" />
+
+<form method="post">
+    <div>
+        <div class="modal-body pt-3">
+            <div class="col-12">
+                <label for="CallMe-FirstName" class="call-me-lbl">First Name:</label>
+                <input id="CallMe-FirstName" type="text" placeholder="First Name" class="form-control modal-input" />
+            </div>
+            <div class="col-12 space-top">
+                <label for="CallMe-Surname" class="call-me-lbl">Last Name:</label>
+                <input id="CallMe-Surname" type="text" placeholder="Last Name" class="form-control modal-input" />
+            </div>
+            <div class="col-12 space-top">
+                <label for="CallMe-CellphoneNumber" class="call-me-lbl">Mobile Number:</label>
+                <input name="CallMe-CellphoneNumber" id="CallMe-CellphoneNumber" type="number" minlength="10" placeholder="0837945452" class="form-control modal-input" oninput="validatedCellphoneNumer(this)" />
+                <label for="CallMe-CellphoneNumber" id="lblCallMeValidError" class="validateCellphone" style="display:none!important;">Please enter a valid number</label>
+            </div>
+            <div class="col-12 space-top">
+                <label for="CallMe-Email" class="call-me-lbl">E-mail</label>
+                <input id="CallMe-Email" type="email" placeholder="Email Address" class="form-control modal-input" oninput="ValidateCallMeEmail(this)" />
+                <label for="CallMe-Email" id="lblEmail-CallMe-Email" class="validateCellphone" style="display:none!important;">Please enter a valid email</label>
+
+            </div>
+            
+            <div class="col-12 space-top-20 consent-box">
+                <div>
+                    <input type="checkbox" id="marketing-consent" name="marketing-consent" class="marketing-consent" />
+                    <label for="marketing-consent" class="consent-lbl">* I consent to my personal information being used for the reason<br />  for which it was collected.</label>
+
+                </div>
+            </div>
+            <div class="col-lg-12 col-md-12 space-top-20 text-center">
+                <button type="button" class="btn btn-lg btn-block btn-call-me-back" onclick="CallMe('@ViewData["CallMeDescription"]')">Call me</button>
+            </div>
+            <br />
+            <div class="col-lg-12 col-md-12 space-top">
+                <span class="call-me-p">
+                   By giving us your details you consent to Oneplan calling you to discuss our pawesome benefits and plans.
+                   We may also use this information to share special promotions and offers and keep you updated on our new product 
+                   offerings.
+                </span>
+            </div>
+        </div>
+    </div>
+</form>

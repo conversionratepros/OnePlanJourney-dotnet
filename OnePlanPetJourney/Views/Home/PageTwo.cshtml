@@ -1,0 +1,56 @@
+﻿@model OnePlanPetJourney.Models.Lead
+@{
+    ViewData["Title"] = "Page Two - Update Lead Details";
+}
+
+<h1>Update Lead Details</h1>
+
+@if (TempData["Message"] is string msg)
+{
+    <div class="alert alert-success">@msg</div>
+}
+
+@using (Html.BeginForm("PageTwo", "Home", FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+
+    @Html.HiddenFor(m => m.Id)
+
+    @Html.ValidationSummary(false, "", new { @class = "alert alert-danger" })
+
+    <div class="mb-3">
+        @Html.LabelFor(m => m.FirstName, new { @class = "form-label" })
+        @Html.TextBoxFor(m => m.FirstName, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.FirstName, "", new { @class = "text-danger" })
+    </div>
+
+    <div class="mb-3">
+        @Html.LabelFor(m => m.LastName, new { @class = "form-label" })
+        @Html.TextBoxFor(m => m.LastName, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.LastName, "", new { @class = "text-danger" })
+    </div>
+
+    <div class="mb-3">
+        @Html.LabelFor(m => m.DOB, "Date of Birth", new { @class = "form-label" })
+        @Html.TextBoxFor(m => m.DOB, "{0:yyyy-MM-dd}", new { @class = "form-control", type = "date" })
+        @Html.ValidationMessageFor(m => m.DOB, "", new { @class = "text-danger" })
+    </div>
+
+    <div class="mb-3">
+        @Html.LabelFor(m => m.Province, new { @class = "form-label" })
+        @Html.TextBoxFor(m => m.Province, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.Province, "", new { @class = "text-danger" })
+    </div>
+
+    <div class="mb-3">
+        @Html.LabelFor(m => m.Email, new { @class = "form-label" })
+        @Html.TextBoxFor(m => m.Email, new { @class = "form-control", type = "email" })
+        @Html.ValidationMessageFor(m => m.Email, "", new { @class = "text-danger" })
+    </div>
+
+    <button type="submit" class="btn btn-primary">Save</button>
+}
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}
