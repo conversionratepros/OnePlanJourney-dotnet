@@ -1,0 +1,157 @@
+@page "{id:int}"
+@model OnePlanPetJourney.Pages.Leads.PageSixModel
+
+@{
+    ViewData["Title"] = "Page Six - Policy Holder Details";
+    ViewData["CurrentStep"] = 6;  
+}
+
+@if (TempData["Message"] is string msg)
+{
+    <div class="alert alert-success">@msg</div>
+}
+
+<div class="row">
+  <div class="col-md-8 offset-md-2 mb-3">
+    <h1>Tell us a bit about yourself so we can put together a policy for your cuddly kid(s).</h1>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-md-8 offset-md-2">
+    <div class="card frame">
+      <div class="card-body">
+        <div class="row row-cols-1 row-cols-md-2">
+          <h2>Policy Holder Details</h2>
+        </div>
+
+        <div class="row">
+          <form id="step6" method="post" novalidate>
+            @Html.AntiForgeryToken()
+            <div asp-validation-summary="ModelOnly" class="alert alert-danger"></div>
+
+            <!-- Hidden PK -->
+            <input asp-for="Input.Id" type="hidden" />
+
+            <div class="row g-3">
+              <div class="col-md-3 mb-3">
+                <label asp-for="Input.IdNumber" class="form-label">ID number:</label>
+                <input asp-for="Input.IdNumber" class="form-control" inputmode="numeric" placeholder="ID Number" />
+                <span asp-validation-for="Input.IdNumber" class="text-danger"></span>
+              </div>
+
+              <div class="col-md-3 mb-3">
+                <label asp-for="Input.FirstName" class="form-label">First name:</label>
+                <input asp-for="Input.FirstName" class="form-control" placeholder="Name" />
+                <span asp-validation-for="Input.FirstName" class="text-danger"></span>
+              </div>
+
+              <div class="col-md-3 mb-3">
+                <label asp-for="Input.LastName" class="form-label">Last Name:</label>
+                <input asp-for="Input.LastName" class="form-control" placeholder="Last Name" />
+                <span asp-validation-for="Input.LastName" class="text-danger"></span>
+              </div>
+
+             
+               <div class="col-md-3 mb-3">
+                <label asp-for="Input.Title" class="form-label">Title:</label>
+                <select asp-for="Input.Title" asp-items="Model.TitleOptions" class="form-select" id="Title">
+                  <option value="">-- Select Title --</option>
+                </select>
+                <span asp-validation-for="Input.Title" class="text-danger"></span>
+              </div>
+
+              <div class="col-md-4 mb-3">
+                <label asp-for="Input.MobileNumber" class="form-label">Mobile number:</label>
+                <input asp-for="Input.MobileNumber" class="form-control mobile" placeholder="Mobile Number e.g. 0837945452" inputmode="numeric" />
+                <span asp-validation-for="Input.MobileNumber" class="text-danger"></span>
+              </div>
+
+              <div class="col-md-4 mb-3">
+                <label asp-for="Input.AltMobileNumber" class="form-label">Alternative number:</label>
+                <input asp-for="Input.AltMobileNumber" class="form-control" placeholder="Alternative Number" inputmode="numeric" />
+                <span asp-validation-for="Input.AltMobileNumber" class="text-danger"></span>
+              </div>
+
+              <div class="col-md-4 mb-3">
+                <label asp-for="Input.EmailAddress" class="form-label">Email:</label>
+                <input asp-for="Input.EmailAddress" type="email" class="form-control" placeholder="Email" />
+                <span asp-validation-for="Input.EmailAddress" class="text-danger"></span>
+              </div>
+
+              <div class="col-md-4 mb-3">
+                <label asp-for="Input.Gender" class="form-label">Gender:</label>
+                <select asp-for="Input.Gender" asp-items="Model.GenderOptions" class="form-select" id="Gender">
+                  <option value="">-- Select Gender --</option>
+                </select>
+                <span asp-validation-for="Input.Gender" class="text-danger"></span>
+              </div>
+
+              <div class="col-md-12 mb-3 d-flex align-items-center">
+                <div class="form-check">
+                  <input asp-for="Input.hasConcented" class="form-check-input" id="HasConsented" />
+                  <label class="form-check-label blue" for="HasConsented">I consent to processing my personal info</label>
+                </div>
+              </div>
+
+              <div class="col-md-12 mb-3 d-flex align-items-center">
+                <div class="form-check">
+                  <input asp-for="Input.marketing" class="form-check-input" id="Marketing" />
+                  <label class="form-check-label blue" for="Marketing">I want to receive marketing communications</label>
+                </div>
+              </div>
+            </div>
+          </form>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Navigation bar -->
+<div class="row">
+  <div class="col-md-8 offset-md-2">
+    <div class="navigation-container">
+      <div class="row">
+        <div id="divCallMe" class="col-sm-12 col-md-6 mb-4">
+          <button id="btnCallMePopUp"
+                  type="button"
+                  class="btn btn-block btn-nav-call-me btn-nav btn-nav-properties"
+                  data-bs-toggle="modal"
+                  data-bs-target="#CallMePopUp">
+            <span><img src="~/images/icon-call-me.png" alt=""></span>&nbsp;&nbsp;Call me rather&nbsp;&nbsp;
+          </button>
+        </div>
+
+        <div id="divPrevious" class="col-sm-12 col-md-3 mb-4">
+          <button id="btnPrevious"
+                  type="button"
+                  class="btn btn-block btn-nav-previous btn-nav btn-nav-properties"
+                  onclick="PrevStepSix()">
+            <span><img src="~/images/icon-chev-left.png" alt=""></span>&nbsp;&nbsp;Previous&nbsp;&nbsp;
+          </button>
+        </div>
+
+        <div id="divContinue" class="col-sm-12 col-md-3 mb-4">
+          <button id="btnContinue"
+                  type="submit"
+                  form="step6"
+                  class="btn btn-block btn-nav-continue btn-nav btn-nav-properties">
+            &nbsp;&nbsp;Continue&nbsp;&nbsp;<span><img src="~/images/icon-chev-right.png" alt=""></span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+@section Scripts {
+  <script>
+    function PrevStepSix() {
+      const id = '@Model.Input.Id';
+      window.location.href = '@Url.Page("/Leads/PageFive")' + '/' + id;
+    }
+  </script>
+  <partial name="_ValidationScriptsPartial" />
+}

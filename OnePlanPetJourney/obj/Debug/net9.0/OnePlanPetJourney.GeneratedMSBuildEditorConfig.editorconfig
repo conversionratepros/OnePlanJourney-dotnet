@@ -32,12 +32,24 @@ build_property.EnableCodeStyleSeverity =
 build_metadata.AdditionalFiles.TargetPath = QXJlYXMvSWRlbnRpdHkvUGFnZXMvX1ZpZXdTdGFydC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
+[/Users/donavanwallis/Documents/Source/OnePlanJourney-dotnet/OnePlanPetJourney/Pages/Leads/PageEight.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXMvTGVhZHMvUGFnZUVpZ2h0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/donavanwallis/Documents/Source/OnePlanJourney-dotnet/OnePlanPetJourney/Pages/Leads/PageFive.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXMvTGVhZHMvUGFnZUZpdmUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
 [/Users/donavanwallis/Documents/Source/OnePlanJourney-dotnet/OnePlanPetJourney/Pages/Leads/PageFour.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXMvTGVhZHMvUGFnZUZvdXIuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
 [/Users/donavanwallis/Documents/Source/OnePlanJourney-dotnet/OnePlanPetJourney/Pages/Leads/PageOne.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXMvTGVhZHMvUGFnZU9uZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/donavanwallis/Documents/Source/OnePlanJourney-dotnet/OnePlanPetJourney/Pages/Leads/PageSix.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXMvTGVhZHMvUGFnZVNpeC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
 [/Users/donavanwallis/Documents/Source/OnePlanJourney-dotnet/OnePlanPetJourney/Pages/Leads/PageThree.cshtml]

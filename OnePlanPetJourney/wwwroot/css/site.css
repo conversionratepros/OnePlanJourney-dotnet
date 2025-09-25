@@ -55,6 +55,42 @@ input {
   background-color: #f4f4f4;
 }
 
+.teal {
+    color: var(--teal)
+}
+
+.blue {
+    color: var(--primary-dark-blue);
+}
+
+
+/*--------------------fonts-------------------*/
+
+.weigt-100 {
+    font-weight: 100;
+}
+.weigt-200 {
+    font-weight: 200;
+}
+.weigt-300 {
+    font-weight: 300;
+}
+.weigt-400 {
+    font-weight: 400;
+}
+.weigt-500 {
+    font-weight: 500;
+}
+.weigt-600 {
+    font-weight: 600;
+}
+.weigt-700 {
+    font-weight: 700;
+}
+.weigt-800 {
+    font-weight: 800;
+}
+
 
 /*----------------------------------------------*/
 /*------------------Merlin----------------------*/
@@ -136,15 +172,7 @@ input {
     margin-top: 20px !important;
 }
 
-h1 {
-    color: #332F6E !important;
-    text-align: center;
-    font-feature-settings: 'liga' off, 'clig' off;
-    font-size: 32px;
-    font-style: normal;
-    font-weight: 800;
-    line-height: 44px;
-}
+
 .font-normal {
     color: #332F6E !important;
     text-align: center;
@@ -621,148 +649,241 @@ form-control {
     margin-top: 10% !important;
 }
 
+
+
+.delete-actions {
+  display: flex;               /* flex container */
+  justify-content: flex-end;   /* align to the right */
+  align-items: center;         /* vertical centering */
+  gap: 0.5rem;                 /* spacing between text & button */
+}
+
+.delete-text {
+  font-size: 14px;
+  color: #dc3545;
+  margin: 0;                   /* reset margin to align properly */
+  line-height: 1;              /* keep it tight */
+}
+
+.delete-actions .close {
+  float: none !important;      /* override Bootstrap float */
+  margin: 0 !important;        /* remove default margin */
+  line-height: 1;              /* vertically center the × icon */
+  display: flex;               /* flex so it's centered in its box */
+  align-items: center;
+  justify-content: center;
+  
+}
+
+/*  plan card inside each row */
+/* plan card classes are dynamicly generated eg. plan-col-1 */
+#plan-selection  .custom-column .plan-card {
+  background-color: #fff !important;
+  border:1px solid #c1c1c1 !important;
+  text-align: center;
+  padding: 20px 10px !important;
+
+  
+
+
+  color:var(--primary-dark-blue) !important
+  
+}
+
+#plan-selection .plan-wrapper-card {
+    background-color: #F4F4F4;
+    border: 1px solid #C1C1C1;
+}
+
+#plan-selection .plan-wrapper-card .card-header {
+  background-color: transparent;
+  border: 0px !important;
+  padding-top:20px;
+  padding-bottom: 0px;
+}
+
+.plan-row .pet-icon {
+    width: 100px;
+    margin:auto
+}
+
+.plan-content-wapper h3 {
+    color:var(--primary-dark-blue) !important;
+    margin:0px;
+    font-size: 16px !important;
+    font-weight: bold;
+    margin-bottom: 10px;
+    
+}
+
+.plan-content-wapper h5 {
+    color:var(--primary-dark-blue) !important;
+    margin:0px;
+    font-size: 16px !important;
+    font-weight: normal;
+
+}
+
+.plan-content-wapper h5:first-of-type {
+  font-weight: bold !important;
+   margin-top: 10px
+}
+
+
+
+/* 1st plan card */
+#plan-selection .plan-col-1 .plan-card.is-selected {
+     background:#60C6C1 !important; 
+    border:2px solid #60C6C1 !important; 
+    box-shadow:0 0 0 .25rem rgba(255,255,255,.3) !important; 
+    color:#fff !important;
+}
+
+#plan-selection .plan-col-1 .plan-card.is-selected h5, #plan-selection .plan-col-1 .plan-card.is-selected h3 {
+    color:#fff !important;
+}
+
+
+#plan-selection .plan-col-2 .plan-card.is-selected { 
+    background: #43B0DF !important; 
+    border:2px solid 43B0DF#fff; 
+    box-shadow:0 0 0 .25rem rgba(255,255,255,.3); 
+    color:#fff !important;
+}
+
+#plan-selection .plan-col-2 .plan-card.is-selected h5, #plan-selection .plan-col-2 .plan-card.is-selected h3 {
+    color:#fff !important;
+}
+
+#plan-selection .plan-col-3 .plan-card.is-selected {
+    background:#3378B4 !important; ;   
+    border:2px solid #3378B4; 
+    box-shadow:0 0 0 .25rem rgba(255,255,255,.3); 
+}
+
+#plan-selection .plan-col-3 .plan-card.is-selected h5, #plan-selection .plan-col-3 .plan-card.is-selected h3 {
+    color:#fff !important;
+}
+
+#plan-selection .plan-col-4 .plan-card.is-selected { 
+    background:#515F69 !important; ;  
+    border:2px solid #515F69 !important; 
+    box-shadow:0 0 0 .25rem rgba(255,255,255,.3); 
+}
+
+#plan-selection .plan-col-4 .plan-card.is-selected h5, #plan-selection .plan-col-4 .plan-card.is-selected h3 {
+    color:#fff !important;
+}
+
+#plan-selection .plan-col-5 .plan-card.is-selected { 
+    background: #292C67 !important; ;  
+    border:2px solid #292C67 !important; 
+    box-shadow:0 0 0 .25rem rgba(255,255,255,.3); 
+}
+
+#plan-selection .plan-col-5 .plan-card.is-selected h5, #plan-selection .plan-col-5 .plan-card.is-selected h3 {
+    color:#fff !important;
+}
+
+.plan-wrapper-card .form-check-input {
+    display: none;
+}
+
+         
+.plan-tooltip-btn {
+   position: absolute;
+  top: -10px;     /* adjust vertical placement */
+  right: 0px;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background-color: #333; /* Bootstrap primary blue */
+  border: none;
+
+  
+}
+
 .btn-read-more {
     border-radius: 29px !important;
-    border: 3px solid #06072A !important;
+    border-top: 3px solid #06072A !important;
     padding: 1px 27px !important;
-    gap: 10px !important;
     background-color: #292C67 !important;
     font-family: 'Open Sans' !important;
     font-weight: 700 !important;
     font-size: 16px !important;
     color: #ffffff !important;
     height: 36px !important;
-    top: 3px !important;
+    display: inline-flex;         
+    align-items: center;          
+    justify-content: center;       
+    gap: 0.85rem;    
+    width: 100% !important;
+    margin: 0 auto !important;
+    padding: 0 !important;             
+}
+
+/* Read-more button layout + chevron rotation */
+.btn-read-more { display:inline-flex; align-items:center; justify-content:center; gap:.35rem; }
+.btn-read-more .icon img { display:block; transition: transform .2s ease; }
+.btn-read-more.open .icon img { transform: rotate(180deg); }
+
+.btn-read-more img {
+  display: block;
+  width: 18px;
+  height: auto;
+}
+
+@media (min-width: 992px) and (max-width: 1199.98px) {
+
+  .custom-column {
+    /* new layout rules for lg and up */
+    flex: 0 0 33%;   /* example: make it 50% width */
+    max-width: 33%;
+  }
 }
 
 
-/* Make the containing body transparent (so you can see through) */
-#plan-selection .price-plan-card {
-  background-color: transparent !important;
-}
-          
-#plan-selection .plan-card {
-  font-family: 'Open Sans', sans-serif !important;
-  color: #332F6E !important;
-  background-color: var(--primary-dark-blue) !important; 
-  color: #fff !important;
+
+
+
+@media (max-width: 1496px) {
+
+  .btn-read-more img {
+    display: block !important;
+  }
 }
 
-#plan-selection .plan-card .text-muted,
-#plan-selection .plan-card .text-body-secondary {
-  color: #fff !important;
+@media (max-width: 1199px) {
+  .btn-read-more img {
+    display: block !important;
+  }
 }
 
-/* Optional: selected state you already use via JS */
-#plan-selection .plan-card.is-selected,
-#plan-selection .plan-card.is-selected {
-  outline: 2px solid rgba(13,110,253,.65);
-  box-shadow: 0 0 0 .2rem rgba(13,110,253,.15);
-  background-color: var(--dark-grey) !important;
+@media (max-width: 786px) {
+   .btn-read-more img {
+    display: none !important;
+  }
+}
+
+@media (max-width: 767px) {
+   .btn-read-more img {
+    display: block !important;
+  }
 }
 
 
-         
-        .card-super-plan {
-            background-color: transparent !important;
-            font-family: 'Open Sans' !important;
-            color: #332F6E !important;
-        }
-
-        .card-super-plan:hover{
-        background-color: #60C6C1 !important;
-        font-family: 'Open Sans' !important;
-        color: #fff !important;
-        }
-
-        .card .card-super-plan:hover .card-text {
-            color: #fff !important;
-        }
-        .card .card-super-plan:hover .card-title {
-            color: #fff !important;
-        }
 
 
 
-        .card-classic-plan {
-        background-color: transparent !important;
-        font-family: 'Open Sans' !important;
-        color: #332F6E !important;
-        }
 
-        .card-classic-plan:hover {
-        background-color: #43B0DF !important;
-        font-family: 'Open Sans' !important;
-        color: #fff !important;
-        }
 
-        .card .card-classic-plan:hover .card-text {
-            color: #fff !important;
-        }
 
-        .card .card-classic-plan:hover .card-title {
-            color: #fff !important;
-        }
 
-        .card-hospital-plan {
-        background-color: transparent !important;
-        font-family: 'Open Sans' !important;
-        color: #332F6E !important;
-        }
-
-        .card-hospital-plan:hover {
-        background-color: #3378B4 !important;
-        font-family: 'Open Sans' !important;
-        color: #fff !important;
-        }
-
-        .card .card-hospital-plan:hover .card-text {
-        color: #fff !important;
-        }
-
-        .card .card-hospital-plan:hover .card-title {
-        color: #fff !important;
-        }
-
-        .card-primary-plan {
-        background-color: transparent !important;
-        font-family: 'Open Sans' !important;
-        color: #332F6E !important;
-        }
-
-        .card-primary-plan:hover {
-        background-color: #515F69 !important;
-        font-family: 'Open Sans' !important;
-        color: #fff !important;
-        }
-
-        .card .card-primary-plan:hover .card-text {
-            color: #fff !important;
-        }
-
-        .card .card-primary-plan:hover .card-title {
-            color: #fff !important;
-        }
-
-        .card-accident-plan {
-        background-color: transparent !important;
-        font-family: 'Open Sans' !important;
-        color: #332F6E !important;
-        }
-
-        .card-accident-plan:hover {
-        background-color: #292C67 !important;
-        font-family: 'Open Sans' !important;
-        color: #fff !important;
-        }
-
-        .card .card-accident-plan:hover .card-text {
-            color: #fff !important;
-        }
-
-        .card .card-accident-plan:hover .card-title {
-            color: #fff !important;
-        }
 
 .table-more-Info {
     width: 95% !important;
@@ -795,15 +916,62 @@ form-control {
     float: right !important;
     margin-top: -10px !important;
     color: #fff !important;
-}
-.card-AddOns
-{
-    height:100px!important;
+    
 }
 
-    .card-AddOns:hover {
-        background-color: #65C6C0 !important;
-    }
+.plan-content-wapper {
+    position: relative;
+}
+
+
+
+
+.card-addon .child-card-addon .plan-tooltip-btn {
+   position: absolute;
+  top: 7px;     /* adjust vertical placement */
+  right: 5px;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background-color: #333; /* Bootstrap primary blue */
+  border: none;
+
+  
+}
+
+.card-addon .child-card-addon:hover {
+    background-color: #65C6C0 !important;
+}
+
+.card-addon .child-card-addon.is-selected {
+  background-color: #65C6C0;
+  box-shadow: none;
+  border:0px;
+}
+
+.card-addon .form-check-input {
+    display:none
+}
+
+
+
+.card-addon .card-header {
+    border-bottom: 0px;
+    background-color: transparent;
+    padding-top:20px;
+    padding-bottom:0px
+}
+
+.card-addon  {
+    background-color: #f4f4f4;
+}
+
+
 
 .card-title-PlanSelection {
     color: #332F63 !important;
@@ -818,9 +986,8 @@ form-control {
 
 .btn-send-my-quote {
     border-radius: 29px !important;
-    border-top: 3px !important;
     padding: 13px 27px !important;
-    border-color: #2B8F8E !important;
+    border-top: 4px solid #2B8F8E !important;
     background-color: #63C6C1 !important;
     color: #292C67 !important;
     font-weight:700!important;
@@ -1085,17 +1252,7 @@ form-control {
             margin-top: 10px !important;
         }
 
-        h1 {
-            --bs-badge-font-size: 20px;
-            --bs-badge-font-weight: 700;
-            font-size: var(--bs-badge-font-size);
-            font-weight: var(--bs-badge-font-weight);
-            line-height: 32px;
-            text-align: center;
-            white-space: nowrap;
-            vertical-align: baseline;
-            white-space: normal !important;
-        }
+    
 
         h2 {
             color: #333333 !important;
@@ -1143,12 +1300,9 @@ form-control {
             margin: 0 auto !important;
         }
 
-        .btn-read-more {
-            width: 70% !important;
-            margin: 0 auto !important;
-        }
+       
 
-        .card-super-plan, .card-classic-plan, .card-hospital-plan, .card-primary-plan, .card-accident-plan, .card-AddOns {
+        .card-super-plan, .card-classic-plan, .card-hospital-plan, .card-primary-plan, .card-accident-plan, .card-addon .card {
             width: 90%;
             margin: 5px auto;
         }
@@ -1178,17 +1332,7 @@ form-control {
             margin-top: 10px !important;
         }
 
-        h1 {
-            --bs-badge-font-size: 20px;
-            --bs-badge-font-weight: 700;
-            font-size: var(--bs-badge-font-size);
-            font-weight: var(--bs-badge-font-weight);
-            line-height: 32px;
-            text-align: center;
-            white-space: nowrap;
-            vertical-align: baseline;
-            white-space: normal !important;
-        }
+      
 
         h2 {
             color: #333333 !important;
@@ -1218,10 +1362,7 @@ form-control {
             width: 50% !important;
         }
 
-        .btn-send-my-quote, .btn-send-my-quote-bottom {
-            width: 50% !important;
-            margin: 0 auto !important;
-        }
+       
 
 
         .img-card {
@@ -1236,12 +1377,9 @@ form-control {
             margin: 0 auto !important;
         }
 
-        .btn-read-more {
-            width: 50% !important;
-            margin: 0 auto !important;
-        }
+        
 
-        .card-super-plan, .card-classic-plan, .card-hospital-plan, .card-primary-plan, .card-accident-plan, .card-AddOns {
+        .card-super-plan, .card-classic-plan, .card-hospital-plan, .card-primary-plan, .card-accident-plan, .card-addon .card {
             width: 90%;
             margin: 5px auto;
         }
@@ -1272,10 +1410,7 @@ form-control {
             width: 100% !important;
         }
 
-        .btn-send-my-quote, .btn-send-my-quote-bottom {
-            width: 50% !important;
-            margin: 0 auto !important;
-        }
+      
 
         .main-body {
             margin-top: 20px !important;
@@ -1296,17 +1431,7 @@ form-control {
             margin-top: 10px !important;
         }
 
-        h1 {
-            --bs-badge-font-size: 20px;
-            --bs-badge-font-weight: 700;
-            font-size: var(--bs-badge-font-size);
-            font-weight: var(--bs-badge-font-weight);
-            line-height: 32px;
-            text-align: center;
-            white-space: nowrap;
-            vertical-align: baseline;
-            white-space: normal !important;
-        }
+       
 
         h2 {
             color: #333333 !important;
@@ -1349,10 +1474,7 @@ form-control {
             margin: 0 auto !important;
         }
 
-        .btn-read-more {
-            width: 100% !important;
-            margin: 0 auto !important;
-        }
+       
     }
 
 
@@ -1378,10 +1500,7 @@ form-control {
             width: 100% !important;
         }
 
-        .btn-send-my-quote, .btn-send-my-quote-bottom {
-            width: 70% !important;
-            margin: 0 auto !important;
-        }
+        
 
         .main-body {
             margin-top: 20px !important;
@@ -1402,17 +1521,7 @@ form-control {
             margin-top: 10px !important;
         }
 
-        h1 {
-            --bs-badge-font-size: 20px;
-            --bs-badge-font-weight: 700;
-            font-size: var(--bs-badge-font-size);
-            font-weight: var(--bs-badge-font-weight);
-            line-height: 32px;
-            text-align: center;
-            white-space: nowrap;
-            vertical-align: baseline;
-            white-space: normal !important;
-        }
+     
 
         h2 {
             color: #333333 !important;
@@ -1455,10 +1564,7 @@ form-control {
             margin: 0 auto !important;
         }
 
-        .btn-read-more {
-            width: 100% !important;
-            margin: 0 auto !important;
-        }
+       
     }
 
 
@@ -1489,10 +1595,7 @@ form-control {
             width: 100% !important;
         }
 
-        .btn-send-my-quote, .btn-send-my-quote-bottom {
-            width: 70% !important;
-            margin: 0 auto !important;
-        }
+        
 
         .main-body {
             margin-top: 20px !important;
@@ -1514,17 +1617,7 @@ form-control {
             margin-top: 10px !important;
         }
 
-        h1 {
-            --bs-badge-font-size: 20px;
-            --bs-badge-font-weight: 700;
-            font-size: var(--bs-badge-font-size);
-            font-weight: var(--bs-badge-font-weight);
-            line-height: 32px;
-            text-align: center;
-            white-space: nowrap;
-            vertical-align: baseline;
-            white-space: normal !important;
-        }
+    
 
         h2 {
             color: #333333 !important;
@@ -1553,11 +1646,7 @@ form-control {
             margin: 0 auto !important;
         }
 
-        .btn-read-more {
-            width: 100% !important;
-            margin: 0 auto !important;
-            padding: 0 !important;
-        }
+      
     }
 
     @media (min-width: 1400px) and (max-width: 2560.98px) {
@@ -1597,10 +1686,7 @@ form-control {
             width: 100% !important;
         }
 
-        .btn-send-my-quote, .btn-send-my-quote-bottom {
-            width: 70% !important;
-            margin: 0 auto !important;
-        }
+       
 
         .main-body {
             margin-top: 20px !important;
@@ -1624,11 +1710,11 @@ form-control {
 
         h1 {
             --bs-badge-font-size: 32px;
-            --bs-badge-font-weight: 700;
+            --bs-badge-font-weight: 800;
             line-height: 120% !;
             font-size: var(--bs-badge-font-size);
             font-weight: var(--bs-badge-font-weight);
-            line-height: 32px;
+            line-height: 120%;
             text-align: center;
             white-space: nowrap;
             vertical-align: baseline;
@@ -1662,11 +1748,7 @@ form-control {
             margin: 0 auto !important;
         }
 
-        .btn-read-more {
-            width: 100% !important;
-            margin: 0 auto !important;
-            padding: 0 !important;
-        }
+    
     }
 
     
@@ -1688,7 +1770,8 @@ form-control {
 .parial-super table td {
   border: 1px solid var(--teal); 
   padding: 1rem;
-  color:var(--primary-dark-blue)
+  color:var(--primary-dark-blue);
+  background-color: #E3F3F3 !important;
  
 }
 
@@ -1710,7 +1793,8 @@ form-control {
 .parial-accident table td {
   border: 1px solid var(--royal-blue); 
   padding: 1rem;
-  color:var(--primary-dark-blue)
+  color:var(--primary-dark-blue);
+  background-color: #D9E4F0 !important
  
 }
 
@@ -1732,7 +1816,9 @@ form-control {
 .parial-classic table td {
   border: 1px solid var(--sky-blue) !important;
   padding: 1rem;
-  color:var(--primary-dark-blue)
+  color:var(--primary-dark-blue);
+  background-color: #DAEFF9 !important;
+  
  
 }
 
@@ -1754,7 +1840,8 @@ form-control {
 .parial-hospital table td {
   border: 1px solid var(--powder-blue) !important;
   padding: 1rem;
-  color:var(--primary-dark-blue)
+  color:var(--primary-dark-blue);
+  background-color: #D9E4F0 !important;
  
 }
 
@@ -1767,16 +1854,18 @@ form-control {
 }
 
 .parial-primary table {
-  background-color: #D9E4F0 !important; 
+  background-color: #DDDFE1 !important; 
   color: #212529;         
   border: 1px solid var(--dark-grey) !important;
+  
 
 }
 /* Style all table cells inside that parent */
 .parial-primary table td {
   border: 1px solid var(--dark-grey) !important;
   padding: 1rem;
-  color:var(--primary-dark-blue)
+  color:var(--primary-dark-blue);
+  background-color: #DDDFE1 !important; 
  
 }
 
@@ -1808,4 +1897,190 @@ form-control {
 .petname {
     color: var(--primary-dark-blue);
     font-weight: bold;
+}
+
+
+
+#pfAccordion .accordion {
+  border: none;               
+  --bs-accordion-border-color: transparent; 
+  border-radius: 10px !important;
+}
+
+#pfAccordion .accordion-item {
+  border: 1px solid #DEDEDE;      
+  border-radius: 10px !important;
+  margin-bottom: 0.75rem;     
+  overflow: hidden;           
+}
+
+#pfAccordion .accordion-header {
+  background-color: #332F6E;
+  border-radius: 10px 10px 0px 0px;   
+  color: #fff !important;         
+}
+
+#pfAccordion .accordion-button {
+  
+  color: #292C67;             
+  font-weight: 600;            
+  font-size: 1rem;
+  padding: 0.75rem 1rem;
+  box-shadow: none;            
+  transition: background-color 0.2s ease;
+}
+
+
+#pfAccordion .accordion-button:hover {
+  background-color: #e9ecef;   
+  color: #06072A;
+}
+
+
+#pfAccordion .accordion-button:not(.collapsed) {
+  background-color: #E3F3F3 !important;   
+  border: 1px solid #65C6C0 !important;
+  color: var(--primary-dark-blue) !important;
+}
+
+
+#pfAccordion .accordion-body {
+  background-color: #fff;      
+  padding: 1rem 1.25rem;
+  color:var(--primary-dark-blue) !important;
+}
+
+
+/* Remove Bootstrap’s default chevron */
+#pfAccordion .accordion-button::after {
+  display: none !important;
+}
+
+/* Add your custom chevron */
+#pfAccordion .accordion-button {
+  position: relative;
+  padding-right: 2.5rem; /* add space on the right */
+}
+
+#pfAccordion .accordion-button::before {
+  content: "";
+  position: absolute;
+  right: 1rem;
+  top: 50%;
+  transform: translateY(-50%) rotate(0deg);
+  width: 19px;
+  height: 19px;
+
+  /* Use your SVG as background */
+  background: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='19' height='19' viewBox='0 0 19 19' fill='none'><rect x='18.5' y='18.7323' width='18' height='18' rx='9' transform='rotate(-180 18.5 18.7323)' fill='%23606060'/><path d='M14.5 10.9662C14.5 11.1767 14.433 11.3639 14.299 11.5042C14.031 11.8083 13.562 11.8083 13.294 11.5042L9.49721 7.55101L5.72278 11.5042C5.45477 11.8083 4.98576 11.8083 4.71776 11.5042C4.42741 11.2235 4.42741 10.7323 4.71776 10.4516L9.00586 5.96037C9.27387 5.65628 9.74288 5.65628 10.0109 5.96037L14.299 10.4516C14.433 10.592 14.5 10.7791 14.5 10.9662Z' fill='white'/></svg>") no-repeat center center;
+  background-size: contain;
+  transition: transform 0.3s ease;
+}
+
+/* Rotate when accordion is open */
+#pfAccordion .accordion-button:not(.collapsed)::before {
+  transform: translateY(-50%) rotate(180deg);
+}
+
+
+/**/
+#pfNestedAccordion .accordion {
+  border: none;               
+  --bs-accordion-border-color: transparent; 
+  border-radius: 10px !important;
+}
+
+#pfNestedAccordion .accordion-item {
+  border: 1px solid #DEDEDE;      
+  border-radius: 10px !important;
+  margin-bottom: 0.75rem;     
+  overflow: hidden;           
+}
+
+#pfNestedAccordion .accordion-header {
+    background-color: #E3F3F3 !important;   
+  border: 1px solid #65C6C0 !important;
+  border-radius: 10px 10px 0px 0px;   
+  color: #292C67 !important;         
+}
+
+#pfNestedAccordion .accordion-button {
+  
+  color: #292C67;             
+  font-weight: 600;            
+  font-size: 1rem;
+  padding: 0.75rem 1rem;
+  box-shadow: none;            
+  transition: background-color 0.2s ease;
+}
+
+
+#pfNestedAccordion .accordion-button:hover {
+  background-color: #e9ecef;   
+  color: #06072A;
+}
+
+
+#pfNestedAccordion .accordion-button:not(.collapsed) {
+  background-color: #E3F3F3 !important;   
+  border: 1px solid #65C6C0 !important;
+  color: var(--primary-dark-blue) !important;
+}
+
+
+#pfNestedAccordion .accordion-body {
+  background-color: #fff;      
+  padding: 1rem 1.25rem;
+  color:var(--primary-dark-blue) !important;
+}
+
+
+/* Remove Bootstrap’s default chevron */
+#pfNestedAccordion .accordion-button::after {
+  display: none !important;
+}
+
+/* Add your custom chevron */
+#pfNestedAccordion .accordion-button {
+  position: relative;
+  padding-right: 2.5rem; /* add space on the right */
+}
+
+#pfNestedAccordion .accordion-button::before {
+  content: "";
+  position: absolute;
+  right: 1rem;
+  top: 50%;
+  transform: translateY(-50%) rotate(0deg);
+  width: 19px;
+  height: 19px;
+
+  /* Use your SVG as background */
+  background: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='19' height='19' viewBox='0 0 19 19' fill='none'><rect x='18.5' y='18.7323' width='18' height='18' rx='9' transform='rotate(-180 18.5 18.7323)' fill='%23606060'/><path d='M14.5 10.9662C14.5 11.1767 14.433 11.3639 14.299 11.5042C14.031 11.8083 13.562 11.8083 13.294 11.5042L9.49721 7.55101L5.72278 11.5042C5.45477 11.8083 4.98576 11.8083 4.71776 11.5042C4.42741 11.2235 4.42741 10.7323 4.71776 10.4516L9.00586 5.96037C9.27387 5.65628 9.74288 5.65628 10.0109 5.96037L14.299 10.4516C14.433 10.592 14.5 10.7791 14.5 10.9662Z' fill='white'/></svg>") no-repeat center center;
+  background-size: contain;
+  transition: transform 0.3s ease;
+}
+
+/* Rotate when accordion is open */
+#pfNestedAccordion .accordion-button:not(.collapsed)::before {
+  transform: translateY(-50%) rotate(180deg);
+}
+
+
+
+.table-striped {
+  --bs-table-striped-bg: #f0f6ff;   /* alt row background */
+  --bs-table-striped-color: inherit; /* text color on striped rows */
+}
+
+/* If you also use hover, set that too */
+.table-hover {
+  --bs-table-hover-bg: #F1F4F8;
+  --bs-table-hover-color: inherit;
+}
+
+/* If using .table-dark, override its variables separately */
+.table-striped.table-dark {
+  --bs-table-striped-bg: rgba(255,255,255,.08);
+  --bs-table-striped-color: #fff;
 }

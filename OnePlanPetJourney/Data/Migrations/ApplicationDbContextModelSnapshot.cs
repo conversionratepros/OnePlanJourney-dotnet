@@ -17,6 +17,105 @@ namespace OnePlanPetJourney.Data.Migrations
 #pragma warning disable 612, 618
             modelBuilder.HasAnnotation("ProductVersion", "9.0.9");
 
+            modelBuilder.Entity("OnePlanPetJourney.Models.Address", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("DeliveryAddressLineOne")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("DeliveryAddressLineTwo")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("DeliveryCity")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("DeliveryPostalCode")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("PhysicalAddressLineOne")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("PhysicalAddressLineTwo")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("PhysicalCity")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("PhysicalPostalCode")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Address");
+                });
+
+            modelBuilder.Entity("OnePlanPetJourney.Models.BankingDetails", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("AccountHolder")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("AccountNumber")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("AccountPayersID")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("BankAccountType")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("BankName")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("BranchCode")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("ConfirmPhoneNumber")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.Property<bool>("ConsentConfirm")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<DateTime>("DebitDate")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("HearAboutUs")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.Property<DateTime>("PolicyStart")
+                        .HasColumnType("TEXT");
+
+                    b.Property<DateTime?>("SecondStartDate")
+                        .HasColumnType("TEXT");
+
+                    b.Property<bool>("isPassport")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<bool>("isPersonal")
+                        .HasColumnType("INTEGER");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("BankingDetails");
+                });
+
             modelBuilder.Entity("OnePlanPetJourney.Models.Lead", b =>
                 {
                     b.Property<int>("Id")
@@ -61,6 +160,9 @@ namespace OnePlanPetJourney.Data.Migrations
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
+
+                    b.Property<string>("AddOns")
+                        .HasColumnType("TEXT");
 
                     b.Property<string>("Breed")
                         .IsRequired()
@@ -138,6 +240,55 @@ namespace OnePlanPetJourney.Data.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Plans");
+                });
+
+            modelBuilder.Entity("OnePlanPetJourney.Models.PolicyHolder", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("AltMobileNumber")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("EmailAddress")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("FirstName")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("Gender")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("IdNumber")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("LastName")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("MobileNumber")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("Title")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.Property<bool>("hasConcented")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<bool>("marketing")
+                        .HasColumnType("INTEGER");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("PolicyHolder");
                 });
 
             modelBuilder.Entity("OnePlanPetJourney.Models.Pet", b =>

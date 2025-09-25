@@ -74,7 +74,10 @@ namespace OnePlanPetJourney.Pages.Leads
 
 
         public async Task<IActionResult> OnGetAsync(int id)
-        {
+        {   
+            BuildVetOptions();
+            BuildInjuryOptions();
+            BuildMedicalConditionOptions();
             var leadExists = await _db.Leads.AnyAsync(l => l.Id == id);
             if (!leadExists)
             {
@@ -91,9 +94,7 @@ namespace OnePlanPetJourney.Pages.Leads
                 TempData["Message"] = "No pets found for this lead.";
                 return RedirectToPage("/Leads/PageTwo", new { id });
             }
-            BuildVetOptions();
-            BuildInjuryOptions();
-            BuildMedicalConditionOptions();
+           
 
 
             Input = new InputModel { LeadId = id, Pets = pets };
@@ -101,15 +102,16 @@ namespace OnePlanPetJourney.Pages.Leads
         }
 
         public async Task<IActionResult> OnPostAsync()
-        {
+        {   
+            BuildVetOptions();
+            BuildInjuryOptions();
+            BuildMedicalConditionOptions();
+
             if (!await _db.Leads.AnyAsync(l => l.Id == Input.LeadId))
                 ModelState.AddModelError(string.Empty, "Owner not found.");
 
             if (!ModelState.IsValid) return Page();
 
-             BuildVetOptions();
-             BuildInjuryOptions();
-            BuildMedicalConditionOptions();
 
 
 
@@ -131,6 +133,7 @@ namespace OnePlanPetJourney.Pages.Leads
                 existing.Injuries = pet.Injuries;
                 existing.MedicalCondition = pet.MedicalCondition;
                 existing.BreedSize = pet.BreedSize;
+              
             }
 
             await _db.SaveChangesAsync();

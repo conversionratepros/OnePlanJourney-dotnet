@@ -1,0 +1,318 @@
+@page "{id:int}"
+@model OnePlanPetJourney.Pages.Leads.PageFiveModel
+
+@{
+    ViewData["Title"] = "Exclusions";
+    ViewData["CurrentStep"] = 5;
+}
+
+@if (TempData["Message"] is string msg)
+{
+    <div class="alert alert-success">@msg</div>
+}
+
+<div class="row mb-5">
+  <div class="col-md-8 offset-md-2">
+    <form id="pfForm" method="post" novalidate>
+      @Html.AntiForgeryToken()
+      <input asp-for="Input.LeadId" type="hidden" />
+      <div asp-validation-summary="ModelOnly" class="alert alert-danger"></div>
+
+      <div class="accordion" id="pfAccordion">
+
+        @* ===== Dynamic: one item per pet ===== *@
+        @for (int i = 0; i < Model.Input.Pets.Count; i++)
+        {
+            var pet = Model.Input.Pets[i];
+            var headId     = $"pfHead_pet_{i}";
+            var collapseId = $"pfCollapse_pet_{i}";
+            var showClass  = i == 0 ? "show" : "";
+            var expanded   = i == 0 ? "true" : "false";
+            var collapsed  = i == 0 ? "" : "collapsed";
+
+            <div class="accordion-item">
+              <h2 class="accordion-header" id="@headId">
+                <button class="accordion-button @collapsed" type="button"
+                        data-bs-toggle="collapse" data-bs-target="#@collapseId"
+                        aria-expanded="@expanded" aria-controls="@collapseId">
+                  Exclusions for&nbsp;<strong>@pet.Name</strong>
+                </button>
+              </h2>
+              <div id="@collapseId" class="accordion-collapse collapse @showClass"
+                   aria-labelledby="@headId" data-bs-parent="#pfAccordion">
+                <div class="accordion-body">
+                  <p><b>If other condition/illness/injury was noted, this will be assessed by our underwriting team. Should this result in an exclusion, you will be notified and your updated policy schedule will be sent.</b></p>
+
+                  <table class="table table-striped">
+                    <thead>
+                      <tr>
+                        <th scope="col">Exclusion</th>
+                        <th scope="col">Exclusion Period (months)</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>Illness/Accident claims covered once the identity of the pet is verified (photo, birthmark or microchip required).</td>
+                        <td></td>
+                      </tr>
+                      <tr>
+                        <td>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</td>
+                        <td>12</td>
+                      </tr>
+                      <tr>
+                        <td>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</td>
+                        <td>12</td>
+                      </tr>
+                      <tr>
+                        <td>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</td>
+                        <td>12</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+        }
+
+        @* ===== Static: General Exclusions ===== *@
+        <div class="accordion-item">
+          <h2 class="accordion-header" id="pfHead_general">
+            <button class="accordion-button collapsed" type="button"
+                    data-bs-toggle="collapse" data-bs-target="#pfCollapse_general"
+                    aria-expanded="false" aria-controls="pfCollapse_general">
+              General Exclusions
+            </button>
+          </h2>
+          <div id="pfCollapse_general" class="accordion-collapse collapse"
+               aria-labelledby="pfHead_general" data-bs-parent="#pfAccordion">
+            <div class="accordion-body">
+              We will not be liable for expenses, hospitalisation, injury, sickness or disease directly or indirectly caused by or related to the following:
+              <ul>
+                <li>Foreseeable or predicted medical events.</li>
+                <li>Cosmetic, elective or non-justifiable events.</li>
+                <li>Obesity and behavioural conditions.</li>
+                <li>Any event outside of the borders of South Africa.</li>
+                <li>Infertility, breeding, mating and pregnancy costs.</li>
+                <li>Services rendered by persons not registered with the SA Veterinarian Council.</li>
+                <li>Costs incurred due to negligence of your pet’s medical needs or health.</li>
+                <li>Conditions that arise due to non-vaccination as recommended by your vet.</li>
+                <li>Non-disclosure, misrepresentation, fraud or misinformation.</li>
+                <li>Costs relating to abuse to your pet by yourself, your family members or staff – <strong>We don’t stand for animal abuse!</strong></li>
+                <li>Costs relating to any new pandemic.</li>
+                <li>Costs related to treatment where the cause/diagnosis is inconclusive and similar to excluded conditions.</li>
+                <li>Any event not specifically covered in your schedule.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        @* ===== Static: FAQ (nested accordion) ===== *@
+        <div class="accordion-item">
+          <h2 class="accordion-header" id="pfHead_faq">
+            <button class="accordion-button collapsed" type="button"
+                    data-bs-toggle="collapse" data-bs-target="#pfCollapse_faq"
+                    aria-expanded="false" aria-controls="pfCollapse_faq">
+              Frequently Asked Questions
+            </button>
+          </h2>
+          <div id="pfCollapse_faq" class="accordion-collapse collapse"
+               aria-labelledby="pfHead_faq" data-bs-parent="#pfAccordion">
+            <div class="accordion-body">
+              <div class="accordion" id="pfNestedAccordion">
+
+                <div class="accordion-item">
+                  <h2 class="accordion-header" id="pfNHead1">
+                    <button class="accordion-button" type="button"
+                            data-bs-toggle="collapse" data-bs-target="#pfNCollapse1"
+                            aria-expanded="true" aria-controls="pfNCollapse1">
+                      How does the upfront claims process work and when will I receive my Oneplan Claim Card?
+                    </button>
+                  </h2>
+                  <div id="pfNCollapse1" class="accordion-collapse collapse show"
+                       aria-labelledby="pfNHead1" data-bs-parent="#pfNestedAccordion">
+                    <div class="accordion-body">Content for Sub-Section 1…</div>
+                  </div>
+                </div>
+
+                <div class="accordion-item">
+                  <h2 class="accordion-header" id="pfNHead2">
+                    <button class="accordion-button collapsed" type="button"
+                            data-bs-toggle="collapse" data-bs-target="#pfNCollapse2"
+                            aria-expanded="false" aria-controls="pfNCollapse2">
+                      How to claim for pet hospital cover?
+                    </button>
+                  </h2>
+                  <div id="pfNCollapse2" class="accordion-collapse collapse"
+                       aria-labelledby="pfNHead2" data-bs-parent="#pfNestedAccordion">
+                    <div class="accordion-body">Content for Sub-Section 2…</div>
+                  </div>
+                </div>
+
+                <div class="accordion-item">
+                  <h2 class="accordion-header" id="pfNHead3">
+                    <button class="accordion-button collapsed" type="button"
+                            data-bs-toggle="collapse" data-bs-target="#pfNCollapse3"
+                            aria-expanded="false" aria-controls="pfNCollapse3">
+                      Why are Pre-existing, Congenital, Hereditary, and specific listed conditions excluded for 12 months?
+                    </button>
+                  </h2>
+                  <div id="pfNCollapse3" class="accordion-collapse collapse"
+                       aria-labelledby="pfNHead3" data-bs-parent="#pfNestedAccordion">
+                    <div class="accordion-body">Content for Sub-Section 3…</div>
+                  </div>
+                </div>
+
+                <div class="accordion-item">
+                  <h2 class="accordion-header" id="pfNHead4">
+                    <button class="accordion-button collapsed" type="button"
+                            data-bs-toggle="collapse" data-bs-target="#pfNCollapse4"
+                            aria-expanded="false" aria-controls="pfNCollapse4">
+                      Why are any conditions or illnesses that occur due to non-vaccination TOTALLY excluded?
+                    </button>
+                  </h2>
+                  <div id="pfNCollapse4" class="accordion-collapse collapse"
+                       aria-labelledby="pfNHead4" data-bs-parent="#pfNestedAccordion">
+                    <div class="accordion-body">Content for Sub-Section 4…</div>
+                  </div>
+                </div>
+
+                <div class="accordion-item">
+                  <h2 class="accordion-header" id="pfNHead5">
+                    <button class="accordion-button collapsed" type="button"
+                            data-bs-toggle="collapse" data-bs-target="#pfNCollapse5"
+                            aria-expanded="false" aria-controls="pfNCollapse5">
+                      Is excess applicable?
+                    </button>
+                  </h2>
+                  <div id="pfNCollapse5" class="accordion-collapse collapse"
+                       aria-labelledby="pfNHead5" data-bs-parent="#pfNestedAccordion">
+                    <div class="accordion-body">Content for Sub-Section 5…</div>
+                  </div>
+                </div>
+
+                <div class="accordion-item">
+                  <h2 class="accordion-header" id="pfNHead6">
+                    <button class="accordion-button collapsed" type="button"
+                            data-bs-toggle="collapse" data-bs-target="#pfNCollapse6"
+                            aria-expanded="false" aria-controls="pfNCollapse6">
+                      What will happen when my pet goes over the maximum age limit?
+                    </button>
+                  </h2>
+                  <div id="pfNCollapse6" class="accordion-collapse collapse"
+                       aria-labelledby="pfNHead6" data-bs-parent="#pfNestedAccordion">
+                    <div class="accordion-body">Content for Sub-Section 6…</div>
+                  </div>
+                </div>
+
+                <div class="accordion-item">
+                  <h2 class="accordion-header" id="pfNHead7">
+                    <button class="accordion-button collapsed" type="button"
+                            data-bs-toggle="collapse" data-bs-target="#pfNCollapse7"
+                            aria-expanded="false" aria-controls="pfNCollapse7">
+                      If I want to upgrade the plan at a later stage, is it possible?
+                    </button>
+                  </h2>
+                  <div id="pfNCollapse7" class="accordion-collapse collapse"
+                       aria-labelledby="pfNHead7" data-bs-parent="#pfNestedAccordion">
+                    <div class="accordion-body">Content for Sub-Section 7…</div>
+                  </div>
+                </div>
+
+                <div class="accordion-item">
+                  <h2 class="accordion-header" id="pfNHead8">
+                    <button class="accordion-button collapsed" type="button"
+                            data-bs-toggle="collapse" data-bs-target="#pfNCollapse8"
+                            aria-expanded="false" aria-controls="pfNCollapse8">
+                      Which vets can I go to?
+                    </button>
+                  </h2>
+                  <div id="pfNCollapse8" class="accordion-collapse collapse"
+                       aria-labelledby="pfNHead8" data-bs-parent="#pfNestedAccordion">
+                    <div class="accordion-body">Content for Sub-Section 8…</div>
+                  </div>
+                </div>
+
+                <div class="accordion-item">
+                  <h2 class="accordion-header" id="pfNHead9">
+                    <button class="accordion-button collapsed" type="button"
+                            data-bs-toggle="collapse" data-bs-target="#pfNCollapse9"
+                            aria-expanded="false" aria-controls="pfNCollapse9">
+                      Does my pet need to be Microchipped?
+                    </button>
+                  </h2>
+                  <div id="pfNCollapse9" class="accordion-collapse collapse"
+                       aria-labelledby="pfNHead9" data-bs-parent="#pfNestedAccordion">
+                    <div class="accordion-body">Content for Sub-Section 9…</div>
+                  </div>
+                </div>
+
+                <div class="accordion-item">
+                  <h2 class="accordion-header" id="pfNHead10">
+                    <button class="accordion-button collapsed" type="button"
+                            data-bs-toggle="collapse" data-bs-target="#pfNCollapse10"
+                            aria-expanded="false" aria-controls="pfNCollapse10">
+                      How does the Onepet Premium Pet Store work?
+                    </button>
+                  </h2>
+                  <div id="pfNCollapse10" class="accordion-collapse collapse"
+                       aria-labelledby="pfNHead10" data-bs-parent="#pfNestedAccordion">
+                    <div class="accordion-body">Content for Sub-Section 10…</div>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="row mt-4">
+        <div class="col-md-12">
+          <div class="navigation-container">
+            <div class="row">
+              <div id="divCallMe" class="col-sm-12 col-md-6 mb-4">
+                <button id="btnCallMePopUp"
+                        type="button"
+                        class="btn btn-block btn-nav-call-me btn-nav btn-nav-properties"
+                        data-bs-toggle="modal"
+                        data-bs-target="#CallMePopUp">
+                  <span><img src="~/images/icon-call-me.png" alt=""></span>&nbsp;&nbsp;Call me rather&nbsp;&nbsp;
+                </button>
+              </div>
+
+              <div id="divPrevious" class="col-sm-12 col-md-3 mb-4">
+                <button id="btnPrevious"
+                        type="button"
+                        class="btn btn-block btn-nav-previous btn-nav btn-nav-properties"
+                        onclick="PrevStepFive()">
+                  <span><img src="~/images/icon-chev-left.png" alt=""></span>&nbsp;&nbsp;Previous&nbsp;&nbsp;
+                </button>
+              </div>
+
+              <div id="divContinue" class="col-sm-12 col-md-3 mb-4">
+                <button id="btnContinue"
+                        type="submit"
+                        form="pfForm"
+                        class="btn btn-block btn-nav-continue btn-nav btn-nav-properties">
+                  <span><img src="~/images/icon-chev-right.png" alt=""></span>&nbsp;&nbsp;Continue&nbsp;&nbsp;
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </form>
+  </div>
+</div>
+
+@section Scripts {
+  <script>
+    function PrevStepFive() {
+      const id = '@Model.Input.LeadId';
+      window.location.href = '@Url.Page("/Leads/PageFour")' + '/' + id;
+    }
+  </script>
+  <partial name="_ValidationScriptsPartial" />
+}

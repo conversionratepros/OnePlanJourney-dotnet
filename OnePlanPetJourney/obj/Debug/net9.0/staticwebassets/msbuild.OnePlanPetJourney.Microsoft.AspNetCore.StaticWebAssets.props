@@ -30,8 +30,8 @@
       <RelatedAsset></RelatedAsset>
       <AssetTraitName></AssetTraitName>
       <AssetTraitValue></AssetTraitValue>
-      <Fingerprint>89abpl8rgl</Fingerprint>
-      <Integrity>rHV18v4wtA1WinznJb/38Z39AxWBtBx5kAgROAVoHic=</Integrity>
+      <Fingerprint>q0nngjf2dd</Fingerprint>
+      <Integrity>SoAEfquhEPFBeHIy/1X7r3mVCELUEMtq0UJ0Pjwjcpc=</Integrity>
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
       <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\css\site.css'))</OriginalItemSpec>
@@ -71,6 +71,24 @@
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
       <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\favicon.ico'))</OriginalItemSpec>
+    </StaticWebAsset>
+    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\images\btn-chevron.png'))">
+      <SourceType>Package</SourceType>
+      <SourceId>OnePlanPetJourney</SourceId>
+      <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
+      <BasePath>_content/OnePlanPetJourney</BasePath>
+      <RelativePath>images/btn-chevron.png</RelativePath>
+      <AssetKind>All</AssetKind>
+      <AssetMode>All</AssetMode>
+      <AssetRole>Primary</AssetRole>
+      <RelatedAsset></RelatedAsset>
+      <AssetTraitName></AssetTraitName>
+      <AssetTraitValue></AssetTraitValue>
+      <Fingerprint>q2qcaknbat</Fingerprint>
+      <Integrity>AlnjUAMhtbRBZSrbIW7907Kzdag+2dkhkpD8C4aCQzE=</Integrity>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\images\btn-chevron.png'))</OriginalItemSpec>
     </StaticWebAsset>
     <StaticWebAsset Include="$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\images\cat.png'))">
       <SourceType>Package</SourceType>
@@ -174,8 +192,8 @@
       <RelatedAsset></RelatedAsset>
       <AssetTraitName></AssetTraitName>
       <AssetTraitValue></AssetTraitValue>
-      <Fingerprint>8jt807jqci</Fingerprint>
-      <Integrity>hHPVDDRNrmVox29C+Nv6apCv/uDR0kcpv6G5iIx3RN4=</Integrity>
+      <Fingerprint>wm5ma64tgi</Fingerprint>
+      <Integrity>CGghrZci8uw14+BYryeRGsmcWDR4iQzEuc6Dghl2JCM=</Integrity>
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
       <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\images\icon-cat.png'))</OriginalItemSpec>
@@ -228,8 +246,8 @@
       <RelatedAsset></RelatedAsset>
       <AssetTraitName></AssetTraitName>
       <AssetTraitValue></AssetTraitValue>
-      <Fingerprint>mn38jamg71</Fingerprint>
-      <Integrity>gn8hI0pondsZV2i2CsOY+PZNtiA3IhP+C/v05zBiNVM=</Integrity>
+      <Fingerprint>rtoauzcijq</Fingerprint>
+      <Integrity>0dnyP3lbEj2JI1qErxfpZhm/JSf2IBKiV0syeM2gLpE=</Integrity>
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
       <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\images\icon-dog.png'))</OriginalItemSpec>

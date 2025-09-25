@@ -63,7 +63,8 @@ namespace OnePlanPetJourney.Pages.Leads
                     PreferredVet = unknown,
                     IsNeutered = false,
                     Injuries = none,
-                    MedicalCondition = none
+                    MedicalCondition = none,
+                    AddOns = string.Empty,
                 });
             }
 
@@ -83,7 +84,8 @@ namespace OnePlanPetJourney.Pages.Leads
                     PreferredVet = unknown,
                     IsNeutered = false,
                     Injuries = none,
-                    MedicalCondition = none
+                    MedicalCondition = none,
+                    AddOns = string.Empty,
                 });
             }
 

@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "/ks+AJcH+iPnivOrSvwZ4/Qc9dVJrsVyIhiwzXxCfJQ=",
+  "Hash": "NvqZiSF6AUYPydd/1BMmPufcccw7eVd9z1/cup9Nvi4=",
   "Source": "OnePlanPetJourney",
   "BasePath": "_content/OnePlanPetJourney",
   "Mode": "Default",
@@ -668,12 +668,12 @@
       "OriginalItemSpec": "/Users/donavanwallis/Documents/Source/OnePlanJourney-dotnet/OnePlanPetJourney/wwwroot/lib/jquery/LICENSE.txt"
     },
     {
-      "Identity": "/Users/donavanwallis/Documents/Source/OnePlanJourney-dotnet/OnePlanPetJourney/obj/Debug/net9.0/compressed/m1sqr48z8g-89abpl8rgl.gz",
+      "Identity": "/Users/donavanwallis/Documents/Source/OnePlanJourney-dotnet/OnePlanPetJourney/obj/Debug/net9.0/compressed/m1sqr48z8g-q0nngjf2dd.gz",
       "SourceId": "OnePlanPetJourney",
       "SourceType": "Discovered",
       "ContentRoot": "/Users/donavanwallis/Documents/Source/OnePlanJourney-dotnet/OnePlanPetJourney/obj/Debug/net9.0/compressed/",
       "BasePath": "_content/OnePlanPetJourney",
-      "RelativePath": "css/site#[.{fingerprint=89abpl8rgl}]?.css.gz",
+      "RelativePath": "css/site#[.{fingerprint=q0nngjf2dd}]?.css.gz",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Alternative",
@@ -682,8 +682,8 @@
       "RelatedAsset": "/Users/donavanwallis/Documents/Source/OnePlanJourney-dotnet/OnePlanPetJourney/wwwroot/css/site.css",
       "AssetTraitName": "Content-Encoding",
       "AssetTraitValue": "gzip",
-      "Fingerprint": "5vmmjvgvwx",
-      "Integrity": "QayflBj6L9wq5iCHmvldAjrrQRpS6IdZosCx14de7Vk=",
+      "Fingerprint": "99f1figlvq",
+      "Integrity": "fTrEl+/dH24YVikIXllJtvkBys9FYQF+yUxuoAcBERg=",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "/Users/donavanwallis/Documents/Source/OnePlanJourney-dotnet/OnePlanPetJourney/wwwroot/css/site.css"
@@ -1417,8 +1417,8 @@
       "RelatedAsset": "",
       "AssetTraitName": "",
       "AssetTraitValue": "",
-      "Fingerprint": "89abpl8rgl",
-      "Integrity": "rHV18v4wtA1WinznJb/38Z39AxWBtBx5kAgROAVoHic=",
+      "Fingerprint": "q0nngjf2dd",
+      "Integrity": "SoAEfquhEPFBeHIy/1X7r3mVCELUEMtq0UJ0Pjwjcpc=",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot/css/site.css"
@@ -1464,6 +1464,27 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot/favicon.ico"
+    },
+    {
+      "Identity": "/Users/donavanwallis/Documents/Source/OnePlanJourney-dotnet/OnePlanPetJourney/wwwroot/images/btn-chevron.png",
+      "SourceId": "OnePlanPetJourney",
+      "SourceType": "Discovered",
+      "ContentRoot": "/Users/donavanwallis/Documents/Source/OnePlanJourney-dotnet/OnePlanPetJourney/wwwroot/",
+      "BasePath": "_content/OnePlanPetJourney",
+      "RelativePath": "images/btn-chevron#[.{fingerprint}]?.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "q2qcaknbat",
+      "Integrity": "AlnjUAMhtbRBZSrbIW7907Kzdag+2dkhkpD8C4aCQzE=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot/images/btn-chevron.png"
     },
     {
       "Identity": "/Users/donavanwallis/Documents/Source/OnePlanJourney-dotnet/OnePlanPetJourney/wwwroot/images/cat-image.png",
@@ -1585,8 +1606,8 @@
       "RelatedAsset": "",
       "AssetTraitName": "",
       "AssetTraitValue": "",
-      "Fingerprint": "8jt807jqci",
-      "Integrity": "hHPVDDRNrmVox29C+Nv6apCv/uDR0kcpv6G5iIx3RN4=",
+      "Fingerprint": "wm5ma64tgi",
+      "Integrity": "CGghrZci8uw14+BYryeRGsmcWDR4iQzEuc6Dghl2JCM=",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot/images/icon-cat.png"
@@ -1648,8 +1669,8 @@
       "RelatedAsset": "",
       "AssetTraitName": "",
       "AssetTraitValue": "",
-      "Fingerprint": "mn38jamg71",
-      "Integrity": "gn8hI0pondsZV2i2CsOY+PZNtiA3IhP+C/v05zBiNVM=",
+      "Fingerprint": "rtoauzcijq",
+      "Integrity": "0dnyP3lbEj2JI1qErxfpZhm/JSf2IBKiV0syeM2gLpE=",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot/images/icon-dog.png"
@@ -3362,13 +3383,13 @@
       ]
     },
     {
-      "Route": "css/site.89abpl8rgl.css",
-      "AssetFile": "/Users/donavanwallis/Documents/Source/OnePlanJourney-dotnet/OnePlanPetJourney/obj/Debug/net9.0/compressed/m1sqr48z8g-89abpl8rgl.gz",
+      "Route": "css/site.css",
+      "AssetFile": "/Users/donavanwallis/Documents/Source/OnePlanJourney-dotnet/OnePlanPetJourney/obj/Debug/net9.0/compressed/m1sqr48z8g-q0nngjf2dd.gz",
       "Selectors": [
         {
           "Name": "Content-Encoding",
           "Value": "gzip",
-          "Quality": "0.000160797556"
+          "Quality": "0.000126742712"
         }
       ],
       "ResponseHeaders": [
@@ -3378,19 +3399,19 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "6218"
+          "Value": "7889"
         },
         {
           "Name": "ETag",
-          "Value": "\"QayflBj6L9wq5iCHmvldAjrrQRpS6IdZosCx14de7Vk=\""
+          "Value": "\"fTrEl+/dH24YVikIXllJtvkBys9FYQF+yUxuoAcBERg=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Tue, 23 Sep 2025 05:11:33 GMT"
+          "Value": "Thu, 25 Sep 2025 21:00:08 GMT"
         },
         {
           "Name": "Cache-Control",
-          "Value": "max-age=31536000, immutable"
+          "Value": "no-cache"
         },
         {
           "Name": "Content-Encoding",
@@ -3406,26 +3427,18 @@
         },
         {
           "Name": "ETag",
-          "Value": "W/\"rHV18v4wtA1WinznJb/38Z39AxWBtBx5kAgROAVoHic=\""
+          "Value": "W/\"SoAEfquhEPFBeHIy/1X7r3mVCELUEMtq0UJ0Pjwjcpc=\""
         }
       ],
       "EndpointProperties": [
         {
-          "Name": "fingerprint",
-          "Value": "89abpl8rgl"
-        },
-        {
-          "Name": "label",
-          "Value": "css/site.css"
-        },
-        {
           "Name": "integrity",
-          "Value": "sha256-rHV18v4wtA1WinznJb/38Z39AxWBtBx5kAgROAVoHic="
+          "Value": "sha256-SoAEfquhEPFBeHIy/1X7r3mVCELUEMtq0UJ0Pjwjcpc="
         }
       ]
     },
     {
-      "Route": "css/site.89abpl8rgl.css",
+      "Route": "css/site.css",
       "AssetFile": "/Users/donavanwallis/Documents/Source/OnePlanJourney-dotnet/OnePlanPetJourney/wwwroot/css/site.css",
       "Selectors": [],
       "ResponseHeaders": [
@@ -3435,7 +3448,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "43482"
+          "Value": "48660"
         },
         {
           "Name": "Content-Type",
@@ -3443,11 +3456,156 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"rHV18v4wtA1WinznJb/38Z39AxWBtBx5kAgROAVoHic=\""
+          "Value": "\"SoAEfquhEPFBeHIy/1X7r3mVCELUEMtq0UJ0Pjwjcpc=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Tue, 23 Sep 2025 05:11:33 GMT"
+          "Value": "Thu, 25 Sep 2025 21:00:08 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-SoAEfquhEPFBeHIy/1X7r3mVCELUEMtq0UJ0Pjwjcpc="
+        }
+      ]
+    },
+    {
+      "Route": "css/site.css.gz",
+      "AssetFile": "/Users/donavanwallis/Documents/Source/OnePlanJourney-dotnet/OnePlanPetJourney/obj/Debug/net9.0/compressed/m1sqr48z8g-q0nngjf2dd.gz",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "7889"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/css"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"fTrEl+/dH24YVikIXllJtvkBys9FYQF+yUxuoAcBERg=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Thu, 25 Sep 2025 21:00:08 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        },
+        {
+          "Name": "Content-Encoding",
+          "Value": "gzip"
+        },
+        {
+          "Name": "Vary",
+          "Value": "Content-Encoding"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-fTrEl+/dH24YVikIXllJtvkBys9FYQF+yUxuoAcBERg="
+        }
+      ]
+    },
+    {
+      "Route": "css/site.q0nngjf2dd.css",
+      "AssetFile": "/Users/donavanwallis/Documents/Source/OnePlanJourney-dotnet/OnePlanPetJourney/obj/Debug/net9.0/compressed/m1sqr48z8g-q0nngjf2dd.gz",
+      "Selectors": [
+        {
+          "Name": "Content-Encoding",
+          "Value": "gzip",
+          "Quality": "0.000126742712"
+        }
+      ],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "7889"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"fTrEl+/dH24YVikIXllJtvkBys9FYQF+yUxuoAcBERg=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Thu, 25 Sep 2025 21:00:08 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        },
+        {
+          "Name": "Content-Encoding",
+          "Value": "gzip"
+        },
+        {
+          "Name": "Vary",
+          "Value": "Content-Encoding"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/css"
+        },
+        {
+          "Name": "ETag",
+          "Value": "W/\"SoAEfquhEPFBeHIy/1X7r3mVCELUEMtq0UJ0Pjwjcpc=\""
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "q0nngjf2dd"
+        },
+        {
+          "Name": "label",
+          "Value": "css/site.css"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-SoAEfquhEPFBeHIy/1X7r3mVCELUEMtq0UJ0Pjwjcpc="
+        }
+      ]
+    },
+    {
+      "Route": "css/site.q0nngjf2dd.css",
+      "AssetFile": "/Users/donavanwallis/Documents/Source/OnePlanJourney-dotnet/OnePlanPetJourney/wwwroot/css/site.css",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "48660"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/css"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"SoAEfquhEPFBeHIy/1X7r3mVCELUEMtq0UJ0Pjwjcpc=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Thu, 25 Sep 2025 21:00:08 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -3457,7 +3615,7 @@
       "EndpointProperties": [
         {
           "Name": "fingerprint",
-          "Value": "89abpl8rgl"
+          "Value": "q0nngjf2dd"
         },
         {
           "Name": "label",
@@ -3465,13 +3623,13 @@
         },
         {
           "Name": "integrity",
-          "Value": "sha256-rHV18v4wtA1WinznJb/38Z39AxWBtBx5kAgROAVoHic="
+          "Value": "sha256-SoAEfquhEPFBeHIy/1X7r3mVCELUEMtq0UJ0Pjwjcpc="
         }
       ]
     },
     {
-      "Route": "css/site.89abpl8rgl.css.gz",
-      "AssetFile": "/Users/donavanwallis/Documents/Source/OnePlanJourney-dotnet/OnePlanPetJourney/obj/Debug/net9.0/compressed/m1sqr48z8g-89abpl8rgl.gz",
+      "Route": "css/site.q0nngjf2dd.css.gz",
+      "AssetFile": "/Users/donavanwallis/Documents/Source/OnePlanJourney-dotnet/OnePlanPetJourney/obj/Debug/net9.0/compressed/m1sqr48z8g-q0nngjf2dd.gz",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -3480,7 +3638,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "6218"
+          "Value": "7889"
         },
         {
           "Name": "Content-Type",
@@ -3488,11 +3646,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"QayflBj6L9wq5iCHmvldAjrrQRpS6IdZosCx14de7Vk=\""
+          "Value": "\"fTrEl+/dH24YVikIXllJtvkBys9FYQF+yUxuoAcBERg=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Tue, 23 Sep 2025 05:11:33 GMT"
+          "Value": "Thu, 25 Sep 2025 21:00:08 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -3510,7 +3668,7 @@
       "EndpointProperties": [
         {
           "Name": "fingerprint",
-          "Value": "89abpl8rgl"
+          "Value": "q0nngjf2dd"
         },
         {
           "Name": "label",
@@ -3518,144 +3676,7 @@
         },
         {
           "Name": "integrity",
-          "Value": "sha256-QayflBj6L9wq5iCHmvldAjrrQRpS6IdZosCx14de7Vk="
-        }
-      ]
-    },
-    {
-      "Route": "css/site.css",
-      "AssetFile": "/Users/donavanwallis/Documents/Source/OnePlanJourney-dotnet/OnePlanPetJourney/obj/Debug/net9.0/compressed/m1sqr48z8g-89abpl8rgl.gz",
-      "Selectors": [
-        {
-          "Name": "Content-Encoding",
-          "Value": "gzip",
-          "Quality": "0.000160797556"
-        }
-      ],
-      "ResponseHeaders": [
-        {
-          "Name": "Accept-Ranges",
-          "Value": "bytes"
-        },
-        {
-          "Name": "Content-Length",
-          "Value": "6218"
-        },
-        {
-          "Name": "ETag",
-          "Value": "\"QayflBj6L9wq5iCHmvldAjrrQRpS6IdZosCx14de7Vk=\""
-        },
-        {
-          "Name": "Last-Modified",
-          "Value": "Tue, 23 Sep 2025 05:11:33 GMT"
-        },
-        {
-          "Name": "Cache-Control",
-          "Value": "no-cache"
-        },
-        {
-          "Name": "Content-Encoding",
-          "Value": "gzip"
-        },
-        {
-          "Name": "Vary",
-          "Value": "Content-Encoding"
-        },
-        {
-          "Name": "Content-Type",
-          "Value": "text/css"
-        },
-        {
-          "Name": "ETag",
-          "Value": "W/\"rHV18v4wtA1WinznJb/38Z39AxWBtBx5kAgROAVoHic=\""
-        }
-      ],
-      "EndpointProperties": [
-        {
-          "Name": "integrity",
-          "Value": "sha256-rHV18v4wtA1WinznJb/38Z39AxWBtBx5kAgROAVoHic="
-        }
-      ]
-    },
-    {
-      "Route": "css/site.css",
-      "AssetFile": "/Users/donavanwallis/Documents/Source/OnePlanJourney-dotnet/OnePlanPetJourney/wwwroot/css/site.css",
-      "Selectors": [],
-      "ResponseHeaders": [
-        {
-          "Name": "Accept-Ranges",
-          "Value": "bytes"
-        },
-        {
-          "Name": "Content-Length",
-          "Value": "43482"
-        },
-        {
-          "Name": "Content-Type",
-          "Value": "text/css"
-        },
-        {
-          "Name": "ETag",
-          "Value": "\"rHV18v4wtA1WinznJb/38Z39AxWBtBx5kAgROAVoHic=\""
-        },
-        {
-          "Name": "Last-Modified",
-          "Value": "Tue, 23 Sep 2025 05:11:33 GMT"
-        },
-        {
-          "Name": "Cache-Control",
-          "Value": "no-cache"
-        }
-      ],
-      "EndpointProperties": [
-        {
-          "Name": "integrity",
-          "Value": "sha256-rHV18v4wtA1WinznJb/38Z39AxWBtBx5kAgROAVoHic="
-        }
-      ]
-    },
-    {
-      "Route": "css/site.css.gz",
-      "AssetFile": "/Users/donavanwallis/Documents/Source/OnePlanJourney-dotnet/OnePlanPetJourney/obj/Debug/net9.0/compressed/m1sqr48z8g-89abpl8rgl.gz",
-      "Selectors": [],
-      "ResponseHeaders": [
-        {
-          "Name": "Accept-Ranges",
-          "Value": "bytes"
-        },
-        {
-          "Name": "Content-Length",
-          "Value": "6218"
-        },
-        {
-          "Name": "Content-Type",
-          "Value": "text/css"
-        },
-        {
-          "Name": "ETag",
-          "Value": "\"QayflBj6L9wq5iCHmvldAjrrQRpS6IdZosCx14de7Vk=\""
-        },
-        {
-          "Name": "Last-Modified",
-          "Value": "Tue, 23 Sep 2025 05:11:33 GMT"
-        },
-        {
-          "Name": "Cache-Control",
-          "Value": "no-cache"
-        },
-        {
-          "Name": "Content-Encoding",
-          "Value": "gzip"
-        },
-        {
-          "Name": "Vary",
-          "Value": "Content-Encoding"
-        }
-      ],
-      "EndpointProperties": [
-        {
-          "Name": "integrity",
-          "Value": "sha256-QayflBj6L9wq5iCHmvldAjrrQRpS6IdZosCx14de7Vk="
+          "Value": "sha256-fTrEl+/dH24YVikIXllJtvkBys9FYQF+yUxuoAcBERg="
         }
       ]
     },
@@ -4256,6 +4277,88 @@
       ]
     },
     {
+      "Route": "images/btn-chevron.png",
+      "AssetFile": "/Users/donavanwallis/Documents/Source/OnePlanJourney-dotnet/OnePlanPetJourney/wwwroot/images/btn-chevron.png",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "478"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/png"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"AlnjUAMhtbRBZSrbIW7907Kzdag+2dkhkpD8C4aCQzE=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Wed, 24 Sep 2025 06:18:47 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-AlnjUAMhtbRBZSrbIW7907Kzdag+2dkhkpD8C4aCQzE="
+        }
+      ]
+    },
+    {
+      "Route": "images/btn-chevron.q2qcaknbat.png",
+      "AssetFile": "/Users/donavanwallis/Documents/Source/OnePlanJourney-dotnet/OnePlanPetJourney/wwwroot/images/btn-chevron.png",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "478"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/png"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"AlnjUAMhtbRBZSrbIW7907Kzdag+2dkhkpD8C4aCQzE=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Wed, 24 Sep 2025 06:18:47 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "q2qcaknbat"
+        },
+        {
+          "Name": "label",
+          "Value": "images/btn-chevron.png"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-AlnjUAMhtbRBZSrbIW7907Kzdag+2dkhkpD8C4aCQzE="
+        }
+      ]
+    },
+    {
       "Route": "images/cat-image.emo1w7gxwr.png",
       "AssetFile": "/Users/donavanwallis/Documents/Source/OnePlanJourney-dotnet/OnePlanPetJourney/wwwroot/images/cat-image.png",
       "Selectors": [],
@@ -4666,51 +4769,6 @@
       ]
     },
     {
-      "Route": "images/icon-cat.8jt807jqci.png",
-      "AssetFile": "/Users/donavanwallis/Documents/Source/OnePlanJourney-dotnet/OnePlanPetJourney/wwwroot/images/icon-cat.png",
-      "Selectors": [],
-      "ResponseHeaders": [
-        {
-          "Name": "Accept-Ranges",
-          "Value": "bytes"
-        },
-        {
-          "Name": "Content-Length",
-          "Value": "27774"
-        },
-        {
-          "Name": "Content-Type",
-          "Value": "image/png"
-        },
-        {
-          "Name": "ETag",
-          "Value": "\"hHPVDDRNrmVox29C+Nv6apCv/uDR0kcpv6G5iIx3RN4=\""
-        },
-        {
-          "Name": "Last-Modified",
-          "Value": "Tue, 23 Sep 2025 05:11:33 GMT"
-        },
-        {
-          "Name": "Cache-Control",
-          "Value": "max-age=31536000, immutable"
-        }
-      ],
-      "EndpointProperties": [
-        {
-          "Name": "fingerprint",
-          "Value": "8jt807jqci"
-        },
-        {
-          "Name": "label",
-          "Value": "images/icon-cat.png"
-        },
-        {
-          "Name": "integrity",
-          "Value": "sha256-hHPVDDRNrmVox29C+Nv6apCv/uDR0kcpv6G5iIx3RN4="
-        }
-      ]
-    },
-    {
       "Route": "images/icon-cat.png",
       "AssetFile": "/Users/donavanwallis/Documents/Source/OnePlanJourney-dotnet/OnePlanPetJourney/wwwroot/images/icon-cat.png",
       "Selectors": [],
@@ -4721,7 +4779,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "27774"
+          "Value": "25782"
         },
         {
           "Name": "Content-Type",
@@ -4729,11 +4787,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"hHPVDDRNrmVox29C+Nv6apCv/uDR0kcpv6G5iIx3RN4=\""
+          "Value": "\"CGghrZci8uw14+BYryeRGsmcWDR4iQzEuc6Dghl2JCM=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Tue, 23 Sep 2025 05:11:33 GMT"
+          "Value": "Wed, 24 Sep 2025 13:55:50 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -4743,7 +4801,52 @@
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-hHPVDDRNrmVox29C+Nv6apCv/uDR0kcpv6G5iIx3RN4="
+          "Value": "sha256-CGghrZci8uw14+BYryeRGsmcWDR4iQzEuc6Dghl2JCM="
+        }
+      ]
+    },
+    {
+      "Route": "images/icon-cat.wm5ma64tgi.png",
+      "AssetFile": "/Users/donavanwallis/Documents/Source/OnePlanJourney-dotnet/OnePlanPetJourney/wwwroot/images/icon-cat.png",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "25782"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/png"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"CGghrZci8uw14+BYryeRGsmcWDR4iQzEuc6Dghl2JCM=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Wed, 24 Sep 2025 13:55:50 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "wm5ma64tgi"
+        },
+        {
+          "Name": "label",
+          "Value": "images/icon-cat.png"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-CGghrZci8uw14+BYryeRGsmcWDR4iQzEuc6Dghl2JCM="
         }
       ]
     },
@@ -4912,51 +5015,6 @@
       ]
     },
     {
-      "Route": "images/icon-dog.mn38jamg71.png",
-      "AssetFile": "/Users/donavanwallis/Documents/Source/OnePlanJourney-dotnet/OnePlanPetJourney/wwwroot/images/icon-dog.png",
-      "Selectors": [],
-      "ResponseHeaders": [
-        {
-          "Name": "Accept-Ranges",
-          "Value": "bytes"
-        },
-        {
-          "Name": "Content-Length",
-          "Value": "28698"
-        },
-        {
-          "Name": "Content-Type",
-          "Value": "image/png"
-        },
-        {
-          "Name": "ETag",
-          "Value": "\"gn8hI0pondsZV2i2CsOY+PZNtiA3IhP+C/v05zBiNVM=\""
-        },
-        {
-          "Name": "Last-Modified",
-          "Value": "Tue, 23 Sep 2025 05:11:33 GMT"
-        },
-        {
-          "Name": "Cache-Control",
-          "Value": "max-age=31536000, immutable"
-        }
-      ],
-      "EndpointProperties": [
-        {
-          "Name": "fingerprint",
-          "Value": "mn38jamg71"
-        },
-        {
-          "Name": "label",
-          "Value": "images/icon-dog.png"
-        },
-        {
-          "Name": "integrity",
-          "Value": "sha256-gn8hI0pondsZV2i2CsOY+PZNtiA3IhP+C/v05zBiNVM="
-        }
-      ]
-    },
-    {
       "Route": "images/icon-dog.png",
       "AssetFile": "/Users/donavanwallis/Documents/Source/OnePlanJourney-dotnet/OnePlanPetJourney/wwwroot/images/icon-dog.png",
       "Selectors": [],
@@ -4967,7 +5025,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "28698"
+          "Value": "26862"
         },
         {
           "Name": "Content-Type",
@@ -4975,11 +5033,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"gn8hI0pondsZV2i2CsOY+PZNtiA3IhP+C/v05zBiNVM=\""
+          "Value": "\"0dnyP3lbEj2JI1qErxfpZhm/JSf2IBKiV0syeM2gLpE=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Tue, 23 Sep 2025 05:11:33 GMT"
+          "Value": "Wed, 24 Sep 2025 13:55:50 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -4989,7 +5047,52 @@
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-gn8hI0pondsZV2i2CsOY+PZNtiA3IhP+C/v05zBiNVM="
+          "Value": "sha256-0dnyP3lbEj2JI1qErxfpZhm/JSf2IBKiV0syeM2gLpE="
+        }
+      ]
+    },
+    {
+      "Route": "images/icon-dog.rtoauzcijq.png",
+      "AssetFile": "/Users/donavanwallis/Documents/Source/OnePlanJourney-dotnet/OnePlanPetJourney/wwwroot/images/icon-dog.png",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "26862"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/png"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"0dnyP3lbEj2JI1qErxfpZhm/JSf2IBKiV0syeM2gLpE=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Wed, 24 Sep 2025 13:55:50 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "rtoauzcijq"
+        },
+        {
+          "Name": "label",
+          "Value": "images/icon-dog.png"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-0dnyP3lbEj2JI1qErxfpZhm/JSf2IBKiV0syeM2gLpE="
         }
       ]
     },
@@ -22824,7 +22927,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Tue, 23 Sep 2025 05:11:33 GMT"
+          "Value": "Thu, 25 Sep 2025 21:35:43 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -22885,7 +22988,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Tue, 23 Sep 2025 05:11:33 GMT"
+          "Value": "Thu, 25 Sep 2025 21:35:43 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -22930,7 +23033,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Tue, 23 Sep 2025 05:11:33 GMT"
+          "Value": "Thu, 25 Sep 2025 21:35:43 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -22985,7 +23088,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Tue, 23 Sep 2025 05:11:33 GMT"
+          "Value": "Thu, 25 Sep 2025 21:35:43 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -23046,7 +23149,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Tue, 23 Sep 2025 05:11:33 GMT"
+          "Value": "Thu, 25 Sep 2025 21:35:43 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -23091,7 +23194,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Tue, 23 Sep 2025 05:11:33 GMT"
+          "Value": "Thu, 25 Sep 2025 21:35:43 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -23146,7 +23249,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Tue, 23 Sep 2025 05:11:33 GMT"
+          "Value": "Thu, 25 Sep 2025 21:35:43 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -23199,7 +23302,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Tue, 23 Sep 2025 05:11:33 GMT"
+          "Value": "Thu, 25 Sep 2025 21:35:43 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -23236,7 +23339,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Tue, 23 Sep 2025 05:11:33 GMT"
+          "Value": "Thu, 25 Sep 2025 21:35:43 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -23283,7 +23386,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Tue, 23 Sep 2025 05:11:33 GMT"
+          "Value": "Thu, 25 Sep 2025 21:35:43 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -23336,7 +23439,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Tue, 23 Sep 2025 05:11:33 GMT"
+          "Value": "Thu, 25 Sep 2025 21:35:43 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -23373,7 +23476,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Tue, 23 Sep 2025 05:11:33 GMT"
+          "Value": "Thu, 25 Sep 2025 21:35:43 GMT"
         },
         {
           "Name": "Cache-Control",

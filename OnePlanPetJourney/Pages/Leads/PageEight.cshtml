@@ -1,0 +1,70 @@
+@page
+@model OnePlanPetJourney.Pages.Leads.PageEightModel
+@{
+    ViewData["Title"] = "Banking Details";
+}
+
+<h1>Banking Details</h1>
+
+<form method="post">
+    <div class="form-group">
+        <label>Account Type</label><br />
+        <input type="radio" asp-for="BankingDetails.isPersonal" value="true" /> Personal
+        <input type="radio" asp-for="BankingDetails.isPersonal" value="false" /> Business
+    </div>
+    <div class="form-group">
+        <label>ID Type</label><br />
+        <input type="radio" asp-for="BankingDetails.isPassport" value="false" /> ID
+        <input type="radio" asp-for="BankingDetails.isPassport" value="true" /> Passport
+    </div>
+    <div class="form-group">
+        <label asp-for="BankingDetails.AccountPayersID"></label>
+        <input asp-for="BankingDetails.AccountPayersID" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label asp-for="BankingDetails.AccountHolder"></label>
+        <input asp-for="BankingDetails.AccountHolder" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label asp-for="BankingDetails.AccountNumber"></label>
+        <input asp-for="BankingDetails.AccountNumber" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label asp-for="BankingDetails.BankName"></label>
+        <select asp-for="BankingDetails.BankName" asp-items="Model.BankNames" class="form-control"></select>
+    </div>
+    <div class="form-group">
+        <label asp-for="BankingDetails.BranchCode"></label>
+        <input asp-for="BankingDetails.BranchCode" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label asp-for="BankingDetails.BankAccountType"></label>
+        <select asp-for="BankingDetails.BankAccountType" asp-items="Model.AccountTypes" class="form-control"></select>
+    </div>
+    <div class="form-group">
+        <label asp-for="BankingDetails.DebitDate"></label>
+        <input asp-for="BankingDetails.DebitDate" class="form-control" type="date" />
+    </div>
+    <div class="form-group">
+        <label asp-for="BankingDetails.PolicyStart"></label>
+        <input asp-for="BankingDetails.PolicyStart" class="form-control" type="date" />
+    </div>
+    <div class="form-group">
+        <label asp-for="BankingDetails.SecondStartDate"></label>
+        <input asp-for="BankingDetails.SecondStartDate" class="form-control" type="date" />
+    </div>
+    <div class="form-group">
+        <label asp-for="BankingDetails.HearAboutUs"></label>
+        <select asp-for="BankingDetails.HearAboutUs" asp-items="Model.HearAboutUsOptions" class="form-control"></select>
+    </div>
+    <div class="form-group">
+        <label asp-for="BankingDetails.ConfirmPhoneNumber"></label>
+        <input asp-for="BankingDetails.ConfirmPhoneNumber" class="form-control" />
+    </div>
+    <div class="form-group form-check">
+        <input type="checkbox" asp-for="BankingDetails.ConsentConfirm" class="form-check-input" />
+        <label class="form-check-label" asp-for="BankingDetails.ConsentConfirm">I confirm consent</label>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Submit</button>
+</form>

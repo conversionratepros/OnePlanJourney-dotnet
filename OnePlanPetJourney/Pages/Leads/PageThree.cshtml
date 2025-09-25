@@ -41,9 +41,10 @@
 
         <div class="row">
             <form id="page3Form" method="post">
-                <div asp-validation-summary="ModelOnly" class="alert alert-danger"></div>
-
+                <div asp-validation-summary="All" class="alert alert-danger"></div>
+            
                 <input asp-for="Input.LeadId" type="hidden" />
+                
 
                 <div class="accordion" id="petsAccordion">
                     @for (int i = 0; i < Model.Input.Pets.Count; i++)
@@ -54,7 +55,8 @@
                         var headingId  = $"petHeading_{i}";
                         var showClass  = i == 0 ? "show" : "";
                         var collapsed  = i == 0 ? "" : "collapsed";
-
+                         
+                        
                         <div class="accordion-item mb-3">
                             <h2 class="accordion-header d-flex flex-column align-items-start gap-2" id="@headingId">
 
@@ -79,7 +81,7 @@
                                         data-bs-target="#@collapseId"
                                         aria-expanded="@(i == 0 ? "true" : "false")"
                                         aria-controls="@collapseId">
-                                    @ordinal @(p.IsDog ? "Dog" : "Cat") Details
+                                    @ordinal @(p.IsDog ? "Dog" : "Cat")'s' Details
                                 </button>
                             </h2>
 
@@ -94,7 +96,7 @@
                                     <div class="row g-3">
                                         <div class="col-md-4 mb-3">
                                             <label asp-for="Input.Pets[i].Name" class="form-label">What is your pet's name?</label>
-                                            <input asp-for="Input.Pets[i].Name" class="form-control" placeholder="Name" />
+                                            <input asp-for="Input.Pets[i].Name" data-pet-index="0" class="form-control" placeholder="Name" />
                                             <span asp-validation-for="Input.Pets[i].Name" class="text-danger"></span>
                                         </div>
 
