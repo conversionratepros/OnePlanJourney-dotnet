@@ -1,0 +1,264 @@
+@page "{id:int}"
+@model OnePlanPetJourney.Pages.Leads.PageSevenModel
+
+@{
+    ViewData["Title"] = "Address Details";
+}
+
+@if (TempData["Message"] is string msg)
+{
+    <div class="alert alert-success">@msg</div>
+}
+<!--important note. This page uses two forms. The bottom continue button does not function as the other pages. It is tiggred via js-->
+<div class="row">
+  <div class="col-md-8 offset-md-2 mb-3">
+    <h1>
+        Select how you would like to claim and manage your policy. 
+        <span class="weigt-300"> we let you CHOOSE if you want to be Old School or Tech Savvy!</span>
+    </h1>
+    <p>
+        Old School = you pay and claim back. Payments are made to your bank account. Submit your claims via e-mail or WhatsApp Chat. No Oneplan Claim Card Fee will be charged. Oneplan App Optional.
+    </p>
+    Tech Savvy = you can preload your day-to-day healthcare claims and get refunds quicker to your Oneplan Claim Card. Utilise the Oneplan App to manage your policy and Pet Wellness Tracker, and process claims. A once-off Oneplan Claim Card and Administration Fee of R160 will be deducted with your first month’s premium and your Oneplan Claim Card will be couriered to your door.
+    <p>
+
+    </p>
+  </div>
+</div>
+
+ <div class="col-md-8 offset-md-2">
+<div class="btn-group mb-3" role="group" aria-label="Address mode">
+  <button type="button" id="btnOld"  class="btn btn-outline-primary">Old School</button>
+  <button type="button" id="btnTech" class="btn btn-outline-primary">Savvy</button>
+</div>
+</div>
+
+ <div class="col-md-8 offset-md-2">
+
+        <!-- OLD SCHOOL: Physical only -->
+             <form method="post" id="form-old" class="d-none" novalidate>
+                @Html.AntiForgeryToken()
+                <input type="hidden" name="Mode" value="old" />
+                  <input asp-for="AddressInput.leadId" type="hidden" value="@Model.LeadId" />
+    <div class="card frame">
+        <div class="card-body">
+                <h3 class="mt-2">Physical Address</h3>
+                <div class="row">
+                    <div class="mb-3 col-md-6">
+                        <label>Address 1:*</label>
+                        <input asp-for="AddressInput.PhysicalAddressLineOne" class="form-control" />
+                        <span asp-validation-for="AddressInput.PhysicalAddressLineOne" class="text-danger"></span>
+                    </div>
+                    <div class="mb-3 col-md-6">
+                         <label>Address 2:*</label>
+                        <input asp-for="AddressInput.PhysicalAddressLineTwo" class="form-control" />
+                        <span asp-validation-for="AddressInput.PhysicalAddressLineTwo" class="text-danger"></span>
+                    </div>
+                    <div class="mb-3 col-md-6">
+                         <label>City:*</label>
+                        <input asp-for="AddressInput.PhysicalCity" class="form-control" />
+                        <span asp-validation-for="AddressInput.PhysicalCity" class="text-danger"></span>
+                    </div>
+                    <div class="mb-3 col-md-6">
+                         <label>Postal code:*</label>
+                        <input asp-for="AddressInput.PhysicalPostalCode" class="form-control" />
+                        <span asp-validation-for="AddressInput.PhysicalPostalCode" class="text-danger"></span>
+                    </div>
+                </div>
+                <button type="submit" class="btn btn-primary">Save</button>
+            </div>
+            </div>
+                </form>
+ 
+                <!-- TECH SAVVY: Delivery + Physical -->
+                <form method="post" id="form-tech" class="d-none" novalidate>
+                        <div class="card frame">
+        <div class="card-body">
+                @Html.AntiForgeryToken()
+                <input type="hidden" name="Mode" value="tech" />
+                <input asp-for="AddressInput.leadId" type="hidden" value="@Model.LeadId" />
+                <h3 class="mt-3">Physical Address</h3>
+                <div class="row">
+                <div class="mb-3 col-md-6">
+                     <label>Address</label>
+                    <input asp-for="AddressInput.PhysicalAddressLineOne" class="form-control" />
+                    <span asp-validation-for="AddressInput.PhysicalAddressLineOne" class="text-danger"></span>
+                </div>
+                <div class="mb-3 col-md-6">
+                     <label>Address</label>
+                    <input asp-for="AddressInput.PhysicalAddressLineTwo" class="form-control" />
+                    <span asp-validation-for="AddressInput.PhysicalAddressLineTwo" class="text-danger"></span>
+                </div>
+                <div class="mb-3 col-md-6">
+                     <label>Address</label>
+                    <input asp-for="AddressInput.PhysicalCity" class="form-control" />
+                    <span asp-validation-for="AddressInput.PhysicalCity" class="text-danger"></span>
+                </div>
+                <div class="mb-3 col-md-6">
+                    <label>Address</label>
+                    <input asp-for="AddressInput.PhysicalPostalCode" class="form-control" />
+                    <span asp-validation-for="AddressInput.PhysicalPostalCode" class="text-danger"></span>
+                </div>
+                </div>
+                </div>
+                </div>
+             <div class="card frame">
+                      <div class="card-body">
+                <h3 class="mt-2">Delivery Address</h3>
+                <div class="row">
+                <div class="mb-3 col-md-6">
+                     <label>Address</label>
+                    <input asp-for="AddressInput.DeliveryAddressLineOne" class="form-control" />
+                    <span asp-validation-for="AddressInput.DeliveryAddressLineOne" class="text-danger"></span>
+                </div>
+                <div class="mb-3 col-md-6">
+                     <label>Address</label>
+                    <input asp-for="AddressInput.DeliveryAddressLineTwo" class="form-control" />
+                    <span asp-validation-for="AddressInput.DeliveryAddressLineTwo" class="text-danger"></span>
+                </div>
+                <div class="mb-3 col-md-6">
+                     <label>Address</label>
+                    <input asp-for="AddressInput.DeliveryCity" class="form-control" />
+                    <span asp-validation-for="AddressInput.DeliveryCity" class="text-danger"></span>
+                </div>
+                <div class="mb-3 col-md-6">
+                    <label>Address</label>
+                    <input asp-for="AddressInput.DeliveryPostalCode" class="form-control" />
+                    <span asp-validation-for="AddressInput.DeliveryPostalCode" class="text-danger"></span>
+                </div>
+                </div>
+                
+                <button type="submit" class="btn btn-primary">Save</button>
+                </div>
+                </div>
+                </div>
+
+            </form>
+      
+</div>
+<!-- Navigation bar (Call me / Previous / Continue) -->
+<div class="row">
+  <div class="col-md-8 offset-md-2">
+    <div class="navigation-container">
+      <div class="row">
+        <div id="divCallMe" class="col-sm-12 col-md-6 mb-4">
+          <button id="btnCallMePopUp"
+                  type="button"
+                  class="btn btn-block btn-nav-call-me btn-nav btn-nav-properties"
+                  data-bs-toggle="modal"
+                  data-bs-target="#CallMePopUp">
+            <span><img src="~/images/icon-call-me.png" alt=""></span>&nbsp;&nbsp;Call me rather&nbsp;&nbsp;
+          </button>
+        </div>
+
+        <div id="divPrevious" class="col-sm-12 col-md-3 mb-4">
+          <button id="btnPrevious"
+                  type="button"
+                  class="btn btn-block btn-nav-previous btn-nav btn-nav-properties"
+                  onclick="PrevStepSeven()">
+            <span><img src="~/images/icon-chev-left.png" alt=""></span>&nbsp;&nbsp;Previous&nbsp;&nbsp;
+          </button>
+        </div>
+
+        <div id="divContinue" class="col-sm-12 col-md-3 mb-4">
+          <!-- Continue submits whichever form is visible -->
+          <button id="btnContinue"
+                  type="button"
+                  class="btn btn-block btn-nav-continue btn-nav btn-nav-properties"
+                  onclick="submitVisibleForm()">
+            &nbsp;&nbsp;Continue&nbsp;&nbsp;<span><img src="~/images/icon-chev-right.png" alt=""></span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+@section Scripts {
+<script>
+  // util: enable/disable all fields in a form (so hidden form doesn't post)
+  function setFormEnabled(form, enable) {
+    if (!form) return;
+    form.querySelectorAll('input, select, textarea, button').forEach(function(el){
+      if (el.type === 'hidden') return; // keep hidden values (leadId, Mode)
+      el.disabled = !enable;
+    });
+  }
+
+  // default: nothing shown, nothing selected
+  const btnOld = document.getElementById('btnOld');
+  const btnTech = document.getElementById('btnTech');
+  const formOld = document.getElementById('form-old');
+  const formTech = document.getElementById('form-tech');
+
+  function selectMode(mode) {
+    if (mode === 'old') {
+      btnOld.classList.add('active');
+      btnTech.classList.remove('active');
+
+      formOld.classList.remove('d-none');
+      formTech.classList.add('d-none');
+
+      setFormEnabled(formOld, true);
+      setFormEnabled(formTech, false);
+    } else if (mode === 'tech') {
+      btnTech.classList.add('active');
+      btnOld.classList.remove('active');
+
+      formTech.classList.remove('d-none');
+      formOld.classList.add('d-none');
+
+      setFormEnabled(formTech, true);
+      setFormEnabled(formOld, false);
+    }
+  }
+
+  btnOld.addEventListener('click', function (e) {
+    e.preventDefault();
+    selectMode('old');
+  });
+
+  btnTech.addEventListener('click', function (e) {
+    e.preventDefault();
+    selectMode('tech');
+  });
+
+  // initial state: both hidden & disabled
+  setFormEnabled(formOld, false);
+  setFormEnabled(formTech, false);
+</script>
+
+<script>
+  // Go back to Page Six with same id
+  function PrevStepSeven() {
+    const id = '@Model.LeadId';
+    window.location.href = '@Url.Page("/Leads/PageSix")' + '/' + id;
+  }
+
+  // Submit whichever form is currently shown
+  function submitVisibleForm() {
+    const oldForm  = document.getElementById('form-old');
+    const techForm = document.getElementById('form-tech');
+
+    if (oldForm && !oldForm.classList.contains('d-none')) {
+      oldForm.requestSubmit ? oldForm.requestSubmit() : oldForm.submit();
+      return;
+    }
+    if (techForm && !techForm.classList.contains('d-none')) {
+      techForm.requestSubmit ? techForm.requestSubmit() : techForm.submit();
+      return;
+    }
+
+    // If nothing selected yet, give a gentle nudge
+    const btnOld  = document.getElementById('btnOld');
+    const btnTech = document.getElementById('btnTech');
+    btnOld.classList.add('btn-primary');
+    btnTech.classList.add('btn-primary');
+    // optional: alert('Please choose Old School or Savvy first.');
+  }
+</script>
+
+
+<partial name="_ValidationScriptsPartial" />
+}
