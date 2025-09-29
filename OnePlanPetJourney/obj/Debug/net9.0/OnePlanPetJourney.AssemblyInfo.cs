@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("OnePlanPetJourney")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+31ec78fd8ba4bf0a4b3760f259cbdc02b07c78fd")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+e58626d9e3039cd95647c8dd95ebb0fc832883df")]
 [assembly: System.Reflection.AssemblyProductAttribute("OnePlanPetJourney")]
 [assembly: System.Reflection.AssemblyTitleAttribute("OnePlanPetJourney")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

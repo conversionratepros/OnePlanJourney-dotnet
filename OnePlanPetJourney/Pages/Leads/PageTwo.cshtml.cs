@@ -75,7 +75,7 @@ namespace OnePlanPetJourney.Pages.Leads
 
             await _db.SaveChangesAsync();
 
-            TempData["Message"] = "Lead details updated successfully.";
+            //TempData["Message"] = "Lead details updated successfully.";
 
             // keep using your MVC step for now:
             return RedirectToPage("PageThree", new { id = lead.Id });

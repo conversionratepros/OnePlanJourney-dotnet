@@ -1,9 +1,9 @@
 @page "{id:int}"
-@model OnePlanPetJourney.Pages.Leads.PageSevenModel
+@model OnePlanPetJourney.Pages.Leads.PageSixModel
 
 @{
-    ViewData["Title"] = "Page Seven - Address Details";
-    ViewData["CurrentStep"] = 7;
+    ViewData["Title"] = "Page Six - Address Details";
+    ViewData["CurrentStep"] = 6;
 }
 
 @if (TempData["Message"] is string msg)
@@ -12,250 +12,322 @@
 }
 
 <div class="row">
-  <div class="col-md-8 offset-md-2 mb-3">
-    <h1>Where should we send things?</h1>
-  </div>
+    <div class="col-md-8 offset-md-2 mb-3">
+        <h1 class="mb-5">
+            Select how you would like to claim and manage your policy.<br />
+            <span class="weigt-300">Yes, we let you CHOOSE if you want to be Old School or Tech Savvy!</span>
+        </h1>
+        <p>
+            <strong>Old School</strong> = you pay and claim back. Payments are made to your bank account.
+            Submit your claims via e-mail or WhatsApp Chat. No Oneplan Claim Card Fee will be charged.
+            Oneplan App Optional.
+        </p>
+        <p>
+            <strong>Tech Savvy</strong> = you can preload your day-to-day healthcare claims and get refunds quicker to your Oneplan Claim Card.
+            Utilise the Oneplan App to manage your policy and Pet Wellness Tracker, and process claims.
+            A once-off Oneplan Claim Card and Administration Fee of R160 will be deducted with your first month’s premium and your Oneplan Claim Card will be couriered to your door.
+        </p>
+    </div>
 </div>
 
 <div class="row">
-  <div class="col-md-8 offset-md-2">
-    <div class="card frame">
-      <div class="card-body">
-        <div class="row row-cols-1 row-cols-md-2">
-          <h2>Address Details</h2>
-        </div>
-
+    <div class="col-md-8 offset-md-2 delivery-details">
         <div class="row">
-          <!-- Toggle buttons (no form selected by default) -->
-          <div class="mb-3">
-            <div class="btn-group" role="group" aria-label="Address mode">
-              <button type="button" id="btnOld"  class="btn btn-outline-primary">Old School</button>
-              <button type="button" id="btnTech" class="btn btn-outline-primary">Savvy</button>
+            <!-- Mode toggle -->
+            <div class="mb-3">
+                <div class="btn-group" role="group" aria-label="Address mode">
+                    <button type="button" id="btnOld" class="btn btn-outline-primary">Old School</button>
+                    <button type="button" id="btnTech" class="btn btn-outline-primary">Tech Savvy</button>
+                </div>
             </div>
-          </div>
 
-          <!-- OLD SCHOOL: Physical only -->
-          <form method="post" id="form-old" class="d-none" novalidate>
-            @Html.AntiForgeryToken()
-            <input type="hidden" name="Mode" value="old" />
-            <input asp-for="AddressInput.leadId" type="hidden" value="@Model.LeadId" />
+            <!-- OLD SCHOOL: Physical only -->
+            <form method="post" id="form-old" class="d-none" novalidate asp-route-id="@Model.LeadId">
+                <div class="card frame">
+                    <div class="card-body">
+                        @Html.AntiForgeryToken()
+                        <input type="hidden" name="Mode" value="old" />
+                        <input asp-for="AddressInput.leadId" type="hidden" value="@Model.LeadId" />
 
-            <div class="row g-3">
-              <div class="col-12">
-                <h3 class="mt-2">Physical Address</h3>
-              </div>
+                        <div class="row g-3">
+                            <div class="col-12">
+                                <h2>Physical Address</h2>
+                            </div>
 
-              <div class="col-md-6">
-                <label asp-for="AddressInput.PhysicalAddressLineOne" class="form-label"></label>
-                <input asp-for="AddressInput.PhysicalAddressLineOne" class="form-control" />
-                <span asp-validation-for="AddressInput.PhysicalAddressLineOne" class="text-danger"></span>
-              </div>
+                            <div class="col-md-6">
+                                <label>Address 1:*</label>
+                                <input asp-for="AddressInput.PhysicalAddressLineOne" class="form-control" />
+                                <span asp-validation-for="AddressInput.PhysicalAddressLineOne" class="text-danger"></span>
+                            </div>
 
-              <div class="col-md-6">
-                <label asp-for="AddressInput.PhysicalAddressLineTwo" class="form-label"></label>
-                <input asp-for="AddressInput.PhysicalAddressLineTwo" class="form-control" />
-                <span asp-validation-for="AddressInput.PhysicalAddressLineTwo" class="text-danger"></span>
-              </div>
+                            <div class="col-md-6">
+                                <label>Address 2:</label>
+                                <input asp-for="AddressInput.PhysicalAddressLineTwo" class="form-control" />
+                                <span asp-validation-for="AddressInput.PhysicalAddressLineTwo" class="text-danger"></span>
+                            </div>
 
-              <div class="col-md-6">
-                <label asp-for="AddressInput.PhysicalCity" class="form-label"></label>
-                <input asp-for="AddressInput.PhysicalCity" class="form-control" />
-                <span asp-validation-for="AddressInput.PhysicalCity" class="text-danger"></span>
-              </div>
+                            <div class="col-md-6">
+                                <label>City:*</label>
+                                <input asp-for="AddressInput.PhysicalCity" class="form-control" />
+                                <span asp-validation-for="AddressInput.PhysicalCity" class="text-danger"></span>
+                            </div>
 
-              <div class="col-md-6">
-                <label asp-for="AddressInput.PhysicalPostalCode" class="form-label"></label>
-                <input asp-for="AddressInput.PhysicalPostalCode" class="form-control" />
-                <span asp-validation-for="AddressInput.PhysicalPostalCode" class="text-danger"></span>
-              </div>
+                            <div class="col-md-6">
+                                <label>Postal code:*</label>
+                                <input asp-for="AddressInput.PhysicalPostalCode" class="form-control" />
+                                <span asp-validation-for="AddressInput.PhysicalPostalCode" class="text-danger"></span>
+                            </div>
 
-              <!-- Keep per-form submit for parity; hide visually (global Continue will submit visible form) -->
-              <div class="col-12 d-none">
-                <button type="submit" class="btn btn-primary">Save</button>
-              </div>
-            </div>
-          </form>
+                            <!-- Hidden submit; global Continue triggers the visible form -->
+                            <div class="col-12 d-none">
+                                <button type="submit" class="btn btn-primary">Save</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
 
-          <!-- TECH SAVVY: Delivery + Physical -->
-          <form method="post" id="form-tech" class="d-none" novalidate>
-            @Html.AntiForgeryToken()
-            <input type="hidden" name="Mode" value="tech" />
-            <input asp-for="AddressInput.leadId" type="hidden" value="@Model.LeadId" />
+            <!-- TECH SAVVY: Physical + Delivery -->
+            <form method="post" id="form-tech" class="d-none" novalidate asp-route-id="@Model.LeadId">
+                @Html.AntiForgeryToken()
+                <input type="hidden" name="Mode" value="tech" />
+                <input asp-for="AddressInput.leadId" type="hidden" value="@Model.LeadId" />
 
-            <div class="row g-3">
-              <div class="col-12">
-                <h3 class="mt-2">Delivery Address</h3>
-              </div>
+                <div class="card frame">
+                    <div class="card-body">
+                        <div class="row g-3">
+                            <div class="col-12">
+                                <h2 class="mt-2">Physical Address</h2>
+                            </div>
 
-              <div class="col-md-6">
-                <label asp-for="AddressInput.DeliveryAddressLineOne" class="form-label"></label>
-                <input asp-for="AddressInput.DeliveryAddressLineOne" class="form-control" />
-                <span asp-validation-for="AddressInput.DeliveryAddressLineOne" class="text-danger"></span>
-              </div>
+                            <div class="col-md-6">
+                                <label>Address 1:*</label>
+                                <input asp-for="AddressInput.PhysicalAddressLineOne" class="form-control js-phys" data-map="DeliveryAddressLineOne" />
+                                <span asp-validation-for="AddressInput.PhysicalAddressLineOne" class="text-danger"></span>
+                            </div>
 
-              <div class="col-md-6">
-                <label asp-for="AddressInput.DeliveryAddressLineTwo" class="form-label"></label>
-                <input asp-for="AddressInput.DeliveryAddressLineTwo" class="form-control" />
-                <span asp-validation-for="AddressInput.DeliveryAddressLineTwo" class="text-danger"></span>
-              </div>
+                            <div class="col-md-6">
+                                <label>Address 2:</label>
+                                <input asp-for="AddressInput.PhysicalAddressLineTwo" class="form-control js-phys" data-map="DeliveryAddressLineTwo" />
+                                <span asp-validation-for="AddressInput.PhysicalAddressLineTwo" class="text-danger"></span>
+                            </div>
 
-              <div class="col-md-6">
-                <label asp-for="AddressInput.DeliveryCity" class="form-label"></label>
-                <input asp-for="AddressInput.DeliveryCity" class="form-control" />
-                <span asp-validation-for="AddressInput.DeliveryCity" class="text-danger"></span>
-              </div>
+                            <div class="col-md-6">
+                                <label>City:*</label>
+                                <input asp-for="AddressInput.PhysicalCity" class="form-control js-phys" data-map="DeliveryCity" />
+                                <span asp-validation-for="AddressInput.PhysicalCity" class="text-danger"></span>
+                            </div>
 
-              <div class="col-md-6">
-                <label asp-for="AddressInput.DeliveryPostalCode" class="form-label"></label>
-                <input asp-for="AddressInput.DeliveryPostalCode" class="form-control" />
-                <span asp-validation-for="AddressInput.DeliveryPostalCode" class="text-danger"></span>
-              </div>
+                            <div class="col-md-6">
+                                <label>Postal code:*</label>
+                                <input asp-for="AddressInput.PhysicalPostalCode" class="form-control js-phys" data-map="DeliveryPostalCode" />
+                                <span asp-validation-for="AddressInput.PhysicalPostalCode" class="text-danger"></span>
+                            </div>
 
-              <div class="col-12">
-                <h3 class="mt-2">Physical Address</h3>
-              </div>
+                            <!-- NEW: Same-as-physical checkbox -->
+                            <div class="col-12 mt-2">
+                                <div class="form-check">
+                                    <input type="checkbox" class="form-check-input" id="chkSameAsPhysical" />
+                                    <label class="form-check-label" for="chkSameAsPhysical">
+                                        Delivery address is the same as physical address
+                                    </label>
+                                </div>
+                            </div>
 
-              <div class="col-md-6">
-                <label asp-for="AddressInput.PhysicalAddressLineOne" class="form-label"></label>
-                <input asp-for="AddressInput.PhysicalAddressLineOne" class="form-control" />
-                <span asp-validation-for="AddressInput.PhysicalAddressLineOne" class="text-danger"></span>
-              </div>
+                            <!-- Hidden plain submit (global Continue handles submission) -->
+                            <div class="col-12 d-none">
+                                <button type="submit" class="btn btn-primary">Save</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
 
-              <div class="col-md-6">
-                <label asp-for="AddressInput.PhysicalAddressLineTwo" class="form-label"></label>
-                <input asp-for="AddressInput.PhysicalAddressLineTwo" class="form-control" />
-                <span asp-validation-for="AddressInput.PhysicalAddressLineTwo" class="text-danger"></span>
-              </div>
+                <div class="card frame">
+                    <div class="card-body">
+                        <div class="row g-3">
+                            <div class="col-12">
+                                <h2 class="mt-2">Oneplan Card Delivery Address</h2>
+                            </div>
 
-              <div class="col-md-6">
-                <label asp-for="AddressInput.PhysicalCity" class="form-label"></label>
-                <input asp-for="AddressInput.PhysicalCity" class="form-control" />
-                <span asp-validation-for="AddressInput.PhysicalCity" class="text-danger"></span>
-              </div>
+                            <div class="col-md-6">
+                                <label>Address 1:*</label>
+                                <input asp-for="AddressInput.DeliveryAddressLineOne" class="form-control js-delivery" />
+                                <span asp-validation-for="AddressInput.DeliveryAddressLineOne" class="text-danger"></span>
+                            </div>
 
-              <div class="col-md-6">
-                <label asp-for="AddressInput.PhysicalPostalCode" class="form-label"></label>
-                <input asp-for="AddressInput.PhysicalPostalCode" class="form-control" />
-                <span asp-validation-for="AddressInput.PhysicalPostalCode" class="text-danger"></span>
-              </div>
+                            <div class="col-md-6">
+                                <label>Address 2:</label>
+                                <input asp-for="AddressInput.DeliveryAddressLineTwo" class="form-control js-delivery" />
+                                <span asp-validation-for="AddressInput.DeliveryAddressLineTwo" class="text-danger"></span>
+                            </div>
 
-              <!-- Keep per-form submit; hidden (global Continue handles submission) -->
-              <div class="col-12 d-none">
-                <button type="submit" class="btn btn-primary">Save</button>
-              </div>
-            </div>
-          </form>
+                            <div class="col-md-6">
+                                <label>City:*</label>
+                                <input asp-for="AddressInput.DeliveryCity" class="form-control js-delivery" />
+                                <span asp-validation-for="AddressInput.DeliveryCity" class="text-danger"></span>
+                            </div>
+
+                            <div class="col-md-6">
+                                <label>Postal code:*</label>
+                                <input asp-for="AddressInput.DeliveryPostalCode" class="form-control js-delivery" />
+                                <span asp-validation-for="AddressInput.DeliveryPostalCode" class="text-danger"></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+
         </div>
-
-      </div>
     </div>
-  </div>
 </div>
 
 <!-- Navigation bar (Call me / Previous / Continue) -->
-<div class="row">
-  <div class="col-md-8 offset-md-2">
-    <div class="navigation-container">
-      <div class="row">
-        <div id="divCallMe" class="col-sm-12 col-md-6 mb-4">
-          <button id="btnCallMePopUp"
-                  type="button"
-                  class="btn btn-block btn-nav-call-me btn-nav btn-nav-properties"
-                  data-bs-toggle="modal"
-                  data-bs-target="#CallMePopUp">
-            <span><img src="~/images/icon-call-me.png" alt=""></span>&nbsp;&nbsp;Call me rather&nbsp;&nbsp;
-          </button>
-        </div>
+<div class="row mt-4">
+    <div class="col-md-8 offset-md-2">
+        <div class="navigation-container">
+            <div class="row">
+                <div id="divCallMe" class="col-sm-12 col-md-6 mb-4">
+                    <button id="btnCallMePopUp"
+                            type="button"
+                            class="btn btn-block btn-nav-call-me btn-nav btn-nav-properties"
+                            data-bs-toggle="modal"
+                            data-bs-target="#CallMePopUp">
+                        <span><img src="~/images/icon-call-me.png" alt=""></span>&nbsp;&nbsp;Call me rather&nbsp;&nbsp;
+                    </button>
+                </div>
 
-        <div id="divPrevious" class="col-sm-12 col-md-3 mb-4">
-          <button id="btnPrevious"
-                  type="button"
-                  class="btn btn-block btn-nav-previous btn-nav btn-nav-properties"
-                  onclick="PrevStepSeven()">
-            <span><img src="~/images/icon-chev-left.png" alt=""></span>&nbsp;&nbsp;Previous&nbsp;&nbsp;
-          </button>
-        </div>
+                <div id="divPrevious" class="col-sm-12 col-md-3 mb-4">
+                    <button id="btnPrevious"
+                            type="button"
+                            class="btn btn-block btn-nav-previous btn-nav btn-nav-properties"
+                            onclick="PrevStepSix()">
+                        <span><img src="~/images/icon-chev-left.png" alt=""></span>&nbsp;&nbsp;Previous&nbsp;&nbsp;
+                    </button>
+                </div>
 
-        <div id="divContinue" class="col-sm-12 col-md-3 mb-4">
-          <!-- Global continue submits whichever form is visible -->
-          <button id="btnContinue"
-                  type="button"
-                  class="btn btn-block btn-nav-continue btn-nav btn-nav-properties"
-                  onclick="submitVisibleForm()">
-            &nbsp;&nbsp;Continue&nbsp;&nbsp;<span><img src="~/images/icon-chev-right.png" alt=""></span>
-          </button>
+                <div id="divContinue" class="col-sm-12 col-md-3 mb-4">
+                    <button id="btnContinue"
+                            type="button"
+                            class="btn btn-block btn-nav-continue btn-nav btn-nav-properties"
+                            onclick="submitVisibleForm()">
+                        &nbsp;&nbsp;Continue&nbsp;&nbsp;<span><img src="~/images/icon-chev-right.png" alt=""></span>
+                    </button>
+                </div>
+            </div>
         </div>
-      </div>
     </div>
-  </div>
 </div>
 
 @section Scripts {
 <script>
-  // route back to Page Six with same id
-  function PrevStepSeven() {
-    const id = '@Model.LeadId';
-    window.location.href = '@Url.Page("/Leads/PageSix")' + '/' + id;
-  }
-
-  // Enable/disable all fields in a form (hidden forms shouldn't post)
-  function setFormEnabled(form, enable) {
-    if (!form) return;
-    form.querySelectorAll('input, select, textarea, button').forEach(function(el){
-      if (el.type === 'hidden') return; // keep hidden (leadId, Mode, antiforgery)
-      el.disabled = !enable;
-    });
-  }
-
-  // Toggle behavior (default: nothing shown)
-  const btnOld  = document.getElementById('btnOld');
-  const btnTech = document.getElementById('btnTech');
-  const formOld = document.getElementById('form-old');
-  const formTech= document.getElementById('form-tech');
-
-  function selectMode(mode) {
-    if (mode === 'old') {
-      btnOld.classList.add('active');
-      btnTech.classList.remove('active');
-      formOld.classList.remove('d-none');
-      formTech.classList.add('d-none');
-      setFormEnabled(formOld, true);
-      setFormEnabled(formTech, false);
-    } else if (mode === 'tech') {
-      btnTech.classList.add('active');
-      btnOld.classList.remove('active');
-      formTech.classList.remove('d-none');
-      formOld.classList.add('d-none');
-      setFormEnabled(formTech, true);
-      setFormEnabled(formOld, false);
+    // Go back to Page Five with same id
+    function PrevStepSix() {
+        const id = '@Model.LeadId';
+        window.location.href = '@Url.Page("/Leads/PageFive")' + '/' + id;
     }
-  }
 
-  btnOld.addEventListener('click', function (e) {
-    e.preventDefault();
-    selectMode('old');
-  });
-  btnTech.addEventListener('click', function (e) {
-    e.preventDefault();
-    selectMode('tech');
-  });
-
-  // Continue submits whichever form is visible
-  function submitVisibleForm() {
-    if (!formOld.classList.contains('d-none')) {
-      formOld.requestSubmit ? formOld.requestSubmit() : formOld.submit();
-    } else if (!formTech.classList.contains('d-none')) {
-      formTech.requestSubmit ? formTech.requestSubmit() : formTech.submit();
-    } else {
-      // no mode selected yet: nudge the user
-      btnOld.classList.add('btn-primary');
-      btnTech.classList.add('btn-primary');
+    // Enable/disable all fields in a form (hidden forms shouldn't post)
+    function setFormEnabled(form, enable) {
+        if (!form) return;
+        form.querySelectorAll('input, select, textarea, button').forEach(function (el) {
+            if (el.type === 'hidden') return; // keep hidden (leadId, Mode, antiforgery)
+            el.disabled = !enable;
+        });
     }
-  }
 
-  // initial state: both hidden & disabled
-  setFormEnabled(formOld, false);
-  setFormEnabled(formTech, false);
+    const btnOld  = document.getElementById('btnOld');
+    const btnTech = document.getElementById('btnTech');
+    const formOld = document.getElementById('form-old');
+    const formTech= document.getElementById('form-tech');
+
+    function selectMode(mode) {
+        if (mode === 'old') {
+            btnOld.classList.add('active');
+            btnTech.classList.remove('active');
+            formOld.classList.remove('d-none');
+            formTech.classList.add('d-none');
+            setFormEnabled(formOld, true);
+            setFormEnabled(formTech, false);
+        } else if (mode === 'tech') {
+            btnTech.classList.add('active');
+            btnOld.classList.remove('active');
+            formTech.classList.remove('d-none');
+            formOld.classList.add('d-none');
+            setFormEnabled(formTech, true);
+            setFormEnabled(formOld, false);
+        }
+    }
+
+    btnOld.addEventListener('click', function (e) { e.preventDefault(); selectMode('old'); });
+    btnTech.addEventListener('click', function (e) { e.preventDefault(); selectMode('tech'); });
+
+    // Continue submits whichever form is currently visible
+    function submitVisibleForm() {
+        if (!formOld.classList.contains('d-none')) {
+            formOld.requestSubmit ? formOld.requestSubmit() : formOld.submit();
+        } else if (!formTech.classList.contains('d-none')) {
+            formTech.requestSubmit ? formTech.requestSubmit() : formTech.submit();
+        } else {
+            // no mode selected yet: nudge the user visually
+            btnOld.classList.add('btn-primary');
+            btnTech.classList.add('btn-primary');
+        }
+    }
+
+    // ---- Same-as-physical logic (Tech Savvy form) ----
+    (function () {
+        const chk = document.getElementById('chkSameAsPhysical');
+        const techForm = document.getElementById('form-tech');
+
+        if (!techForm) return;
+
+        // Map physical -> delivery using the data-map attribute on phys fields
+        function syncDeliveryFromPhysical() {
+            const physFields = techForm.querySelectorAll('.js-phys');
+            physFields.forEach(function (pf) {
+                const map = pf.getAttribute('data-map');
+                if (!map) return;
+                const del = techForm.querySelector('input[name="AddressInput.' + map + '"]');
+                if (del) del.value = pf.value;
+            });
+        }
+
+        function setDeliveryDisabled(disabled) {
+            techForm.querySelectorAll('.js-delivery').forEach(function (el) {
+                el.readOnly = disabled; // keep values posted but lock input
+                el.classList.toggle('bg-light', disabled);
+            });
+        }
+
+        function bindPhysListeners(active) {
+            const physFields = techForm.querySelectorAll('.js-phys');
+            physFields.forEach(function (pf) {
+                pf.removeEventListener('input', onPhysInput);
+                if (active) pf.addEventListener('input', onPhysInput);
+            });
+        }
+
+        function onPhysInput() {
+            if (chk && chk.checked) syncDeliveryFromPhysical();
+        }
+
+        if (chk) {
+            chk.addEventListener('change', function () {
+                if (chk.checked) {
+                    syncDeliveryFromPhysical();
+                    setDeliveryDisabled(true);
+                    bindPhysListeners(true);
+                } else {
+                    setDeliveryDisabled(false);
+                    bindPhysListeners(false);
+                }
+            });
+        }
+    })();
+
+    // initial state: both hidden & disabled
+    setFormEnabled(formOld, false);
+    setFormEnabled(formTech, false);
 </script>
 
 <partial name="_ValidationScriptsPartial" />

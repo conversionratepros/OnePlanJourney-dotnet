@@ -6,7 +6,22 @@
     ViewData["CurrentStep"] = 1;  
 }
 
-<!--current step sets the wizard bar step-->
+<!-- promo alerts on page one users values below to populate widget. widget in sesionalert.cshtml-->
+<div class="sessionAlertContainer">
+    <partial name="_SessionAlert"
+    view-data='new ViewDataDictionary(ViewData) {
+    { "Heading", "Sign up online and Save 30%..." },
+    { "Message", "" },
+    { "DismissKey", "a" }
+    }' />
+
+    <partial name="_SessionAlert"
+    view-data='new ViewDataDictionary(ViewData) {
+    { "Heading", "Up to 25% off on  pet food & supplies" },
+    { "Message", "" },
+    { "DismissKey", "b" }
+    }' />
+</div>
 
 
 @if (TempData["Message"] is string msg)
@@ -22,6 +37,9 @@
             </h1>
     </div>
 </div>
+
+
+         
 <form id="leadForm" method="post">
     @Html.AntiForgeryToken()
     <div asp-validation-summary="ModelOnly" class="alert alert-danger"></div>
@@ -91,6 +109,38 @@
             </div>
         </div>
     </div>
+    <div class="row">
+        <div class=" col-md-8 offset-md-2 mb-3 food-calculator">
+          
+
+            <div class="card frame">
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-12 text-center mb-3">
+                         <h3>You can save your premium costs in pet food</h3>
+                         <p>Enter how much you spend on dog food and we will let you know how much you will save when signing up to Oneplan and purchasing through the Onepet Store!</p>
+                         <div class="row">
+                            <div class="col-md-4 offset-md-4 text-center mb-3">
+                                <input type="number" id="foodTotalSpend" class="form-control" placeholder="Enter amount" min="0" step="0.01">
+                            </div>
+                         </div>
+                         
+
+                          </div>
+                          <div class="col-md-12 text-center mb-3">
+                            <div class="savings-circle">
+                                <div class="savings-label">You can save</div>
+                                <div class="savings-amount">
+                                R <span id="savingsAmount">0.00</span>
+                                </div>
+                            </div>
+                            </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <div class="row">
         <div class="col-md-8 offset-md-2">
             <div class="navigation-container">
@@ -227,6 +277,54 @@
     function NextStepOne() {
         document.getElementById('leadForm').requestSubmit(); // posts to OnPost
     }
+</script>
+
+<!--calculates do food savings-->
+<script>
+(function () {
+  const $dog = $('#txt-select-pet-dog');
+  const $cat = $('#txt-select-pet-cat');
+  const spendInput = document.getElementById('foodTotalSpend');
+  const savingsSpan = document.getElementById('savingsAmount');
+
+  function getPetsCount() {
+    const dogs = parseInt($dog.val() || '0', 10) || 0;
+    const cats = parseInt($cat.val() || '0', 10) || 0;
+    return Math.max(0, dogs + cats);
+  }
+
+  function computeAndRender() {
+    const A = parseFloat(spendInput.value || '0') || 0;
+    const B = getPetsCount();
+    const C = B > 0 ? (A / B) : 0;
+    const savings = B > 0 ? (C / 10) : 0;
+    savingsSpan.textContent = savings.toFixed(2);
+  }
+
+  spendInput.addEventListener('input', computeAndRender);
+  $dog.on('change', computeAndRender);
+  $cat.on('change', computeAndRender);
+  $('#btn-add-dog, #btn-sub-dog, #btn-add-cat, #btn-sub-cat').on('click', computeAndRender);
+
+  computeAndRender();
+})();
+</script>
+<!--only shows circle once active-->
+<script>
+(function () {
+  const spendInput = document.getElementById('foodTotalSpend'); // your input
+  const savingsCircle = document.querySelector('.savings-circle');
+
+  if (!spendInput || !savingsCircle) return;
+
+  spendInput.addEventListener('input', function () {
+    if (spendInput.value.trim() !== '') {
+      savingsCircle.classList.add('active');   // show circle
+    } else {
+      savingsCircle.classList.remove('active'); // hide circle again
+    }
+  });
+})();
 </script>
 
 <partial name="_ValidationScriptsPartial" />

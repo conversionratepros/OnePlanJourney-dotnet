@@ -17,44 +17,61 @@ namespace OnePlanPetJourney.Pages.Leads
             _context = context;
         }
 
+        // Bind to your entity
         [BindProperty]
-        public BankingDetails BankingDetails { get; set; }
+        public BankingDetails BankingDetails { get; set; } = new();
 
-        public List<SelectListItem> BankNames { get; set; }
-        public List<SelectListItem> AccountTypes { get; set; }
-        public List<SelectListItem> HearAboutUsOptions { get; set; }
+        public List<SelectListItem> BankNames { get; set; } = new();
+        public List<SelectListItem> AccountTypes { get; set; } = new();
+        public List<SelectListItem> HearAboutUsOptions { get; set; } = new();
 
-        public void OnGet()
+        private void BuildSelectLists()
         {
-            BankingDetails = new BankingDetails();
-
             BankNames = new List<SelectListItem>
             {
-                new SelectListItem { Value = "FNB", Text = "FNB" },
-                new SelectListItem { Value = "Absa", Text = "Absa" },
-                new SelectListItem { Value = "Standard Bank", Text = "Standard Bank" },
-                new SelectListItem { Value = "Nedbank", Text = "Nedbank" },
-                new SelectListItem { Value = "Capitec", Text = "Capitec" },
+                new("FNB","FNB"),
+                new("Absa","Absa"),
+                new("Standard Bank","Standard Bank"),
+                new("Nedbank","Nedbank"),
+                new("Capitec","Capitec"),
             };
 
             AccountTypes = new List<SelectListItem>
             {
-                new SelectListItem { Value = "Cheque", Text = "Cheque" },
-                new SelectListItem { Value = "Savings", Text = "Savings" },
-                new SelectListItem { Value = "Transmission", Text = "Transmission" },
+                new("Cheque","Cheque"),
+                new("Savings","Savings"),
+                new("Transmission","Transmission"),
             };
 
             HearAboutUsOptions = new List<SelectListItem>
             {
-                new SelectListItem { Value = "Friend", Text = "Friend" },
-                new SelectListItem { Value = "Social Media", Text = "Social Media" },
-                new SelectListItem { Value = "Google", Text = "Google" },
-                new SelectListItem { Value = "Other", Text = "Other" },
+                new("Friend","Friend"),
+                new("Social Media","Social Media"),
+                new("Google","Google"),
+                new("Other","Other"),
+            };
+        }
+
+        // Accept the route id and prefill leadId
+        public void OnGet(int id)
+        {
+            BuildSelectLists();
+            BankingDetails = new BankingDetails
+            {
+                leadId = id
             };
         }
 
         public async Task<IActionResult> OnPostAsync()
         {
+            BuildSelectLists();
+
+            // Ensure lead id is present (in case model binding missed it)
+            if (BankingDetails.leadId == 0 && int.TryParse(RouteData.Values["id"]?.ToString(), out var rid))
+            {
+                BankingDetails.leadId = rid;
+            }
+
             if (!ModelState.IsValid)
             {
                 return Page();
@@ -63,7 +80,8 @@ namespace OnePlanPetJourney.Pages.Leads
             _context.BankingDetails.Add(BankingDetails);
             await _context.SaveChangesAsync();
 
-            return RedirectToPage("/Leads/PageNine"); // Or a confirmation page
+            // NOTE: property is leadId (lowercase 'l'), not LeadId
+            return RedirectToPage("/Leads/PageNine", new { id = BankingDetails.leadId });
         }
     }
 }

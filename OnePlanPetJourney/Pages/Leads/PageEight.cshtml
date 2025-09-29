@@ -1,70 +1,234 @@
-@page
+@page "{id:int}"
 @model OnePlanPetJourney.Pages.Leads.PageEightModel
+
 @{
     ViewData["Title"] = "Banking Details";
+    ViewData["CurrentStep"] = 8;
 }
 
-<h1>Banking Details</h1>
+@if (TempData["Message"] is string msg)
+{
+    <div class="alert alert-success">@msg</div>
+}
 
-<form method="post">
-    <div class="form-group">
-        <label>Account Type</label><br />
-        <input type="radio" asp-for="BankingDetails.isPersonal" value="true" /> Personal
-        <input type="radio" asp-for="BankingDetails.isPersonal" value="false" /> Business
+<div class="row">
+    <div class="col-md-8 offset-md-2 mb-3">
+        <h1 class="mb-5">
+            Let's take a meow-ment to sort out the finances. We make sure your debit order is safe and secure using DebiCheck.
+        </h1>
     </div>
-    <div class="form-group">
-        <label>ID Type</label><br />
-        <input type="radio" asp-for="BankingDetails.isPassport" value="false" /> ID
-        <input type="radio" asp-for="BankingDetails.isPassport" value="true" /> Passport
-    </div>
-    <div class="form-group">
-        <label asp-for="BankingDetails.AccountPayersID"></label>
-        <input asp-for="BankingDetails.AccountPayersID" class="form-control" />
-    </div>
-    <div class="form-group">
-        <label asp-for="BankingDetails.AccountHolder"></label>
-        <input asp-for="BankingDetails.AccountHolder" class="form-control" />
-    </div>
-    <div class="form-group">
-        <label asp-for="BankingDetails.AccountNumber"></label>
-        <input asp-for="BankingDetails.AccountNumber" class="form-control" />
-    </div>
-    <div class="form-group">
-        <label asp-for="BankingDetails.BankName"></label>
-        <select asp-for="BankingDetails.BankName" asp-items="Model.BankNames" class="form-control"></select>
-    </div>
-    <div class="form-group">
-        <label asp-for="BankingDetails.BranchCode"></label>
-        <input asp-for="BankingDetails.BranchCode" class="form-control" />
-    </div>
-    <div class="form-group">
-        <label asp-for="BankingDetails.BankAccountType"></label>
-        <select asp-for="BankingDetails.BankAccountType" asp-items="Model.AccountTypes" class="form-control"></select>
-    </div>
-    <div class="form-group">
-        <label asp-for="BankingDetails.DebitDate"></label>
-        <input asp-for="BankingDetails.DebitDate" class="form-control" type="date" />
-    </div>
-    <div class="form-group">
-        <label asp-for="BankingDetails.PolicyStart"></label>
-        <input asp-for="BankingDetails.PolicyStart" class="form-control" type="date" />
-    </div>
-    <div class="form-group">
-        <label asp-for="BankingDetails.SecondStartDate"></label>
-        <input asp-for="BankingDetails.SecondStartDate" class="form-control" type="date" />
-    </div>
-    <div class="form-group">
-        <label asp-for="BankingDetails.HearAboutUs"></label>
-        <select asp-for="BankingDetails.HearAboutUs" asp-items="Model.HearAboutUsOptions" class="form-control"></select>
-    </div>
-    <div class="form-group">
-        <label asp-for="BankingDetails.ConfirmPhoneNumber"></label>
-        <input asp-for="BankingDetails.ConfirmPhoneNumber" class="form-control" />
-    </div>
-    <div class="form-group form-check">
-        <input type="checkbox" asp-for="BankingDetails.ConsentConfirm" class="form-check-input" />
-        <label class="form-check-label" asp-for="BankingDetails.ConsentConfirm">I confirm consent</label>
-    </div>
+</div>
 
-    <button type="submit" class="btn btn-primary">Submit</button>
+<form method="post" novalidate>
+    @Html.AntiForgeryToken()
+
+    <!-- keep the lead id with the form -->
+    <input asp-for="BankingDetails.leadId" type="hidden" />
+
+    <div class="row">
+        <div class="col-md-8 offset-md-2 delivery-details">
+
+            <!-- Card 1 -->
+            <div class="card frame">
+                <div class="card-body">
+                    <div class="row g-3">
+                        <div class="col-12">
+                            <h2>Banking Details</h2>
+                        </div>
+
+                        <div class="col-md-12 form-group mb-3">
+                            <label class="form-label d-block">Is the debit order account in your personal or business name?</label>
+                            <div class="form-check">
+                                <input type="radio" asp-for="BankingDetails.isPersonal" value="true" class="form-check-input" id="isPersonal" />
+                                <label class="form-check-label" for="isPersonal">Personal</label>
+                            </div>
+                            <div class="form-check">
+                                <input type="radio" asp-for="BankingDetails.isPersonal" value="false" class="form-check-input" id="isBusiness" />
+                                <label class="form-check-label" for="isBusiness">Business</label>
+                            </div>
+                        </div>
+
+                        <div class="col-md-12 form-group">
+                            <label class="form-label d-block">Account payer's ID / passport:</label>
+                            <div class="form-check">
+                                <input type="radio" asp-for="BankingDetails.isPassport" value="false" class="form-check-input" id="idTypeId" />
+                                <label class="form-check-label" for="idTypeId">ID</label>
+                            </div>
+                            <div class="form-check">
+                                <input type="radio" asp-for="BankingDetails.isPassport" value="true" class="form-check-input" id="idTypePassport" />
+                                <label class="form-check-label" for="idTypePassport">Passport</label>
+                            </div>
+                        </div>
+
+                        <div class="col-md-12 mb-3">
+                            <p>
+                                <small>
+                                    Due to Foreign National Application Policy Processing, this policy will require the necessary documentation to be sent to Oneplan for processing.
+                                    The requirements have been e-mailed to you for your attention.
+                                    You may continue to complete and proceed to the next step by clicking SUBMIT. Thank you.
+                                </small>
+                            </p>
+                        </div>
+
+                        <div class="col-md-6 form-group mb-3">
+                            <label>Account Payer's ID / Passport Number:</label>
+                            <input asp-for="BankingDetails.AccountPayersID" class="form-control" />
+                        </div>
+
+                        <div class="col-md-6 form-group mb-3">
+                            <label>Account Holder:</label>
+                            <input asp-for="BankingDetails.AccountHolder" class="form-control" />
+                        </div>
+
+                        <div class="col-md-3 form-group mb-3">
+                            <label>Account Number:</label>
+                            <input asp-for="BankingDetails.AccountNumber" class="form-control" />
+                        </div>
+
+                        <div class="col-md-3 form-group mb-3">
+                            <label>Bank Name:</label>
+                            <select asp-for="BankingDetails.BankName" asp-items="Model.BankNames" class="form-select">
+                                 <option value="">-- Select bank --</option>
+                            </select>
+                        </div>
+
+                        <div class="col-md-3 form-group mb-3">
+                            <label>Branch Code:</label>
+                            <input asp-for="BankingDetails.BranchCode" class="form-control" />
+                        </div>
+
+                        <div class="col-md-3 form-group mb-3">
+                            <label>Bank Account Type:</label>
+                            <select asp-for="BankingDetails.BankAccountType" asp-items="Model.AccountTypes" class="form-select">
+                                 <option value="">-- Select account type --</option>
+                             </select>
+                        </div>
+
+                        <div class="col-md-4 form-group mb-3">
+                            <label>Debit Order Date:</label>
+                            <input asp-for="BankingDetails.DebitDate" class="form-control" type="date" />
+                        </div>
+
+                        <div class="col-md-4 form-group mb-3">
+                            <label>When would you like your Policy to start?</label>
+                            <input asp-for="BankingDetails.PolicyStart" class="form-control" type="date" />
+                        </div>
+
+                        <div class="col-md-4 form-group mb-3">
+                            <label>Policy to start (need to shorten label):</label>
+                            <input asp-for="BankingDetails.SecondStartDate" class="form-control" type="date" />
+                            <small>Choose which date from tomorrow</small>
+                        </div>
+
+                        <div class="col-md-12 form-group mb-3">
+                            <label>Where did you hear about us?:</label>
+                            <select asp-for="BankingDetails.HearAboutUs" asp-items="Model.HearAboutUsOptions" class="form-control"></select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card 2 -->
+            <div class="card frame">
+                <div class="card-body">
+                    <div class="row mt-3 mb-3">
+                        <div class="col-12">
+                            <p><strong>Please note your debit order will be deducted within the next 72 business hours.</strong>
+                                Your debit order thereafter will fall on your <strong>selected Debit Order Date.</strong></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card 3 -->
+            <div class="card frame">
+                <div class="card-body">
+                    <div class="row mt-3 mb-3">
+                        <div class="col-12">
+                            <p>
+                                You have selected that your policy starts <strong>[Date Month Year]</strong>. The pro-rata amount which needs to be paid
+                                in order to start your policy on this date will be <strong>[amount]</strong>. <br /><br />
+                                <strong>Tip:</strong> You can get your R160 admin fee back! Simply authorise your DebiCheck Debit Order. <br /><br />
+                                <strong>Your monthly debit order thereafter will be R[amount]. </strong><br /><br />
+                                Once your policy is successfully created, an SMS will be sent to you with a secure Payfast link
+                                to make your pro-rata premium payment and activate your policy.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card 4 -->
+            <div class="card frame">
+                <div class="card-body">
+                    <div class="row mt-3">
+                        <div class="col-12">
+                            <div class="row g-3">
+                                <div class="col-md-12">
+                                    <img src="~/images/DebiCheck.png" class="debi-logo mb-3" />
+                                    <p>
+                                        Thank you for providing your banking details. Oneplan has implemented the DebiCheck approval to validate this contract.
+                                        DebiCheck ensures our clients’ debit orders are safe, protected, and permission controlled. We will send you an SMS when we process your application.
+                                        Please reply with number “1” to mandate the debit order against your account. The SMS is reverse billed and you will not be charged for the response.
+                                    </p>
+                                </div>
+
+                                <div class="col-md-6 form-group mb-3">
+                                    <label>Please Confirm the cellphone number linked to your bank account</label>
+                                    <input asp-for="BankingDetails.ConfirmPhoneNumber" class="form-control" />
+                                </div>
+
+                                <div class="col-md-12 form-group mb-3 form-check">
+                                    <input type="checkbox" asp-for="BankingDetails.ConsentConfirm" class="form-check-input" />
+                                    <label class="form-check-label blue" asp-for="BankingDetails.ConsentConfirm">
+                                        I consent to receiving information about new pet related initiatives, discounts, specials, and marketing relating to my Pet Insurance policy with Oneplan.
+                                    </label>
+                                </div>
+
+                               
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div> <!-- /col -->
+    </div> <!-- /row -->
+    <div class="row mt-4">
+        <div class="col-md-8 offset-md-2">
+          <div class="navigation-container">
+            <div class="row">
+              <div id="divCallMe" class="col-sm-12 col-md-6 mb-4">
+                <button id="btnCallMePopUp"
+                        type="button"
+                        class="btn btn-block btn-nav-call-me btn-nav btn-nav-properties"
+                        data-bs-toggle="modal"
+                        data-bs-target="#CallMePopUp">
+                  <span><img src="~/images/icon-call-me.png" alt=""></span>&nbsp;&nbsp;Call me rather&nbsp;&nbsp;
+                </button>
+              </div>
+
+              <div id="divPrevious" class="col-sm-12 col-md-3 mb-4">
+                <button id="btnPrevious"
+                        type="button"
+                        class="btn btn-block btn-nav-previous btn-nav btn-nav-properties"
+                        onclick="PrevStepFive()">
+                  <span><img src="~/images/icon-chev-left.png" alt=""></span>&nbsp;&nbsp;Previous&nbsp;&nbsp;
+                </button>
+              </div>
+
+              <div id="divContinue" class="col-sm-12 col-md-3 mb-4">
+                <button id="btnContinue"
+                        type="submit"
+                        form="pfForm"
+                        class="btn btn-block btn-nav-continue btn-nav btn-nav-properties">
+                  <span><img src="~/images/icon-chev-right.png" alt=""></span>&nbsp;&nbsp;Continue&nbsp;&nbsp;
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
 </form>
+
+<!-- to do: bank and account type does not display as a drop down-->

@@ -40,8 +40,10 @@ public class PolicyHolder
 
 
     public bool hasConcented { get; set; }
+
+    public bool marketing { get; set; }
      
-     public bool marketing { get; set; }
+      public int LeadId { get; set; }
     
 
     

@@ -50,6 +50,9 @@ namespace OnePlanPetJourney.Data.Migrations
                         .IsRequired()
                         .HasColumnType("TEXT");
 
+                    b.Property<int>("leadId")
+                        .HasColumnType("INTEGER");
+
                     b.HasKey("Id");
 
                     b.ToTable("Address");
@@ -109,6 +112,9 @@ namespace OnePlanPetJourney.Data.Migrations
                         .HasColumnType("INTEGER");
 
                     b.Property<bool>("isPersonal")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<int>("leadId")
                         .HasColumnType("INTEGER");
 
                     b.HasKey("Id");
@@ -271,6 +277,9 @@ namespace OnePlanPetJourney.Data.Migrations
                     b.Property<string>("LastName")
                         .IsRequired()
                         .HasColumnType("TEXT");
+
+                    b.Property<int>("LeadId")
+                        .HasColumnType("INTEGER");
 
                     b.Property<string>("MobileNumber")
                         .IsRequired()

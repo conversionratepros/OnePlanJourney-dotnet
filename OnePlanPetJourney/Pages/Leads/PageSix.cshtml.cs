@@ -1,6 +1,5 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
-using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using OnePlanPetJourney.Data;
 using OnePlanPetJourney.Models;
@@ -12,81 +11,112 @@ namespace OnePlanPetJourney.Pages.Leads
         private readonly ApplicationDbContext _db;
         public PageSixModel(ApplicationDbContext db) => _db = db;
 
+        // Route id (/Leads/PageSix/{id})
+        [BindProperty(SupportsGet = true)]
+        public int LeadId { get; set; }
+
+        // Address payload for either mode
         [BindProperty]
-        public PolicyHolder Input { get; set; } = new();
-
-        public List<SelectListItem> TitleOptions { get; private set; } = new();
-        public List<SelectListItem> GenderOptions { get; private set; } = new();
-
-        private void BuildTitleOptions()
-        {
-            TitleOptions = new()
-            {
-                new("Mr", "Mr"),
-                new("Mrs", "Mrs"),
-                new("Ms", "Ms"),
-                new("Dr", "Dr"),
-                new("Prof", "Prof")
-            };
-        }
-
-        private void BuildGenderOptions()
-        {
-            GenderOptions = new()
-            {
-                new("Male", "Male"),
-                new("Female", "Female"),
-                new("Other", "Other"),
-                new("Prefer not to say", "Prefer not to say")
-            };
-        }
+        public Address AddressInput { get; set; } = new();
 
         public async Task<IActionResult> OnGetAsync(int id)
         {
-            BuildTitleOptions();
-            BuildGenderOptions();
+            LeadId = id;
 
-            // DbSet is usually plural: PolicyHolders
-            var entity = await _db.PolicyHolder.FirstOrDefaultAsync(p => p.Id == id);
-            Input = entity ?? new PolicyHolder { Id = 0 };
+            // Prefill from existing address (if any)
+            var existing = await _db.Address.FirstOrDefaultAsync(a => a.leadId == id);
+            if (existing != null)
+            {
+                AddressInput = new Address
+                {
+                    Id = existing.Id,
+                    leadId = existing.leadId,
+                    PhysicalAddressLineOne = existing.PhysicalAddressLineOne,
+                    PhysicalAddressLineTwo = existing.PhysicalAddressLineTwo,
+                    PhysicalCity = existing.PhysicalCity,
+                    PhysicalPostalCode = existing.PhysicalPostalCode,
+                    DeliveryAddressLineOne = existing.DeliveryAddressLineOne,
+                    DeliveryAddressLineTwo = existing.DeliveryAddressLineTwo,
+                    DeliveryCity = existing.DeliveryCity,
+                    DeliveryPostalCode = existing.DeliveryPostalCode
+                };
+            }
+
             return Page();
         }
 
-        public async Task<IActionResult> OnPostAsync()
+        public async Task<IActionResult> OnPostAsync(int id)
         {
-            BuildTitleOptions();
-            BuildGenderOptions();
+            var mode = Request.Form["Mode"].ToString(); // "old" or "tech"
 
-            if (!ModelState.IsValid) return Page();
+            LeadId = id;
+            if (AddressInput.leadId == 0) AddressInput.leadId = LeadId;
 
-            PolicyHolder? entity = null;
-
-            if (Input.Id > 0)
+            // Required: physical fields (both modes)
+            if (string.IsNullOrWhiteSpace(AddressInput.PhysicalAddressLineOne) ||
+                string.IsNullOrWhiteSpace(AddressInput.PhysicalCity) ||
+                string.IsNullOrWhiteSpace(AddressInput.PhysicalPostalCode))
             {
-                entity = await _db.PolicyHolder.FirstOrDefaultAsync(p => p.Id == Input.Id);
+                ModelState.AddModelError(string.Empty, "Please complete the required physical address fields.");
             }
 
-            if (entity is null)
+            // Tech mode requires delivery fields as well
+            if (string.Equals(mode, "tech", StringComparison.OrdinalIgnoreCase))
             {
-                entity = new PolicyHolder();
-                _db.PolicyHolder.Add(entity);
+                if (string.IsNullOrWhiteSpace(AddressInput.DeliveryAddressLineOne) ||
+                    string.IsNullOrWhiteSpace(AddressInput.DeliveryCity) ||
+                    string.IsNullOrWhiteSpace(AddressInput.DeliveryPostalCode))
+                {
+                    ModelState.AddModelError(string.Empty, "Please complete the required delivery address fields for Tech Savvy.");
+                }
+            }
+            else
+            {
+                // Old School => clear delivery fields
+                AddressInput.DeliveryAddressLineOne = null;
+                AddressInput.DeliveryAddressLineTwo = null;
+                AddressInput.DeliveryCity = null;
+                AddressInput.DeliveryPostalCode = null;
             }
 
-            entity.IdNumber        = Input.IdNumber;
-            entity.FirstName       = Input.FirstName;
-            entity.LastName        = Input.LastName;
-            entity.Title           = Input.Title;
-            entity.MobileNumber    = Input.MobileNumber;
-            entity.AltMobileNumber = Input.AltMobileNumber;
-            entity.EmailAddress    = Input.EmailAddress;
-            entity.Gender          = Input.Gender;
-            entity.hasConcented    = Input.hasConcented;
-            entity.marketing       = Input.marketing;
+            if (!ModelState.IsValid)
+                return Page();
+
+            // Upsert by leadId
+            var existing = await _db.Address.FirstOrDefaultAsync(a => a.leadId == AddressInput.leadId);
+            if (existing == null)
+            {
+                var entity = new Address
+                {
+                    leadId = AddressInput.leadId,
+                    PhysicalAddressLineOne = AddressInput.PhysicalAddressLineOne,
+                    PhysicalAddressLineTwo = AddressInput.PhysicalAddressLineTwo,
+                    PhysicalCity = AddressInput.PhysicalCity,
+                    PhysicalPostalCode = AddressInput.PhysicalPostalCode,
+                    DeliveryAddressLineOne = AddressInput.DeliveryAddressLineOne,
+                    DeliveryAddressLineTwo = AddressInput.DeliveryAddressLineTwo,
+                    DeliveryCity = AddressInput.DeliveryCity,
+                    DeliveryPostalCode = AddressInput.DeliveryPostalCode
+                };
+                _db.Address.Add(entity);
+            }
+            else
+            {
+                existing.PhysicalAddressLineOne = AddressInput.PhysicalAddressLineOne;
+                existing.PhysicalAddressLineTwo = AddressInput.PhysicalAddressLineTwo;
+                existing.PhysicalCity = AddressInput.PhysicalCity;
+                existing.PhysicalPostalCode = AddressInput.PhysicalPostalCode;
+                existing.DeliveryAddressLineOne = AddressInput.DeliveryAddressLineOne;
+                existing.DeliveryAddressLineTwo = AddressInput.DeliveryAddressLineTwo;
+                existing.DeliveryCity = AddressInput.DeliveryCity;
+                existing.DeliveryPostalCode = AddressInput.DeliveryPostalCode;
+            }
 
             await _db.SaveChangesAsync();
 
-            TempData["Message"] = "Policy holder details saved.";
-            return RedirectToPage("/Leads/PageSeven", new { id = entity.Id });
+            TempData["Message"] = "Address details saved.";
+            // On to Page Seven with the same lead id
+            return RedirectToPage("/Leads/PageSeven", new { id = LeadId });
         }
     }
 }

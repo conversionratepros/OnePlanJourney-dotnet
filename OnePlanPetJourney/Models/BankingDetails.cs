@@ -21,5 +21,7 @@ namespace OnePlanPetJourney.Models
         public string HearAboutUs { get; set; }
         public string ConfirmPhoneNumber { get; set; }
         public bool ConsentConfirm { get; set; }
+
+        public int leadId { get; set; }
     }
 }

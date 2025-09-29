@@ -1,0 +1,61 @@
+@page
+@model OnePlanPetJourney.Pages.Admin.PagePetsModel
+
+@{
+    ViewData["Title"] = "All Pets";
+}
+
+<h1>All Pets in Database</h1>
+
+@if (Model.Pets == null || !Model.Pets.Any())
+{
+    <p>No pets found.</p>
+}
+else
+{
+    <table class="table table-striped table-bordered">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>LeadId</th>
+                <th>Name</th>
+                <th>DOB</th>
+                <th>Male</th>
+                <th>Dog</th>
+                <th>Breed</th>
+                <th>Breed Size</th>
+                <th>Colour</th>
+                <th>Chip #</th>
+                <th>Vet</th>
+                <th>Neutered</th>
+                <th>Injuries</th>
+                <th>Medical Condition</th>
+                <th>Plan Type</th>
+                <th>AddOns</th>
+            </tr>
+        </thead>
+        <tbody>
+        @foreach (var pet in Model.Pets)
+        {
+            <tr>
+                <td>@pet.Id</td>
+                <td>@pet.LeadId</td>
+                <td>@pet.Name</td>
+                <td>@pet.DOB.ToString("yyyy-MM-dd")</td>
+                <td>@(pet.IsMale ? "Male" : "Female")</td>
+                <td>@(pet.IsDog ? "Dog" : "Cat")</td>
+                <td>@pet.Breed</td>
+                <td>@pet.BreedSize</td>
+                <td>@pet.Colour</td>
+                <td>@pet.ChipNumber</td>
+                <td>@pet.PreferredVet</td>
+                <td>@(pet.IsNeutered ? "Yes" : "No")</td>
+                <td>@pet.Injuries</td>
+                <td>@pet.MedicalCondition</td>
+                <td>@pet.PlanType</td>
+                <td>@pet.AddOns</td>
+            </tr>
+        }
+        </tbody>
+    </table>
+}

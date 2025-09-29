@@ -1,0 +1,47 @@
+@using Microsoft.AspNetCore.Http
+@{
+    var heading  = ViewData["Heading"] as string ?? "Notice";
+    var message  = ViewData["Message"] as string ?? "This is your card content.";
+
+    // Allow caller to pass a key, otherwise generate a GUID so each alert is unique
+    var key = ViewData["DismissKey"] as string ?? Guid.NewGuid().ToString();
+
+    var sessionKey = "HideAlert_" + key;
+    var isHidden = Context.Session.GetString(sessionKey) == "true";
+}
+
+<div id="sessionAlertCard-@key"
+     class="sessionAlertCard" data-alert-key="@key" style="display:@(isHidden ? "none" : "block")">
+  <div class="card mb-4 text-center">
+    <div class="card-header text-center ">
+        <img src="~/images/icon-paw-alert.svg"  class="mx-auto" />
+      <button type="button"
+              class="btn-close"
+              aria-label="Close"
+              onclick="dismissSessionAlertCard('@key')"></button>
+    </div>
+    <div class="card-body">
+      <h3 class="mb-0">@heading</h3>
+      <h3 class="mb-0">@message</h3>
+            <div class="mt-2">
+            <button class="btn btn-read-more p-0 toggle-read"
+                    type="button">
+            <span class="label">Get offer</span>
+            <span class="icon"><img src="~/images/btn-chevron-rght.png" alt=""></span>
+            </button>
+        </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  function dismissSessionAlertCard(key) {
+    // Hide all alerts with this key (supports duplicates)
+    document.querySelectorAll('[data-alert-key="'+key+'"]').forEach(function(el) {
+      el.style.display = 'none';
+    });
+
+    // Persist dismissal for this session
+    fetch('/Alerts/Dismiss?key=' + encodeURIComponent(key), { method: 'POST' });
+  }
+</script>

@@ -20,6 +20,7 @@ html {
 body {
     font-family: "Open Sans", sans-serif;
     color: var(--primary-dark-blue);
+    position: relative;
 
 }
 
@@ -47,6 +48,32 @@ body {
 /* target all input fields */
 input {
   height: 40px; /* pick your desired height */
+}
+
+
+ h1 {
+            --bs-badge-font-size: 32px;
+            --bs-badge-font-weight: 800;
+            line-height: 120% !;
+            font-size: var(--bs-badge-font-size);
+            font-weight: var(--bs-badge-font-weight);
+            line-height: 120%;
+            text-align: center;
+            white-space: nowrap;
+            vertical-align: baseline;
+            white-space: normal !important;
+}
+
+h2 {
+    color: #333333 !important;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 30px;
+}
+
+p {
+    color:var(--primary-dark-blue)
 }
 
 /*--------------------Colours-------------------*/
@@ -91,6 +118,13 @@ input {
     font-weight: 800;
 }
 
+
+.btn-primary {
+    background-color: var(--primary-dark-blue);
+    color: #fff;
+    font-weight: 700;
+    border:0px
+}
 
 /*----------------------------------------------*/
 /*------------------Merlin----------------------*/
@@ -916,7 +950,17 @@ form-control {
     float: right !important;
     margin-top: -10px !important;
     color: #fff !important;
+    background-color: var(--primary-dark-blue) !important;
     
+}
+
+.tooltip {
+  --bs-tooltip-bg: var(--primary-dark-blue) !important;
+  --bs-tooltip-color: #fff;   /* text color inside tooltip */
+}
+
+.tooltip {
+    position: relative;
 }
 
 .plan-content-wapper {
@@ -1005,9 +1049,7 @@ form-control {
 
 
 
-.tooltip {
-    position: relative;
-}
+
 
 .tooltip__item {
     position: absolute;
@@ -1708,26 +1750,7 @@ form-control {
             margin-top: 10px !important;
         }
 
-        h1 {
-            --bs-badge-font-size: 32px;
-            --bs-badge-font-weight: 800;
-            line-height: 120% !;
-            font-size: var(--bs-badge-font-size);
-            font-weight: var(--bs-badge-font-weight);
-            line-height: 120%;
-            text-align: center;
-            white-space: nowrap;
-            vertical-align: baseline;
-            white-space: normal !important;
-        }
-
-        h2 {
-            color: #333333 !important;
-            font-size: 18px;
-            font-style: normal;
-            font-weight: 400;
-            line-height: 30px;
-        }
+       
 
         .navigation-container {
             text-align: center !important;
@@ -2083,4 +2106,258 @@ form-control {
 .table-striped.table-dark {
   --bs-table-striped-bg: rgba(255,255,255,.08);
   --bs-table-striped-color: #fff;
+}
+
+
+/* First button (Old School) */
+.delivery-details .btn-group > button:nth-child(1) {
+  /* your styles here */
+  background-color: #E3F3F3;
+  border:1px solid #65C6C0;
+  color: var(--primary-dark-blue);
+  border-radius: 50px 0px 0px 50px;
+  font-weight: bold;
+}
+
+.delivery-details .btn-group > button:nth-child(1).active {
+  /* your styles here */
+  background-color: #60C6C1;
+  border:1px solid #65C6C0;
+
+
+}
+
+/* Second button (Savvy) */
+.delivery-details .btn-group > button:nth-child(2) {
+  /* your styles here */
+  background-color: #E3F3F3;
+  border:1px solid #65C6C0;
+  color: var(--primary-dark-blue);
+  border-radius: 0px 50px 50px 0px;
+  font-weight: bold;
+
+}
+
+/* First button (Old School) */
+.delivery-details .btn-group > button:nth-child(2).active {
+  /* your styles here */
+  background-color: #60C6C1;
+  border:1px solid #65C6C0;
+
+}
+
+.debi-logo {
+    width:200px
+}
+
+
+.final-page .card {
+    padding: 0px;
+    border-radius: 17px;
+    background-color: #E6E6E6;
+    position: relative; 
+    border-radius: 17px !important;
+    
+}
+
+.final-page .card .card-body {
+    position: relative;
+    z-index: 2; /* sits above header */
+    padding: 20px;
+    border-radius: 17px;
+    border-bottom: 4px solid #ccc;
+    background-color: #E6E6E6;
+}
+
+.final-page .card .card-body h3 {
+   font-weight: 800;
+   color: var(--primary-dark-blue);
+}
+
+.final-page .card .card-header  {
+     position: relative;
+     z-index: 1; /* sits below body */
+    background-color: var(--primary-dark-blue);
+    padding: 20px 20px 35px 20px;
+    border-radius: 17px 17px 0px 0px;
+    margin-bottom: -17px;
+   
+}
+
+.final-page .card .card-header h5 {
+    color:  #fff !important ;
+    font-size: 22px !important;
+    font-weight: 700 !important;
+}
+
+/* Fixed container in top-left; children stack vertically */
+.sessionAlertContainer{
+  position: fixed;
+  top: 100px;
+  right: 20px;
+  z-index: 1050;                 /* above page content */
+  width: 220px;                  /* or 200px to match your card width */
+  pointer-events: none;          /* clicks pass through unless overridden */
+}
+
+@media (max-width: 767.98px) {
+  .sessionAlertContainer {
+    display: none !important;
+  }
+}
+
+/* Space between stacked cards */
+.sessionAlertContainer .sessionAlertCard{
+  margin-bottom: 12px;
+    pointer-events: auto; 
+}
+
+.sessionAlertCard .card {
+   position: static !important;  
+ 
+    padding: 0px;
+    border-radius: 17px;
+    color: var(--primary-dark-blue) !important;
+    position: relative; /* kept from your CSS */
+    border-radius: 17px !important;
+    width: 200px;
+}
+
+.sessionAlertCard .card .card-body {
+    position: relative;
+    z-index: 2; /* sits above header */
+    padding: 20px;
+    border-radius: 0px 0px 17px 17px;
+    background-color: var(--primary-dark-blue) !important;
+    color: #fff !important;
+}
+
+.sessionAlertCard .card .card-body h3 {
+    font-size: 16px;
+    color: #fff !important;
+}
+
+.sessionAlertCard .card .card-header {
+    display: flex;
+    justify-content: center;      /* keep flex layout */
+    align-items: center;
+    position: relative;
+    z-index: 1; /* sits below body */
+    background-color: var(--primary-dark-blue);
+    padding: 20px;                /* your original padding */
+    padding-right: 44px;          /* added: room for the close button */
+    border-radius: 17px 17px 0px 0px;
+}
+
+.sessionAlertCard .card .card-header img {
+    width: 27px;                  /* your size */
+    position: absolute;           /* added: perfect centering */
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.sessionAlertCard .card .card-header h5 {
+    color: #fff !important;
+    font-size: 16px !important;
+    font-weight: 700 !important;
+}
+
+/* Circular red close with white “X”, pinned to the right */
+.sessionAlertCard .card .btn-close {
+    position: absolute;
+    top: 50%;
+    right: 10px;
+    transform: translateY(-50%);
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background-color: #F05657;
+    opacity: 1;
+    background-image: none;
+}
+
+.sessionAlertCard .card .btn-close::before,
+.sessionAlertCard .card .btn-close::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 12px;
+    height: 2px;
+    background-color: #fff;
+    transform-origin: center;
+}
+.sessionAlertCard .card .btn-close::before { transform: translate(-50%, -50%) rotate(45deg); }
+.sessionAlertCard .card .btn-close::after  { transform: translate(-50%, -50%) rotate(-45deg); }
+
+
+
+.sessionAlertCard .btn-read-more {
+    border-radius: 29px !important;
+    border-top: 3px solid #2B8F8E !important;
+    padding: 1px 27px !important;
+    background-color: #63C6C1 !important;
+    font-family: 'Open Sans' !important;
+    font-weight: 700 !important;
+    font-size: 16px !important;
+    color: var(--primary-dark-blue) !important;
+    height: 36px !important;
+    display: inline-flex;         
+    align-items: center;          
+    justify-content: center;       
+    gap: 0.85rem;    
+    width: 100% !important;
+    margin: 0 auto !important;
+    padding: 0 !important;             
+}
+
+/* Read-more button layout + chevron rotation */
+.sessionAlertCard .btn-read-more { display:inline-flex; align-items:center; justify-content:center; gap:.35rem; }
+
+
+.sessionAlertCard .btn-read-more img {
+  display: block;
+  width: 18px;
+  height: auto;
+}
+
+
+.food-calculator h3 {
+    font-size:20px;
+    color: var(--primary-dark-blue) !important;
+}
+
+.savings-circle {
+  transform: scale(0);     /* start small */
+  opacity: 0;              /* invisible */
+  transition: transform 0.3s ease-out, opacity 0.3s ease-out;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 160px;
+  height: 160px;
+  border-radius: 50%;
+  background-color: var(--primary-dark-blue) !important;
+  color: #fff;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.savings-circle.active {
+  transform: scale(1);     /* grow to normal size */
+  opacity: 1;              /* fade in */
+  display: flex;
+}
+.savings-label {
+  font-size: 1rem;
+
+}
+
+.savings-amount {
+  font-size: 1.6rem;
+  font-weight: bold;
+  white-space: nowrap; /* keep R and number together */
+  margin:0px;
+  line-height: 100%;
 }

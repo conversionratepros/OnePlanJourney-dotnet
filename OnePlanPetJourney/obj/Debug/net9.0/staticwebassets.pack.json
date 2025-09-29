@@ -21,6 +21,10 @@
       "PackagePath": "staticwebassets/favicon.ico"
     },
     {
+      "Id": "/Users/donavanwallis/Documents/Source/OnePlanJourney-dotnet/OnePlanPetJourney/wwwroot/images/DebiCheck.png",
+      "PackagePath": "staticwebassets/images/DebiCheck.png"
+    },
+    {
       "Id": "/Users/donavanwallis/Documents/Source/OnePlanJourney-dotnet/OnePlanPetJourney/wwwroot/images/Usp-icon-1.png",
       "PackagePath": "staticwebassets/images/Usp-icon-1.png"
     },
@@ -95,6 +99,18 @@
     {
       "Id": "/Users/donavanwallis/Documents/Source/OnePlanJourney-dotnet/OnePlanPetJourney/wwwroot/images/plan-super.png",
       "PackagePath": "staticwebassets/images/plan-super.png"
+    },
+    {
+      "Id": "/Users/donavanwallis/Documents/Source/OnePlanJourney-dotnet/OnePlanPetJourney/wwwroot/images/store-andrioid.png",
+      "PackagePath": "staticwebassets/images/store-andrioid.png"
+    },
+    {
+      "Id": "/Users/donavanwallis/Documents/Source/OnePlanJourney-dotnet/OnePlanPetJourney/wwwroot/images/store-apple.png",
+      "PackagePath": "staticwebassets/images/store-apple.png"
+    },
+    {
+      "Id": "/Users/donavanwallis/Documents/Source/OnePlanJourney-dotnet/OnePlanPetJourney/wwwroot/images/store-haw.png",
+      "PackagePath": "staticwebassets/images/store-haw.png"
     },
     {
       "Id": "/Users/donavanwallis/Documents/Source/OnePlanJourney-dotnet/OnePlanPetJourney/wwwroot/js/site.js",

@@ -137,7 +137,7 @@ namespace OnePlanPetJourney.Pages.Leads
             }
 
             await _db.SaveChangesAsync();
-            TempData["Message"] = "Pet details saved successfully.";
+            //TempData["Message"] = "Pet details saved successfully.";
             return RedirectToPage("/Leads/PageFour", new { id = Input.LeadId });
         }
     }

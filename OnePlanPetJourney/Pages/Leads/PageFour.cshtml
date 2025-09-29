@@ -50,15 +50,19 @@
           var expandedId = $"{petKey}_expanded";
 
           <div class="card plan-wrapper-card mb-3">
-            <div class="card-header">
-              <div class="row">
-                <div class="petname col-md-6">Choose a plan for: @pet.Name</div>
-                <div class="col-md-6 text-end delete-actions">
-                  <span class="delete-text">Delete</span>
-                  <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
+          <div class="card-header">
+            <div class="row align-items-center">
+              <div class="petname col-12 col-md-6 text-start">
+                Choose a plan for: @pet.Name
+              </div>
+
+              <div class="col-12 col-md-6 delete-actions d-flex justify-content-start justify-content-md-end align-items-center gap-2">
+                <span class="delete-text">Delete</span>
+                <!-- If you're on Bootstrap 5, use btn-close (not .close) -->
+                <button type="button" class="btn-close close" aria-label="Close"></button>
               </div>
             </div>
+          </div>
 
             <div class="card-body">
               <input asp-for="Input.Items[i].PetId" type="hidden" />

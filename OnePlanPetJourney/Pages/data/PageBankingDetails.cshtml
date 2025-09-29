@@ -1,0 +1,59 @@
+@page
+@model OnePlanPetJourney.Pages.Admin.PageBankingDetailsModel
+
+@{
+    ViewData["Title"] = "All Banking Details";
+}
+
+<h1>All Banking Details</h1>
+
+@if (Model.BankingDetailsList == null || !Model.BankingDetailsList.Any())
+{
+    <p>No banking details found.</p>
+}
+else
+{
+    <table class="table table-striped table-bordered">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Lead Id</th>
+                <th>Account Holder</th>
+                <th>Account Number</th>
+                <th>Bank Name</th>
+                <th>Branch Code</th>
+                <th>Account Type</th>
+                <th>Debit Date</th>
+                <th>Policy Start</th>
+                <th>Second Start</th>
+                <th>Hear About Us</th>
+                <th>Phone Confirm</th>
+                <th>Consent</th>
+                <th>Is Personal</th>
+                <th>Is Passport</th>
+            </tr>
+        </thead>
+        <tbody>
+        @foreach (var b in Model.BankingDetailsList)
+        {
+            <tr>
+                <td>@b.Id</td>
+                <td>@b.leadId</td>
+                <td>@b.AccountHolder</td>
+                <td>@b.AccountNumber</td>
+                <td>@b.BankName</td>
+                <td>@b.BranchCode</td>
+                <td>@b.BankAccountType</td>
+                <td>@b.DebitDate.ToShortDateString()</td>
+                <td>@b.PolicyStart.ToShortDateString()</td>
+                <td>@(b.SecondStartDate?.ToShortDateString() ?? "-")</td>
+                <td>@b.HearAboutUs</td>
+                <td>@b.ConfirmPhoneNumber</td>
+                <td>@(b.ConsentConfirm ? "Yes" : "No")</td>
+                <td>@(b.isPersonal ? "Yes" : "No")</td>
+                <td>@(b.isPassport ? "Yes" : "No")</td>
+            </tr>
+        }
+        </tbody>
+    </table>
+}
