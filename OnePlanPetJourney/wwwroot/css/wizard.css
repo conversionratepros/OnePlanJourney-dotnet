@@ -1,5 +1,15 @@
 /************** Wizard (per-step connectors, no bar before 1 or after 9) **************/
-.opl-steps { padding: 13px 0 28px; }
+.opl-steps { 
+  padding: 13px 0 28px;
+ }
+
+@media (min-width: 767.98px) { 
+.opl-steps {
+  margin-top: 20px;
+  margin-bottom:20px
+}
+
+}
 
 .opl-steps-list{
   display: grid;

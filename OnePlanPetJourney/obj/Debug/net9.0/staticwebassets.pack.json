@@ -37,6 +37,10 @@
       "PackagePath": "staticwebassets/images/Usp-icon-3.png"
     },
     {
+      "Id": "/Users/donavanwallis/Documents/Source/OnePlanJourney-dotnet/OnePlanPetJourney/wwwroot/images/btn-chevron-rght.png",
+      "PackagePath": "staticwebassets/images/btn-chevron-rght.png"
+    },
+    {
       "Id": "/Users/donavanwallis/Documents/Source/OnePlanJourney-dotnet/OnePlanPetJourney/wwwroot/images/btn-chevron.png",
       "PackagePath": "staticwebassets/images/btn-chevron.png"
     },
@@ -75,6 +79,18 @@
     {
       "Id": "/Users/donavanwallis/Documents/Source/OnePlanJourney-dotnet/OnePlanPetJourney/wwwroot/images/icon-dog.png",
       "PackagePath": "staticwebassets/images/icon-dog.png"
+    },
+    {
+      "Id": "/Users/donavanwallis/Documents/Source/OnePlanJourney-dotnet/OnePlanPetJourney/wwwroot/images/icon-exclusive-onpet.png",
+      "PackagePath": "staticwebassets/images/icon-exclusive-onpet.png"
+    },
+    {
+      "Id": "/Users/donavanwallis/Documents/Source/OnePlanJourney-dotnet/OnePlanPetJourney/wwwroot/images/icon-exclusive-phone.png",
+      "PackagePath": "staticwebassets/images/icon-exclusive-phone.png"
+    },
+    {
+      "Id": "/Users/donavanwallis/Documents/Source/OnePlanJourney-dotnet/OnePlanPetJourney/wwwroot/images/icon-paw-alert.svg",
+      "PackagePath": "staticwebassets/images/icon-paw-alert.svg"
     },
     {
       "Id": "/Users/donavanwallis/Documents/Source/OnePlanJourney-dotnet/OnePlanPetJourney/wwwroot/images/logo.png",

@@ -2,6 +2,7 @@
 @{
     var heading  = ViewData["Heading"] as string ?? "Notice";
     var message  = ViewData["Message"] as string ?? "This is your card content.";
+    var ModdelId  = ViewData["ModdelId"] as string ?? "This is modal.";
 
     // Allow caller to pass a key, otherwise generate a GUID so each alert is unique
     var key = ViewData["DismissKey"] as string ?? Guid.NewGuid().ToString();
@@ -24,9 +25,9 @@
       <h3 class="mb-0">@heading</h3>
       <h3 class="mb-0">@message</h3>
             <div class="mt-2">
-            <button class="btn btn-read-more p-0 toggle-read"
+            <button class="btn btn-read-more p-0 toggle-read" data-bs-toggle="modal" data-bs-target="#@ModdelId"
                     type="button">
-            <span class="label">Get offer</span>
+            <span class="label">View offer</span>
             <span class="icon"><img src="~/images/btn-chevron-rght.png" alt=""></span>
             </button>
         </div>

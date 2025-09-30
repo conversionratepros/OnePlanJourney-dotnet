@@ -2,7 +2,15 @@
 
 <form method="post">
     <div>
-        <div class="modal-body pt-3">
+         <div class="modal" tabindex="-1" role="dialog" id="CallMePopUp">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title text-white mx-auto">We are excited to make your day better!</h5>
+                    <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+                    </button>
+                </div>
+               <div class="modal-body pt-3">
             <div class="col-12">
                 <label for="CallMe-FirstName" class="call-me-lbl">First Name:</label>
                 <input id="CallMe-FirstName" type="text" placeholder="First Name" class="form-control modal-input" />
@@ -31,7 +39,7 @@
                 </div>
             </div>
             <div class="col-lg-12 col-md-12 space-top-20 text-center">
-                <button type="button" class="btn btn-lg btn-block btn-call-me-back" onclick="CallMe('@ViewData["CallMeDescription"]')">Call me</button>
+                <button type="button" class="btn btn-lg btn-block btn-call-me-back" >Call me</button>
             </div>
             <br />
             <div class="col-lg-12 col-md-12 space-top">
@@ -42,5 +50,9 @@
                 </span>
             </div>
         </div>
+            </div>
+        </div>
+    </div>
+        
     </div>
 </form>

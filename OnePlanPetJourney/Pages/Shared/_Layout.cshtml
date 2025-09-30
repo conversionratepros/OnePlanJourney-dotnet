@@ -49,19 +49,12 @@
         </main>
   
 
-    
-      <div class="modal" tabindex="-1" role="dialog" id="CallMePopUp">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title text-white mx-auto">We are excited to make your day better!</h5>
-                    <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
-                    </button>
-                </div>
-                @await Html.PartialAsync("_CallMe")
-            </div>
-        </div>
-    </div>
+    @await Html.PartialAsync("_CallMe")
+    @await Html.PartialAsync("_OfferOne")
+    @await Html.PartialAsync("_OfferTwo")
+     
+
+ 
 
     
 
@@ -82,6 +75,13 @@
     <script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
     <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
+
+     <!--dismisses alert and stores in session so it does not show again-->
+    <script>
+    function dismissAlert(key) {
+        fetch('/Alert/Dismiss?key=' + key, { method: 'POST' });
+        }
+    </script>
 
     @RenderSection("Scripts", required: false)
 </body>

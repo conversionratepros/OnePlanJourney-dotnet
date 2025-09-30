@@ -91,7 +91,7 @@ namespace OnePlanPetJourney.Pages.Leads
 
             await _db.SaveChangesAsync();
 
-            TempData["Message"] = $"Lead {lead.Id} created with {lead.CatCount} cat(s) and {lead.DogCount} dog(s).";
+            //TempData["Message"] = $"Lead {lead.Id} created with {lead.CatCount} cat(s) and {lead.DogCount} dog(s).";
 
             // Redirect to the next Razor Page (create it at /Pages/Leads/PageTwo.cshtml)
             

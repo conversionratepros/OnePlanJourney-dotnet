@@ -22,8 +22,7 @@
     ViewData["Title"] = "Page Three - Pet Details";
     ViewData["CurrentStep"] = 3;
 }
-<!--current step sets the wizard bar step-->
-<h1>Pet Details</h1>
+
 
 @if (TempData["Message"] is string msg)
 {
@@ -41,7 +40,10 @@
 
         <div class="row">
             <form id="page3Form" method="post">
-                <div asp-validation-summary="All" class="alert alert-danger"></div>
+                @if (!ViewData.ModelState.IsValid)
+                {
+                <div asp-validation-summary="All" class="alert alert-danger" role="alert"></div>
+                }
             
                 <input asp-for="Input.LeadId" type="hidden" />
                 

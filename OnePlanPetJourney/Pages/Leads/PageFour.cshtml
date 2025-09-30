@@ -24,7 +24,7 @@
     }
 
     <div class="row">
-      <div class="col-md-4 offset-md-4 mt-3 mb-5">
+      <div class="col-md-4 offset-md-4 mt-3 mb-md-5">
         <button id="btnSendQuote" type="button" class="btn btn-send-my-quote w-100">
           Send me my quote
         </button>
@@ -187,19 +187,17 @@
                 {
                     var inputName = $"addon_{pet.PetId}";
                     var inputId   = $"addon_{pet.PetId}_{option.Value.Replace(" ", "")}";
-                    var isChecked = Model.PetAddOns.TryGetValue(pet.PetId, out var selected)
-                                    && string.Equals(selected ?? "None", option.Value, StringComparison.OrdinalIgnoreCase);
+                    var isChecked = Model.PetAddOns.TryGetValue(pet.PetId, out var selected) && string.Equals(selected ?? "None", option.Text, StringComparison.OrdinalIgnoreCase);
 
-                    // Normalize value for robust tooltip mapping
-                    var optVal = (option.Value ?? string.Empty).Trim().ToLowerInvariant();
-                    string tooltip = optVal switch
-                    {
-                        "none"               => "No add-on selected.",
-                        "excess buster"      => "Pay zero excess on eligible admissions.",
-                        "pet med booster"    => "Extra cover for routine pet meds and recurring treatments.",
-                        "diagnostic booster" => "Boosted cover for scans, X-rays, bloods and lab work.",
-                        _                    => "Add-on details"
-                    };
+                   var optVal = (option.Text ?? string.Empty).Trim().ToLowerInvariant();
+                      string tooltip = optVal switch
+                      {
+                          "none"               => "No add-on selected.",
+                          "excess buster"      => "Pay zero excess on eligible admissions.",
+                          "pet med booster"    => "Extra cover for routine pet meds and recurring treatments.",
+                          "diagnostic booster" => "Boosted cover for scans, X-rays, bloods and lab work.",
+                          _                    => "Add-on details"
+                      };
 
                     <div class="col-md-3">
                       <div class="card h-100 child-card-addon text-center @(isChecked ? "is-selected" : "")"
@@ -223,12 +221,13 @@
                           <h6 class="card-title mb-0">@option.Text</h6>
 
                           <input type="radio"
-                                 class="form-check-input ms-2"
-                                 id="@inputId"
-                                 name="@inputName"
-                                 value="@option.Value"
-                                 @(isChecked ? "checked" : null)
-                                 onclick="event.stopPropagation();" />
+                          class="form-check-input ms-2"
+                          id="@inputId"
+                          name="@inputName"
+                          value="@option.Text"
+                          @(isChecked ? "checked" : null)
+                          onclick="event.stopPropagation();" />
+
 
                           <h5>@option.Value</h5>
                         </div>
@@ -281,85 +280,134 @@
 
 @section Scripts {
 <script>
-// Select plan radio when clicking anywhere on the plan card
+// --- helpers ---
+function setToggleState(btn, isOpen) {
+  if (!btn) return;
+  const labelEl = btn.querySelector('.label');
+  if (labelEl) labelEl.textContent = isOpen ? 'Read less' : 'Read more';
+  btn.classList.toggle('open', !!isOpen);
+}
+
+function closeAllExpanded() {
+  document.querySelectorAll('.pet-expanded').forEach(function (el) {
+    el.classList.add('d-none');
+    el.setAttribute('aria-hidden', 'true');
+    el.removeAttribute('data-current-template');
+  });
+}
+
+function resetButtonsInWrapper(wrapper) {
+  if (!wrapper) return;
+  wrapper.querySelectorAll('.btn-read-more').forEach(function (b) { setToggleState(b, false); });
+}
+
+function openPlanDetails(container, templateId) {
+  const template = document.getElementById(templateId);
+  if (!container || !template) return;
+
+  // one open globally at a time (keeps your existing behavior)
+  closeAllExpanded();
+
+  container.innerHTML = template.innerHTML;
+  container.classList.remove('d-none');
+  container.setAttribute('aria-hidden', 'false');
+  container.setAttribute('data-current-template', templateId);
+
+  container.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+}
+
+function closePlanDetails(container, btnToMarkClosed) {
+  if (!container) return;
+  container.classList.add('d-none');
+  container.setAttribute('aria-hidden', 'true');
+  container.removeAttribute('data-current-template');
+  setToggleState(btnToMarkClosed, false);
+}
+
+// --- select plan by clicking the card ---
 function selectPlan(inputId) {
-  var radio = document.getElementById(inputId);
+  const radio = document.getElementById(inputId);
   if (!radio || radio.disabled) return;
 
   // check the radio
   radio.checked = true;
 
   // Limit visual selection to the same pet's wrapper
-  var petWrapper = radio.closest('.plan-wrapper-card');
+  const petWrapper = radio.closest('.plan-wrapper-card');
   if (petWrapper) {
     petWrapper.querySelectorAll('.plan-card.is-selected').forEach(function (el) {
       el.classList.remove('is-selected');
     });
   }
 
-  var card = radio.closest('.plan-card');
+  const card = radio.closest('.plan-card');
   if (card) card.classList.add('is-selected');
 
   try { radio.dispatchEvent(new Event('change', { bubbles: true })); } catch {}
+
+  // Auto-expand details for this selected plan and update the matching button label
+  // inputId shape: `${petKey}_plan_${planValue}`
+  const parts = inputId.split('_plan_');
+  if (parts.length === 2) {
+    const planValue  = parts[1];
+    const templateId = 'plan_template_' + planValue;
+
+    const container  = petWrapper ? petWrapper.querySelector('.pet-expanded') : null;
+
+    // reset all read-more buttons in this pet wrapper first
+    resetButtonsInWrapper(petWrapper);
+
+    // mark THIS card's read-more button as open
+    const btnForThisCard = card ? card.querySelector('.btn-read-more') : null;
+    setToggleState(btnForThisCard, true);
+
+    openPlanDetails(container, templateId);
+  }
 }
 
-// "Read more" toggle swaps details into the pet's expanded panel
-function setToggleState(btn, isOpen) {
-  var labelEl = btn.querySelector('.label');
-  if (labelEl) labelEl.textContent = isOpen ? 'Read less' : 'Read more';
-  btn.classList.toggle('open', !!isOpen);
-}
-
+// --- "Read more / Read less" button behavior ---
 function togglePlan(btn, inputId, containerId, templateId) {
-  var radio     = document.getElementById(inputId);
-  var container = document.getElementById(containerId);
-  var template  = document.getElementById(templateId);
+  const radio     = document.getElementById(inputId);
+  const container = document.getElementById(containerId);
+  const template  = document.getElementById(templateId);
   if (!container || !template) return;
 
-  var current = container.getAttribute('data-current-template');
-  var isOpen  = !container.classList.contains('d-none');
+  const current = container.getAttribute('data-current-template');
+  const isOpen  = !container.classList.contains('d-none');
 
+  // Clicking "Read less" -> collapse only this container
   if (current === templateId && isOpen) {
-    container.classList.add('d-none');
-    container.setAttribute('aria-hidden', 'true');
-    container.removeAttribute('data-current-template');
-    setToggleState(btn, false);
+    closePlanDetails(container, btn);
     return;
   }
 
+  // Ensure the plan is selected when opening via "Read more"
   if (radio) {
     radio.checked = true;
     try { radio.dispatchEvent(new Event('change', { bubbles: true })); } catch {}
   }
 
-  document.querySelectorAll('.pet-expanded').forEach(function (el) {
-    el.classList.add('d-none');
-    el.setAttribute('aria-hidden', 'true');
-    el.removeAttribute('data-current-template');
-  });
-
-  container.innerHTML = template.innerHTML;
-  container.classList.remove('d-none');
-  container.setAttribute('aria-hidden', 'false');
-  container.setAttribute('data-current-template', templateId);
+  // Reset labels only within this pet's wrapper, then open and mark this one "Read less"
+  const petWrapper = container.closest('.plan-wrapper-card');
+  resetButtonsInWrapper(petWrapper);
   setToggleState(btn, true);
 
-  container.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+  openPlanDetails(container, templateId);
 }
 
-// Add-on card click -> select radio & highlight (per-pet group name addon_{PetId})
+// --- add-on selection (unchanged) ---
 function toggleAddOn(inputId) {
-  var rb = document.getElementById(inputId);
+  const rb = document.getElementById(inputId);
   if (!rb) return;
   rb.checked = true;
 
-  var groupName = rb.name;
+  const groupName = rb.name;
   document.querySelectorAll('input[type="radio"][name="' + groupName + '"]').forEach(function (r) {
-    var c = document.getElementById('card_' + r.id);
+    const c = document.getElementById('card_' + r.id);
     if (c) c.classList.remove('is-selected');
   });
 
-  var card = document.getElementById('card_' + inputId);
+  const card = document.getElementById('card_' + inputId);
   if (card) card.classList.add('is-selected');
 
   try { rb.dispatchEvent(new Event('change', { bubbles: true })); } catch {}
@@ -371,6 +419,7 @@ document.addEventListener('DOMContentLoaded', function () {
   tooltipTriggerList.forEach(function (el) { new bootstrap.Tooltip(el); });
 });
 </script>
+
 
 <partial name="_ValidationScriptsPartial" />
 }

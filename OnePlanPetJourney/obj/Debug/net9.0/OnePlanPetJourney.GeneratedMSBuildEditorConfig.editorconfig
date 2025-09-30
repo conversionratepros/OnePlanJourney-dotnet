@@ -28,10 +28,6 @@ build_property._RazorSourceGeneratorDebug =
 build_property.EffectiveAnalysisLevelStyle = 9.0
 build_property.EnableCodeStyleSeverity = 
 
-[/Users/donavanwallis/Documents/Source/OnePlanJourney-dotnet/OnePlanPetJourney/Areas/Identity/Pages/_ViewStart.cshtml]
-build_metadata.AdditionalFiles.TargetPath = QXJlYXMvSWRlbnRpdHkvUGFnZXMvX1ZpZXdTdGFydC5jc2h0bWw=
-build_metadata.AdditionalFiles.CssScope = 
-
 [/Users/donavanwallis/Documents/Source/OnePlanJourney-dotnet/OnePlanPetJourney/Pages/data/PageAddresses.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXMvZGF0YS9QYWdlQWRkcmVzc2VzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
@@ -106,6 +102,14 @@ build_metadata.AdditionalFiles.CssScope =
 
 [/Users/donavanwallis/Documents/Source/OnePlanJourney-dotnet/OnePlanPetJourney/Pages/Shared/_Layout.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXMvU2hhcmVkL19MYXlvdXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/donavanwallis/Documents/Source/OnePlanJourney-dotnet/OnePlanPetJourney/Pages/Shared/_OfferOne.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXMvU2hhcmVkL19PZmZlck9uZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/donavanwallis/Documents/Source/OnePlanJourney-dotnet/OnePlanPetJourney/Pages/Shared/_OfferTwo.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXMvU2hhcmVkL19PZmZlclR3by5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
 [/Users/donavanwallis/Documents/Source/OnePlanJourney-dotnet/OnePlanPetJourney/Pages/Shared/_Primary.cshtml]

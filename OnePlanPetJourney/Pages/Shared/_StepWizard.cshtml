@@ -18,7 +18,7 @@
     string StateClass(int n) => n < current ? "is-complete" : n == current ? "is-active" : "is-inactive";
 }
 
-<nav class="opl-steps mt-5 mb-5" aria-label="Progress">
+<nav class="opl-steps " aria-label="Progress">
   <ol class="opl-steps-list" role="list">
     @foreach (var s in steps)
     {
