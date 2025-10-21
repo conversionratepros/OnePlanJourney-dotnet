@@ -17,14 +17,33 @@
 
     @for (int i = 0; i < Model.Input.Items.Count; i++)
     {
-        var pet = Model.Input.Items[i];
-        <h4 class="mb-4 weigt-400 text-center">
-          Your monthly premium for: <span class="weigt-700">@pet.Name on [Plan name]: <span class="teal">R000</span></span>
-        </h4>
-    }
+      
+          var pet = Model.Input.Items[i];
+          <div class="premium-price">
+            <div class="card  mb-3">
+                  <div class="mt-3">
+                    <h1 class=" weigt-400 text-center">
+                      <span class="weigt-700"><span class="teal">R000pm</span></span>
+                    </h1>
+                    <p class=" weigt-400 text-center">
+                      <span class="weigt-700">@pet.Name on [Plan name]
+                    </p>
+                    <p class="text-center"><i>
+                      This premium includes the <strong>Excess Buster</strong> (never pay excess) and <strong>Pet Med Booster</strong> (add/ double pet med Savings).</i>
+                    </p>
+                  <p class="text-center">
+                      <a href="#" data-bs-toggle="modal" data-bs-target="#AddOn" class="text-decoration-underline">
+                        Want to make your premium even more affordable? <strong>Click here</strong>
+                      </a>
+                    </p>
+                  </div>
+              </div>
+        </div>
+      }
+@Html.Partial("_addOn")
 
     <div class="row">
-      <div class="col-md-4 offset-md-4 mt-3 mb-md-5">
+      <div class="col-md-4 offset-md-4 mt-3 mb-md-2">
         <button id="btnSendQuote" type="button" class="btn btn-send-my-quote w-100">
           Send me my quote
         </button>

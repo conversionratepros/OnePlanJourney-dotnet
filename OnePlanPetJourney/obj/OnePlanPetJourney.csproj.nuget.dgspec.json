@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "/Users/donavanwallis/Documents/Source/OnePlanJourney-dotnet/OnePlanPetJourney/OnePlanPetJourney.csproj": {}
+    "/Users/donavanwallis/Documents/Clients/oneplan/Journey/OnePlanJourney-dotnet/OnePlanPetJourney/OnePlanPetJourney.csproj": {}
   },
   "projects": {
-    "/Users/donavanwallis/Documents/Source/OnePlanJourney-dotnet/OnePlanPetJourney/OnePlanPetJourney.csproj": {
+    "/Users/donavanwallis/Documents/Clients/oneplan/Journey/OnePlanJourney-dotnet/OnePlanPetJourney/OnePlanPetJourney.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/Users/donavanwallis/Documents/Source/OnePlanJourney-dotnet/OnePlanPetJourney/OnePlanPetJourney.csproj",
+        "projectUniqueName": "/Users/donavanwallis/Documents/Clients/oneplan/Journey/OnePlanJourney-dotnet/OnePlanPetJourney/OnePlanPetJourney.csproj",
         "projectName": "OnePlanPetJourney",
-        "projectPath": "/Users/donavanwallis/Documents/Source/OnePlanJourney-dotnet/OnePlanPetJourney/OnePlanPetJourney.csproj",
+        "projectPath": "/Users/donavanwallis/Documents/Clients/oneplan/Journey/OnePlanJourney-dotnet/OnePlanPetJourney/OnePlanPetJourney.csproj",
         "packagesPath": "/Users/donavanwallis/.nuget/packages/",
-        "outputPath": "/Users/donavanwallis/Documents/Source/OnePlanJourney-dotnet/OnePlanPetJourney/obj/",
+        "outputPath": "/Users/donavanwallis/Documents/Clients/oneplan/Journey/OnePlanJourney-dotnet/OnePlanPetJourney/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "/Users/donavanwallis/.nuget/NuGet/NuGet.Config"

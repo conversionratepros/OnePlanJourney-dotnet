@@ -2401,3 +2401,37 @@ form-control {
   margin:0px;
   line-height: 100%;
 }
+
+
+.premium-price {
+    color: var(--primary-dark-blue);
+}
+
+.premium-price .card {
+    border: 0px !important
+}
+
+.premium-price h1 {
+    margin:0px;
+    padding: 0px;
+}
+
+.premium-price h4 {
+ margin:0px;
+    padding: 0px;
+}
+
+.premium-price p {
+ margin:0px;
+    padding: 0px;
+}
+
+.premium-price p:nth-child(4) {
+ margin-bottom:20px;
+ margin-top:5px;
+    padding: 0px;
+}
+
+.premium-price a {
+    color: var(--powder-blue);
+}
