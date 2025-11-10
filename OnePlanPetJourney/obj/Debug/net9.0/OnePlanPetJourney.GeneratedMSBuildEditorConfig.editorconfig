@@ -60,6 +60,18 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = UGFnZXMvTGVhZHMvUGFnZUZvdXIuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
+[/Users/donavanwallis/Documents/Clients/oneplan/Journey/OnePlanJourney-dotnet/OnePlanPetJourney/Pages/Leads/PageFour_bakup.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXMvTGVhZHMvUGFnZUZvdXJfYmFrdXAuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/donavanwallis/Documents/Clients/oneplan/Journey/OnePlanJourney-dotnet/OnePlanPetJourney/Pages/Leads/PageFour_check.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXMvTGVhZHMvUGFnZUZvdXJfY2hlY2suY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/donavanwallis/Documents/Clients/oneplan/Journey/OnePlanJourney-dotnet/OnePlanPetJourney/Pages/Leads/PageFour_pop-up.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXMvTGVhZHMvUGFnZUZvdXJfcG9wLXVwLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
 [/Users/donavanwallis/Documents/Clients/oneplan/Journey/OnePlanJourney-dotnet/OnePlanPetJourney/Pages/Leads/PageNine.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXMvTGVhZHMvUGFnZU5pbmUuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
@@ -88,6 +100,10 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = UGFnZXMvU2hhcmVkL19BY2NpZGVudC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
+[/Users/donavanwallis/Documents/Clients/oneplan/Journey/OnePlanJourney-dotnet/OnePlanPetJourney/Pages/Shared/_AccidentAddOns.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXMvU2hhcmVkL19BY2NpZGVudEFkZE9ucy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
 [/Users/donavanwallis/Documents/Clients/oneplan/Journey/OnePlanJourney-dotnet/OnePlanPetJourney/Pages/Shared/_addOn.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXMvU2hhcmVkL19hZGRPbi5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
@@ -100,8 +116,16 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = UGFnZXMvU2hhcmVkL19DbGFzc2ljLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
+[/Users/donavanwallis/Documents/Clients/oneplan/Journey/OnePlanJourney-dotnet/OnePlanPetJourney/Pages/Shared/_ClassicAddOns.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXMvU2hhcmVkL19DbGFzc2ljQWRkT25zLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
 [/Users/donavanwallis/Documents/Clients/oneplan/Journey/OnePlanJourney-dotnet/OnePlanPetJourney/Pages/Shared/_Hospital.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXMvU2hhcmVkL19Ib3NwaXRhbC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/donavanwallis/Documents/Clients/oneplan/Journey/OnePlanJourney-dotnet/OnePlanPetJourney/Pages/Shared/_HospitalAddOns.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXMvU2hhcmVkL19Ib3NwaXRhbEFkZE9ucy5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
 [/Users/donavanwallis/Documents/Clients/oneplan/Journey/OnePlanJourney-dotnet/OnePlanPetJourney/Pages/Shared/_Layout.cshtml]
@@ -120,6 +144,10 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = UGFnZXMvU2hhcmVkL19QcmltYXJ5LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
+[/Users/donavanwallis/Documents/Clients/oneplan/Journey/OnePlanJourney-dotnet/OnePlanPetJourney/Pages/Shared/_PrimaryAddOns.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXMvU2hhcmVkL19QcmltYXJ5QWRkT25zLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
 [/Users/donavanwallis/Documents/Clients/oneplan/Journey/OnePlanJourney-dotnet/OnePlanPetJourney/Pages/Shared/_SessionAlert.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXMvU2hhcmVkL19TZXNzaW9uQWxlcnQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
@@ -130,6 +158,10 @@ build_metadata.AdditionalFiles.CssScope =
 
 [/Users/donavanwallis/Documents/Clients/oneplan/Journey/OnePlanJourney-dotnet/OnePlanPetJourney/Pages/Shared/_Super.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXMvU2hhcmVkL19TdXBlci5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/donavanwallis/Documents/Clients/oneplan/Journey/OnePlanJourney-dotnet/OnePlanPetJourney/Pages/Shared/_SuperAddOns.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXMvU2hhcmVkL19TdXBlckFkZE9ucy5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
 [/Users/donavanwallis/Documents/Clients/oneplan/Journey/OnePlanJourney-dotnet/OnePlanPetJourney/Pages/_ViewImports.cshtml]

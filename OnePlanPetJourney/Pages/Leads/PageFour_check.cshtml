@@ -20,8 +20,9 @@
     </div>
 </div>
 
+
 <div class="row">
-  <div class="col-md-8 offset-md-2">
+  <div class="col-md-10 offset-md-1">
     <form method="post" id="plan-selection" novalidate>
       @Html.AntiForgeryToken()
       <input asp-for="Input.LeadId" type="hidden" />
@@ -103,7 +104,52 @@
 
                           <h5>R @price</h5>
                           <h5>Per Month</h5>
-                         
+                           <p>
+                        
+                           </p>
+                            <a href="#" class="toggle-link" role="button"
+                                aria-expanded="false" aria-controls="toggleContent_@inputId">Show details</a>
+
+                              <!-- Content to show/hide. Give it a unique ID -->
+                             <div id="toggleContent_@inputId" class="toggleContent">
+                                <div class="text-start add-on-checks">
+                                  <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault_@inputId" checked>
+                                    <label class="form-check-label" for="flexCheckDefault_@inputId">
+                                      Excess Buster
+                                      <i class="fas fa-info-circle" 
+                                        data-bs-toggle="tooltip" 
+                                        data-bs-title="Pay zero excess on eligible admissions."
+                                        style="cursor: pointer;"></i>
+                                    </label>
+                                  </div>
+                                  
+                                  <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked1_@inputId" checked>
+                                    <label class="form-check-label" for="flexCheckChecked1_@inputId">
+                                      Pet Med Booster
+                                      <i class="fas fa-info-circle" 
+                                        data-bs-toggle="tooltip" 
+                                        data-bs-title="Add routine care & waive excess."
+                                        style="cursor: pointer;"></i>
+                                    </label>
+                                  </div>
+                                  
+                                  <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked2_@inputId" checked>
+                                    <label class="form-check-label" for="flexCheckChecked2_@inputId">
+                                      Diagnostic Booster
+                                      <i class="fas fa-info-circle" 
+                                        data-bs-toggle="tooltip" 
+                                        data-bs-title="Add diagnostic cover"
+                                        style="cursor: pointer;"></i>
+                                    </label>
+                                  </div>
+                                </div>
+                              </div>
+                        
+
+
                           <button type="button"
                                   class="btn plan-tooltip-btn"
                                   data-bs-toggle="tooltip"
@@ -128,11 +174,11 @@
                     </div>
 
                     <div id="@templateId" class="d-none">
-                      @if (plan.Text == "Super")       { <partial name="_SuperAddOns" /> }
-                      else if (plan.Text == "Classic") { <partial name="_ClassicAddOns" /> }
-                      else if (plan.Text == "Hospital"){ <partial name="_HospitalAddOns" /> }
-                      else if (plan.Text == "Accident"){ <partial name="_AccidentAddOns" /> }
-                      else if (plan.Text == "Primary") { <partial name="_PrimaryAddOns" /> }
+                      @if (plan.Text == "Super")       { <partial name="_Super" /> }
+                      else if (plan.Text == "Classic") { <partial name="_Classic" /> }
+                      else if (plan.Text == "Hospital"){ <partial name="_Hospital" /> }
+                      else if (plan.Text == "Accident"){ <partial name="_Accident" /> }
+                      else if (plan.Text == "Primary") { <partial name="_Primary" /> }
                       else { <div>No details available.</div> }
                     </div>
 
@@ -155,7 +201,6 @@
           </div>
       }
 
-  
 
 
       <div class="row mb-5">
@@ -178,6 +223,7 @@
                     <p class="text-center"><i>
                       This premium includes the <strong>Excess Buster</strong> (never pay excess) and <strong>Pet Med Booster</strong> (add/ double pet med Savings).</i>
                     </p>
+              
                   </div>
               </div>
         </div>
@@ -269,12 +315,6 @@ function openPlanDetails(container, templateId) {
   container.setAttribute('data-current-template', templateId);
 
   container.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-
-   // REINITIALIZE TOOLTIPS for the newly loaded content
-  var tooltipTriggerList = [].slice.call(container.querySelectorAll('[data-bs-toggle="tooltip"]'));
-  tooltipTriggerList.forEach(function (el) { 
-    new bootstrap.Tooltip(el); 
-  });
 }
 
 function closePlanDetails(container, btnToMarkClosed) {
@@ -381,47 +421,40 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 </script>
 
-
-<!--add on toggle for cards-->
 <script>
-    (function () {
-      // IDs used above
-      var link = document.getElementById('toggleLink');
-      var content = document.getElementById('toggleContent');
+document.addEventListener('DOMContentLoaded', function () {
+    // Select all toggle links inside plan cards
+    document.querySelectorAll('.toggle-link').forEach(function(link) {
+        const card = link.closest('.plan-card');
+        if (!card) return;
+        
+        // Find the toggleContent within this card using the class
+        const content = card.querySelector('.toggleContent');
+        if (!content) return;
+        
+        // Hide content initially
+        content.classList.add('d-none');
+        link.setAttribute('aria-expanded', 'false');
+        link.innerHTML = 'Make Cheaper <i class="fas fa-plus"></i>';
 
-      // If either element is missing, bail out
-      if (!link || !content) return;
+        link.addEventListener('click', function(e) {
+            e.preventDefault();
+            const isExpanded = content.classList.contains('d-none') === false;
 
-      // Hide content on load (JS-enabled) and set accessibility state
-      content.classList.add('hidden');
-      link.setAttribute('aria-expanded', 'false');
-      link.textContent = 'Show details';
+            if (isExpanded) {
+                content.classList.add('d-none');
+                link.setAttribute('aria-expanded', 'false');
+                link.innerHTML = 'Make Cheaper  <i class="fas fa-plus"></i>';
+            } else {
+                content.classList.remove('d-none');
+                link.setAttribute('aria-expanded', 'true');
+                link.innerHTML = 'Close <i class="fas fa-minus"></i>';
+            }
+        });
+    });
+});
+</script>
 
-      // Click handler
-      link.addEventListener('click', function (e) {
-        e.preventDefault(); // keep it behaving like a link without navigation
-
-        var isExpanded = link.getAttribute('aria-expanded') === 'true';
-        if (isExpanded) {
-          content.classList.add('hidden');
-          link.setAttribute('aria-expanded', 'false');
-          link.textContent = 'Show details';
-        } else {
-          content.classList.remove('hidden');
-          link.setAttribute('aria-expanded', 'true');
-          link.textContent = 'Hide details';
-        }
-      });
-
-      // Optional: allow Enter/Space to toggle when focused (anchors handle Enter by default)
-      link.addEventListener('keydown', function (e) {
-        if (e.key === ' ' || e.key === 'Spacebar') { // Space (older browsers include 'Spacebar')
-          e.preventDefault();
-          link.click();
-        }
-      });
-    })();
-  </script>
 
 <partial name="_ValidationScriptsPartial" />
 }

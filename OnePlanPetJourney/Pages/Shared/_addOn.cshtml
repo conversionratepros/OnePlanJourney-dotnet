@@ -5,33 +5,61 @@
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title text-white mx-auto">Make your premium cheaper</h5>
+          <div class="modal-title text-white mx-auto">
+          <h5 class="text-white">
+            Make your premium cheaper
+          </h5>
+          <h1 class="text-white">R999</h1>
+          <p class="text-white">Remove a add-on to decrease your premium</p>
           <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
           </button>
+        </div>
         </div>
 
         <div class="modal-body pt-3 pb-3">
 
           <form>
             <div class="mb-3 form-check">
-              <input class="form-check-input" type="checkbox" value="" id="check1">
+              <input class="form-check-input" type="checkbox" value="" id="check1" checked>
               <label class="form-check-label" for="check1">
                 Remove Pet Med Booster
+                <i class="fas fa-info-circle" 
+                   data-bs-toggle="tooltip" 
+                   data-bs-title="Extra cover for routine pet meds and recurring treatments."
+                   style="cursor: pointer;"></i>
               </label>
             </div>
 
             <div class="mb-3 form-check">
-              <input class="form-check-input" type="checkbox" value="" id="check2">
+              <input class="form-check-input" type="checkbox" value="" id="check2" checked>
               <label class="form-check-label" for="check2">
                 Remove Excess Buster
+                <i class="fas fa-info-circle" 
+                   data-bs-toggle="tooltip" 
+                   data-bs-title="Pay zero excess on eligible admissions."
+                   style="cursor: pointer;"></i>
+              </label>
+            </div>
+             <div class="mb-3 form-check">
+              <input class="form-check-input" type="checkbox" value="" id="check3" checked>
+              <label class="form-check-label" for="check3">
+                Diagnostic Booster
+                <i class="fas fa-info-circle" 
+                   data-bs-toggle="tooltip" 
+                   data-bs-title="Boosted cover for scans, X-rays, bloods and lab work."
+                   style="cursor: pointer;"></i>
               </label>
             </div>
 
             <div class="mb-3 form-check">
-              <input class="form-check-input" type="checkbox" value="" id="check3">
-              <label class="form-check-label" for="check3">
+              <input class="form-check-input" type="checkbox" value="" id="check4" checked>
+              <label class="form-check-label" for="check4">
                 Go Old School
                 <br><small>No claim card. You pay and claim back.</small>
+                <i class="fas fa-info-circle" 
+                   data-bs-toggle="tooltip" 
+                   data-bs-title="Traditional claims process - pay upfront and submit claims for reimbursement."
+                   style="cursor: pointer;"></i>
               </label>
             </div>
 
@@ -43,3 +71,34 @@
     </div>
   </div>
 </div>
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    var total = 999; // starting premium
+    var display = document.querySelector('#AddOn h1'); // the R999 element
+
+    function updateTotal() {
+      var check1 = document.getElementById('check1').checked;
+      var check2 = document.getElementById('check2').checked;
+      var check3 = document.getElementById('check3').checked;
+      var check4 = document.getElementById('check4').checked;
+
+      // Start from base
+      var newTotal = 999;
+
+      // Minus 100 for each unchecked item
+      if (!check1) newTotal -= 100;
+      if (!check2) newTotal -= 100;
+      if (!check3) newTotal -= 100;
+      if (!check4) newTotal -= 100;
+
+      display.textContent = 'R' + newTotal;
+    }
+
+    // Attach listeners to all checkboxes
+    document.querySelectorAll('#AddOn .form-check-input').forEach(function (cb) {
+      cb.addEventListener('change', updateTotal);
+    });
+    
+ 
+  });
+</script>

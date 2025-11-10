@@ -84,6 +84,9 @@ p {
     color:var(--primary-dark-blue)
 }
 
+
+    .hidden { display: none; }
+
 /*--------------------Colours-------------------*/
 
 .bg-light-grey {
@@ -851,6 +854,11 @@ form-control {
     display: none;
 }
 
+
+.plan-wrapper-card .toggle-link {
+    text-decoration: none;
+    color: #06072A;
+}
          
 .plan-tooltip-btn {
    position: absolute;
@@ -870,6 +878,44 @@ form-control {
   
 }
 
+.plan-wrapper-card .make-cheaper {
+    text-decoration: none;
+    color: var(--primary-dark-blue);
+}
+
+
+ .add-on-checks .form-check-input {
+ display: block;
+
+
+}
+
+.add-on-checks .form-check-input {
+    width: 20px;
+    height: 20px;
+    border: 2px solid var(--primary-dark-blue);
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.add-on-checks .form-check-input:checked {
+    background-color:var(--primary-dark-blue);
+    border-color: var(--primary-dark-blue);
+}
+
+.add-on-checks .form-check-input:focus {
+    border-color: var(--primary-dark-blue);
+    box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+}
+
+.add-on-checks .form-check-label {
+    cursor: pointer;
+    margin-left: 8px;
+}
+
+ .add-on-checks label {
+ font-size: 14px;
+}
 
 .plan-tooltip-btn, .plan-tooltip-btn:active  {
     background-color: #333 !important;
@@ -893,6 +939,7 @@ form-control {
     margin: 0 auto !important;
     padding: 0 !important;             
 }
+
 
 /* Read-more button layout + chevron rotation */
 .btn-read-more { display:inline-flex; align-items:center; justify-content:center; gap:.35rem; }
@@ -1815,6 +1862,8 @@ form-control {
 
 /*-----------------page four---------------------*/
 
+
+
 /* Style only tables inside .parial-super */
 .parial-super table {
   background-color: #E3F3F3 !important; 
@@ -1837,6 +1886,28 @@ form-control {
   border:0px;
   padding:10px 15px
 
+}
+
+.parial-super h5 , .parial-classic h5, .parial-primary h5, .parial-hospital h5, .parial-accident h5{
+ color: var(--primary-dark-blue) !important;
+ margin:0px;
+ padding:0px;
+}
+
+.parial-super h2, .parial-classic h2, .parial-primary h2, .parial-hospital h2, .parial-accident h2{
+ color: var(--primary-dark-blue) !important;
+  margin-top:5px;
+  margin-bottom:5px;
+ padding:0px;
+ font-weight: 700;
+ font-size: 32px;
+}
+
+.parial-super p, .parial-classic p , .parial-primary p , .parial-hospital p, .parial-accident p {
+ color: var(--primary-dark-blue);
+  
+
+ padding:0px;
 }
 
 .parial-accident table {

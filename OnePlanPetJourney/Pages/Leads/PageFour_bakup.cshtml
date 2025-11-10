@@ -12,13 +12,6 @@
 }
 
 
-<div class="row">
-    <div class=" col-md-8 offset-md-2 mb-3">
-            <h1>
-         Select your plan and optional add-ons
-            </h1>
-    </div>
-</div>
 
 <div class="row">
   <div class="col-md-8 offset-md-2">
@@ -155,7 +148,76 @@
           </div>
       }
 
-  
+      <h1 class="mb-4 mt-5">Select your optional ADD-ON product/s</h1>
+
+      <!-- ===================== -->
+      <!-- PASS 2: ADD-ONS (all pets) -->
+      <!-- ===================== -->
+      @for (int i = 0; i < Model.Input.Items.Count; i++)
+      {
+          var pet = Model.Input.Items[i];
+
+          <div class="card card-addon mb-5">
+            <div class="card-header petname">
+              Choose an add-on for: @pet.Name
+            </div>
+            <div class="card-body text-center">
+              <div class="row g-2">
+                @foreach (var option in Model.AddOnOptions)
+                {
+                    var inputName = $"addon_{pet.PetId}";
+                    var inputId   = $"addon_{pet.PetId}_{option.Value.Replace(" ", "")}";
+                    var isChecked = Model.PetAddOns.TryGetValue(pet.PetId, out var selected) && string.Equals(selected ?? "None", option.Text, StringComparison.OrdinalIgnoreCase);
+
+                   var optVal = (option.Text ?? string.Empty).Trim().ToLowerInvariant();
+                      string tooltip = optVal switch
+                      {
+                          "none"               => "No add-on selected.",
+                          "excess buster"      => "Pay zero excess on eligible admissions.",
+                          "pet med booster"    => "Extra cover for routine pet meds and recurring treatments.",
+                          "diagnostic booster" => "Boosted cover for scans, X-rays, bloods and lab work.",
+                          _                    => "Add-on details"
+                      };
+
+                    <div class="col-md-3">
+                      <div class="card h-100 child-card-addon text-center @(isChecked ? "is-selected" : "")"
+                           id="card_@inputId"
+                           role="button"
+                           tabindex="0"
+                           onclick="toggleAddOn('@inputId')"
+                           onkeydown="if (event.key==='Enter'||event.key===' '){toggleAddOn('@inputId');event.preventDefault();}">
+                        <div class="card-body d-flex flex-column justify-content-center align-items-center text-center">
+                          <button type="button"
+                                  class="btn plan-tooltip-btn"
+                                  data-bs-toggle="tooltip"
+                                  data-bs-title="@tooltip"
+                                  onclick="event.stopPropagation()"
+                                  aria-label="Add-on info">
+                            <svg width="8" height="11" viewBox="0 0 8 11" fill="none" xmlns="http://www.w3.org/2000/svg">
+                              <path d="M5.16221 0.652344C6.56221 0.652344 7.69971 1.79328 7.69971 3.22505C7.69971 4.20939 7.15283 5.10425 6.29971 5.55167L4.54971 6.60313V7.07293C4.54971 7.47561 4.22158 7.78881 3.84971 7.78881C3.45596 7.78881 3.14971 7.47561 3.14971 7.07293V6.17807C3.14971 5.93199 3.25908 5.70827 3.47783 5.57404L5.62158 4.29888C6.05908 4.07516 6.29971 3.67248 6.29971 3.22505C6.29971 2.59865 5.77471 2.08411 5.16221 2.08411H2.79971C2.40596 2.08411 2.09971 2.39731 2.09971 2.79999C2.09971 3.15794 1.77158 3.49351 1.39971 3.49351C1.00596 3.49351 0.699707 3.18031 0.699707 2.79999C0.699707 1.61431 1.64033 0.652344 2.79971 0.652344H5.16221ZM3.84971 8.86263C4.33096 8.86263 4.72471 9.28769 4.72471 9.75749C4.72471 10.2497 4.33096 10.6523 3.84971 10.6523C3.34658 10.6523 2.97471 10.272 2.97471 9.75749C2.97471 9.26532 3.34658 8.86263 3.84971 8.86263Z" fill="white"/>
+                            </svg>
+                          </button>
+
+                          <h6 class="card-title mb-0">@option.Text</h6>
+
+                          <input type="radio"
+                          class="form-check-input ms-2"
+                          id="@inputId"
+                          name="@inputName"
+                          value="@option.Text"
+                          @(isChecked ? "checked" : null)
+                          onclick="event.stopPropagation();" />
+
+
+                          <h5>@option.Value</h5>
+                        </div>
+                      </div>
+                    </div>
+                }
+              </div>
+            </div>
+          </div>
+      }
 
 
       <div class="row mb-5">
@@ -177,6 +239,12 @@
                     </p>
                     <p class="text-center"><i>
                       This premium includes the <strong>Excess Buster</strong> (never pay excess) and <strong>Pet Med Booster</strong> (add/ double pet med Savings).</i>
+                    </p>
+                  <p class="text-center">
+                      <a href="#" data-bs-toggle="modal" data-bs-target="#AddOn" class="text-decoration-underline">
+                        Want to make your premium even more affordable? <strong>Click here</strong>
+                      </a>
+                      
                     </p>
                   </div>
               </div>
